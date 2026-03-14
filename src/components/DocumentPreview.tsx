@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { fadeInUp, staggerContainer, viewportConfig } from '../lib/motion'
 
-function RiskPill({ level, label }: { level: 'low' | 'medium'; label: string }) {
+function RiskPill({ level, label: _label }: { level: 'low' | 'medium'; label: string }) {
   const colors =
     level === 'low'
       ? 'bg-risk-low-bg text-risk-low'
