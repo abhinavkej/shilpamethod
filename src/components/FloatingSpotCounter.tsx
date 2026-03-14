@@ -8,25 +8,25 @@ export default function FloatingSpotCounter() {
 
   useEffect(() => {
     const onScroll = () => {
-      const ageGate = document.getElementById('age-gate-section')
+      const symptoms = document.getElementById('symptoms')
       const registration = document.getElementById('registration')
 
-      if (!ageGate || !registration) {
+      if (!symptoms || !registration) {
         setVisible(false)
         return
       }
 
-      const ageGateBottom = ageGate.getBoundingClientRect().bottom
+      const symptomsTop = symptoms.getBoundingClientRect().top
       const registrationTop = registration.getBoundingClientRect().top
 
-      setVisible(ageGateBottom < 0 && registrationTop > window.innerHeight)
+      setVisible(symptomsTop < 0 && registrationTop > window.innerHeight)
     }
 
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  if (!state.ageGateCompleted || state.spotsRemaining <= 0) return null
+  if (state.spotsRemaining <= 0) return null
 
   return (
     <AnimatePresence>

@@ -1,10 +1,8 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { useApp, AGE_LABELS, AGE_SUBLABELS, type AgeRange } from '../context/AppContext'
+import { useApp } from '../context/AppContext'
 import { useSpotCounter } from '../hooks/useSpotCounter'
 import { fadeInUp, staggerContainer, viewportConfig } from '../lib/motion'
-
-const ageOptions: AgeRange[] = ['late-30s', 'early-40s', 'mid-40s', 'early-50s']
 
 export default function Registration() {
   const { state, dispatch } = useApp()
@@ -12,7 +10,6 @@ export default function Registration() {
 
   const [firstName, setFirstName] = useState('')
   const [email, setEmail] = useState('')
-  const [selectedAge, setSelectedAge] = useState<AgeRange | ''>(state.ageRange || '')
   const [clinicalInterest, setClinicalInterest] = useState(false)
   const [copied, setCopied] = useState(false)
 
@@ -27,7 +24,6 @@ export default function Registration() {
       payload: {
         name: firstName,
         email,
-        ageRange: (selectedAge as AgeRange) || null,
         clinicalInterest,
       },
     })
@@ -121,19 +117,6 @@ export default function Registration() {
                   required
                   className="w-full border border-border rounded-[10px] px-[18px] py-[14px] font-body text-[16px] text-deep placeholder:text-warm/60 focus:border-sage focus:outline-none transition-colors"
                 />
-                <select
-                  value={selectedAge}
-                  onChange={(e) => setSelectedAge(e.target.value as AgeRange)}
-                  className="w-full border border-border rounded-[10px] px-[18px] py-[14px] font-body text-[16px] text-deep focus:border-sage focus:outline-none transition-colors bg-white"
-                >
-                  <option value="">Select age range</option>
-                  {ageOptions.map((range) => (
-                    <option key={range} value={range}>
-                      {AGE_LABELS[range]} — {AGE_SUBLABELS[range]}
-                    </option>
-                  ))}
-                </select>
-
                 <label className="flex items-start gap-3 cursor-pointer">
                   <input
                     type="checkbox"
