@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { fadeInUp, staggerContainer, viewportConfig } from '../lib/motion'
 
-function RiskPill({ level, label: _label }: { level: 'low' | 'medium'; label: string }) {
+function RiskPill({ level }: { level: 'low' | 'medium' }) {
   const colors =
     level === 'low'
       ? 'bg-risk-low-bg text-risk-low'
@@ -32,7 +32,7 @@ export default function DocumentPreview() {
         </motion.h2>
 
         <motion.p variants={fadeInUp} className="font-body text-[16px] text-muted max-w-[520px] mx-auto mb-2">
-          By Sunday evening, Dr. Kai generates your personalized clinical summary — based on your
+          By the end of the 2-day program, Dr. Kai generates your personalized clinical summary — based on your
           symptom profile, your risk assessment, and Dr. Saxena's framework. It is yours. Including
           the citations.
         </motion.p>
@@ -41,15 +41,11 @@ export default function DocumentPreview() {
           Formatted to share with your doctor. With PubMed citations they can look up themselves.
         </motion.p>
 
-        {/* Document Card */}
+        {/* Document Card — full sample report */}
         <motion.div
           variants={fadeInUp}
           className="bg-white rounded-2xl max-w-[660px] mx-auto overflow-hidden text-left"
-          style={{
-            boxShadow: '0 8px 48px rgba(27,59,42,0.12)',
-            maskImage: 'linear-gradient(to bottom, black 60%, transparent 100%)',
-            WebkitMaskImage: 'linear-gradient(to bottom, black 60%, transparent 100%)',
-          }}
+          style={{ boxShadow: '0 8px 48px rgba(27,59,42,0.12)' }}
         >
           {/* Header band */}
           <div className="bg-deep text-white px-6 md:px-8 py-5 flex justify-between items-start">
@@ -68,6 +64,7 @@ export default function DocumentPreview() {
 
           {/* Body */}
           <div className="px-6 md:px-8 py-6">
+            {/* Risk Assessment */}
             <div className="font-mono text-[10px] text-gold tracking-[1.5px] mb-4">
               PERSONALIZED RISK ASSESSMENT
             </div>
@@ -80,7 +77,7 @@ export default function DocumentPreview() {
                 { pill: 'low' as const, label: 'Hormone-sensitive cancer', note: 'No personal history. Maternal fibrocystic disease — not a contraindication per NAMS 2022.' },
               ].map((row, i) => (
                 <div key={i} className="flex items-start gap-3">
-                  <RiskPill level={row.pill} label={row.label} />
+                  <RiskPill level={row.pill} />
                   <div>
                     <div className="font-body text-[14px] text-deep font-medium">{row.label}</div>
                     <div className="font-body text-[13px] text-muted">{row.note}</div>
@@ -89,7 +86,11 @@ export default function DocumentPreview() {
               ))}
             </div>
 
-            <div className="font-mono text-[10px] text-gold tracking-[1.5px] mt-8 mb-3">
+            {/* Separator */}
+            <div className="border-t border-border my-6" />
+
+            {/* Monday Morning Actions */}
+            <div className="font-mono text-[10px] text-gold tracking-[1.5px] mb-3">
               MONDAY MORNING ACTIONS
             </div>
 
@@ -104,6 +105,65 @@ export default function DocumentPreview() {
                   <p className="font-body text-[14px] text-muted leading-[1.6]">{action}</p>
                 </div>
               ))}
+            </div>
+
+            {/* Separator */}
+            <div className="border-t border-border my-6" />
+
+            {/* Recommended Protocol */}
+            <div className="font-mono text-[10px] text-gold tracking-[1.5px] mb-3">
+              RECOMMENDED PROTOCOL PATHWAY
+            </div>
+
+            <div className="font-body text-[14px] text-muted leading-[1.6] space-y-3">
+              <p>
+                Based on your symptom profile (fatigue, weight gain, brain fog, sleep disruption) and
+                risk assessment, Dr. Saxena recommends beginning with the following pathway:
+              </p>
+              <div className="bg-cream rounded-xl px-5 py-4 space-y-2">
+                <div className="flex justify-between">
+                  <span className="text-deep font-medium">Estradiol (transdermal patch)</span>
+                  <span className="text-warm text-[13px]">0.05 mg/day</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-deep font-medium">Micronized progesterone (oral)</span>
+                  <span className="text-warm text-[13px]">100 mg nightly</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-deep font-medium">DHEA (oral)</span>
+                  <span className="text-warm text-[13px]">10 mg daily</span>
+                </div>
+              </div>
+              <p className="text-[13px] text-warm italic">
+                Transdermal estrogen route selected due to possible maternal DVT history. Oral
+                progesterone supports sleep architecture. Reassess at 90 days.
+              </p>
+            </div>
+
+            {/* Separator */}
+            <div className="border-t border-border my-6" />
+
+            {/* Citations */}
+            <div className="font-mono text-[10px] text-gold tracking-[1.5px] mb-3">
+              PUBMED CITATIONS
+            </div>
+
+            <div className="font-body text-[12px] text-warm leading-[1.7] space-y-1.5">
+              <p>1. Stuenkel CA, et al. "Treatment of Symptoms of the Menopause." <span className="italic">J Clin Endocrinol Metab.</span> 2015;100(11):3975-4011. PMID: 26444994</p>
+              <p>2. The NAMS 2022 Hormone Therapy Position Statement Advisory Panel. "The 2022 Hormone Therapy Position Statement." <span className="italic">Menopause.</span> 2022;29(7):767-794. PMID: 35797481</p>
+              <p>3. Canonico M, et al. "Hormone therapy and venous thromboembolism among postmenopausal women." <span className="italic">Circulation.</span> 2007;115(7):840-845. PMID: 17309934</p>
+            </div>
+          </div>
+
+          {/* Footer band */}
+          <div className="bg-cream px-6 md:px-8 py-4 border-t border-border">
+            <div className="flex justify-between items-center">
+              <div className="font-mono text-[9px] text-warm tracking-[1px]">
+                CONFIDENTIAL &middot; FOR PATIENT USE ONLY
+              </div>
+              <div className="font-mono text-[9px] text-warm tracking-[1px]">
+                PAGE 1 OF 3
+              </div>
             </div>
           </div>
         </motion.div>

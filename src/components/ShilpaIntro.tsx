@@ -56,10 +56,10 @@ export default function ShilpaIntro() {
             </p>
           </div>
 
-          <div className="font-mono text-[11px] text-warm tracking-[1px] leading-[2] mt-6">
-            IFM FACULTY &middot; ANDREW WEIL CENTER FACULTY &middot; GW UNIVERSITY METABOLIC
-            MEDICINE INSTITUTE &middot; UNIVERSITY OF MIAMI FACULTY &middot; FORUM HEALTH CMO
-            &middot; BOARD-CERTIFIED FAMILY PHYSICIAN
+          <div className="font-body text-[13px] text-warm leading-[1.8] mt-6">
+            IFM Faculty &middot; Andrew Weil Center Faculty &middot; GW University Metabolic
+            Medicine Institute &middot; University of Miami Faculty &middot; Forum Health CMO
+            &middot; Board-Certified Family Physician
           </div>
         </motion.div>
       </div>

@@ -4,7 +4,7 @@ import { fadeInUp, staggerContainer } from '../lib/motion'
 export default function Hero() {
   return (
     <motion.section
-      className="min-h-[90vh] flex items-center justify-center px-6 pt-20"
+      className="min-h-[70vh] flex items-center justify-center px-6 pt-20"
       initial="hidden"
       animate="visible"
       variants={staggerContainer}
@@ -32,16 +32,6 @@ export default function Hero() {
           can make informed decisions about your hormonal health.
         </motion.p>
 
-        <motion.div variants={fadeInUp} className="mt-8">
-          <button
-            onClick={() =>
-              document.getElementById('symptoms')?.scrollIntoView({ behavior: 'smooth' })
-            }
-            className="font-body text-[15px] text-sage hover:text-deep transition-colors cursor-pointer"
-          >
-            Start with your symptoms &darr;
-          </button>
-        </motion.div>
       </div>
     </motion.section>
   )
