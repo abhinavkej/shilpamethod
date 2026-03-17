@@ -10,58 +10,89 @@ export default function ShilpaIntro() {
       viewport={viewportConfig}
       variants={staggerContainer}
     >
-      <div className="max-w-5xl mx-auto flex flex-col lg:flex-row gap-10 lg:gap-16">
-        {/* Photo */}
-        <motion.div variants={fadeInUp} className="lg:w-1/2">
-          <img
-            src="https://forumhealth.com/wp-content/uploads/2019/05/Shilpa-Saxena-1-scaled-e1699545138555-768x768.webp"
-            alt="Dr. Shilpa Saxena"
-            loading="lazy"
-            className="w-full aspect-square object-cover rounded-2xl"
-          />
-          <div className="font-mono text-[11px] text-warm tracking-[1.5px] mt-3 text-center lg:text-left">
-            SHILPA P. SAXENA, MD &middot; IFMCP &middot; FORUM HEALTH CMO
-          </div>
+      <div className="max-w-5xl mx-auto">
+        <motion.div variants={fadeInUp} className="text-center mb-10">
+          <div className="font-mono text-[11px] text-gold tracking-[2px] mb-3">THE EDUCATORS</div>
+          <h2 className="font-display text-[32px] md:text-[40px] font-light text-deep">
+            Two physicians. Two lenses. One weekend.
+          </h2>
         </motion.div>
 
-        {/* Bio */}
-        <motion.div variants={fadeInUp} className="lg:w-1/2">
-          <div className="font-mono text-[11px] text-gold tracking-[2px] mb-3">THE EDUCATOR</div>
+        <div className="grid md:grid-cols-2 gap-8">
+          {/* Shilpa Card */}
+          <motion.div variants={fadeInUp} className="bg-white rounded-2xl border border-border p-7">
+            <img
+              src="https://forumhealth.com/wp-content/uploads/2019/05/Shilpa-Saxena-1-scaled-e1699545138555-768x768.webp"
+              alt="Dr. Shilpa Saxena"
+              loading="lazy"
+              className="w-full aspect-[4/3] object-cover rounded-xl mb-5"
+              style={{ objectPosition: 'center 25%' }}
+            />
+            <div className="font-mono text-[10px] text-warm tracking-[1.5px] mb-1">
+              THE FUNCTIONAL MEDICINE LENS
+            </div>
+            <div className="font-display text-[24px] text-deep mb-3">Dr. Shilpa Saxena</div>
 
-          <blockquote className="font-display italic text-[28px] md:text-[32px] font-normal text-deep leading-[1.3] mb-6">
-            "The patient is not broken. The system is broken. My job is to give her the tools to
-            navigate it."
-          </blockquote>
+            <blockquote className="font-display italic text-[20px] font-normal text-deep leading-[1.35] mb-4 border-l-2 border-sage pl-4">
+              &ldquo;The patient is not broken. The system is broken. My job is to give her the tools to
+              navigate it.&rdquo;
+            </blockquote>
 
-          <div className="font-body text-[16px] text-muted leading-[1.75] space-y-4">
-            <p>
-              Dr. Shilpa Saxena has spent 20 years practicing what most physicians only read about.
-              As a Board-Certified Family Physician with advanced functional medicine training, she
-              sees not just what's wrong — but why, and what to do about it.
-            </p>
-            <p>
-              She is Faculty at the Institute for Functional Medicine, the Andrew Weil Center, George
-              Washington University's Metabolic Medicine Institute, and the University of Miami. She
-              is Chief Medical Officer at Forum Health, the largest functional medicine network in the
-              US.
-            </p>
-            <p>
-              She is internationally recognized for the Group Medical Appointment model — precision
-              medicine, delivered in a shared setting, for maximal learning and cross-pollination
-              between patients. This weekend is that model, applied to hormonal health.
-            </p>
-            <p>
-              Dr. Saxena is not accepting new private patients. The Shilpa Method is one of the very
-              few ways to learn directly from her.
-            </p>
-          </div>
+            <div className="font-body text-[15px] text-muted leading-[1.75] space-y-3">
+              <p>
+                Board-Certified Family Physician with 20 years of advanced functional medicine
+                practice. Faculty at the Institute for Functional Medicine, Andrew Weil Center,
+                George Washington University, and the University of Miami. Chief Medical Officer at
+                Forum Health — the largest functional medicine network in the US.
+              </p>
+              <p>
+                Creator of the Group Medical Appointment model — precision medicine in a shared
+                setting. This weekend is that model, applied to hormonal health.
+              </p>
+            </div>
 
-          <div className="font-body text-[13px] text-warm leading-[1.8] mt-6">
-            IFM Faculty &middot; Andrew Weil Center Faculty &middot; GW University Metabolic
-            Medicine Institute &middot; University of Miami Faculty &middot; Forum Health CMO
-            &middot; Board-Certified Family Physician
-          </div>
-        </motion.div>
+            <div className="font-body text-[12px] text-warm leading-[1.8] mt-5 pt-4 border-t border-border">
+              IFM Faculty &middot; Andrew Weil Center &middot; GW Metabolic Medicine &middot; U of
+              Miami &middot; Forum Health CMO &middot; Board-Certified Family Physician
+            </div>
+          </motion.div>
+
+          {/* Tara Card */}
+          <motion.div variants={fadeInUp} className="bg-white rounded-2xl border border-border p-7">
+            <img
+              src="/tara-scott.png"
+              alt="Dr. Tara Scott"
+              loading="lazy"
+              className="w-full aspect-[4/3] object-cover rounded-xl mb-5"
+              style={{ objectPosition: 'center 15%' }}
+            />
+            <div className="font-mono text-[10px] text-warm tracking-[1.5px] mb-1">
+              THE CLINICAL AUTHORITY
+            </div>
+            <div className="font-display text-[24px] text-deep mb-3">Dr. Tara Scott</div>
+
+            <blockquote className="font-display italic text-[20px] font-normal text-deep leading-[1.35] mb-4 border-l-2 border-terra pl-4">
+              &ldquo;Giving women options isn&rsquo;t optional. My job is to make sure you understand
+              every pathway — so you can choose, not default.&rdquo;
+            </blockquote>
+
+            <div className="font-body text-[15px] text-muted leading-[1.75] space-y-3">
+              <p>
+                OB-GYN and hormone specialist with deep expertise in bioidentical hormone therapy,
+                lab interpretation, and insurance-navigable care. Forum Health Faculty and recognized
+                authority in translating clinical evidence into patient-actionable pathways.
+              </p>
+              <p>
+                Academic, evidence-based, insurance-literate. Dr. Scott ensures you leave with not
+                just knowledge — but a practical roadmap your provider can act on.
+              </p>
+            </div>
+
+            <div className="font-body text-[12px] text-warm leading-[1.8] mt-5 pt-4 border-t border-border">
+              OB-GYN &middot; Hormone Specialist &middot; Forum Health Faculty
+            </div>
+          </motion.div>
+        </div>
       </div>
     </motion.section>
   )

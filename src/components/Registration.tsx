@@ -31,7 +31,7 @@ export default function Registration() {
 
   const handleShare = () => {
     navigator.clipboard.writeText(
-      'I just joined The Shilpa Method — a 2-day program with Dr. Shilpa Saxena on hormonal health. shilpamethod.com'
+      'I just joined The Hormone Method — a 2-day program with Dr. Shilpa Saxena & Dr. Tara Scott on hormonal health. shilpamethod.com'
     )
     setCopied(true)
     setTimeout(() => setCopied(false), 2000)
@@ -51,22 +51,23 @@ export default function Registration() {
         <motion.div variants={fadeInUp} className="lg:w-1/2">
           <div className="bg-white rounded-2xl border border-border p-7">
             <div className="font-mono text-[11px] text-gold tracking-[1.5px] mb-2">
-              THE SHILPA METHOD
+              THE HORMONE METHOD
             </div>
             <div className="font-display text-[32px] font-light text-deep mb-1">
               March 28–29, 2026
             </div>
             <p className="font-body text-[16px] text-muted mb-5">
-              Two days. 50 women. The answers your doctor hasn't given you.
+              Two days. 50 women. Two physicians. The answers your doctor hasn't given you.
             </p>
 
             <hr className="border-border border-t-[0.5px] mb-5" />
 
             <ul className="space-y-3 mb-5">
               {[
-                'Live sessions with Dr. Shilpa Saxena, MD (2 × 90 minutes)',
+                'Live sessions with Dr. Shilpa Saxena & Dr. Tara Scott (2 × 90 minutes)',
                 'Your personalized hormonal risk profile',
                 'Your Patient Advocacy Document — with PubMed citations',
+                'Recommended lab panel with interpretation guide',
                 "30-day access to your cohort's private community",
                 'Forum Health graduate discount — 10% supplement store + complimentary intake call',
               ].map((item, i) => (
@@ -80,10 +81,10 @@ export default function Registration() {
             <hr className="border-border border-t-[0.5px] mb-5" />
 
             <div className="font-body text-[16px] text-deep mb-1">
-              <span className="font-medium">{spotsRemaining}</span> of 50 spots remaining
+              <span className="font-medium">{spotsRemaining}</span> of 500 spots remaining
             </div>
 
-            <div className="font-display text-[48px] font-light text-deep mt-4">$149</div>
+            <div className="font-display text-[48px] font-light text-deep mt-4">$349</div>
             <div className="font-body text-[13px] text-warm">
               One-time. No subscription. No upsell.
             </div>
@@ -135,7 +136,7 @@ export default function Registration() {
                 >
                   {isWaitlist
                     ? 'Join the waitlist for the next cohort →'
-                    : 'Reserve my spot — $149 →'}
+                    : 'Reserve my spot — $349 →'}
                 </button>
 
                 <p className="font-body text-[13px] text-warm text-center">
@@ -154,11 +155,15 @@ export default function Registration() {
                   You're in, {state.registrationName}.
                 </div>
                 <div className="font-body text-[16px] opacity-80 mb-1">
-                  Cohort 1 &middot; March 28–29, 2026 &middot; {50 - spotsRemaining} women enrolled
+                  Cohort 1 &middot; March 28–29, 2026 &middot; {500 - spotsRemaining} women enrolled
                 </div>
                 <p className="font-body text-[15px] opacity-70 mt-4 leading-[1.7]">
                   Dr. Kai will reach out within 24 hours to begin your pre-program intake. Watch for
-                  an email from drkai@shilpamethod.com
+                  an email from drkai@shilpamethod.com. You'll work with both Dr. Saxena and Dr. Scott
+                  across the weekend.
+                </p>
+                <p className="font-body text-[14px] opacity-60 mt-3 leading-[1.6]">
+                  Cohort sizes are capped at 500 so both physicians can address your profile directly.
                 </p>
                 <p className="font-body text-[14px] opacity-50 mt-4">
                   Forward this to a friend who needs this weekend.

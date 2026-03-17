@@ -33,7 +33,7 @@ export default function DocumentPreview() {
 
         <motion.p variants={fadeInUp} className="font-body text-[16px] text-muted max-w-[520px] mx-auto mb-2">
           By the end of the 2-day program, Dr. Kai generates your personalized clinical summary — based on your
-          symptom profile, your risk assessment, and Dr. Saxena's framework. It is yours. Including
+          symptom profile, your risk assessment, and Dr. Saxena's and Dr. Scott's framework. It is yours. Including
           the citations.
         </motion.p>
 
@@ -51,14 +51,14 @@ export default function DocumentPreview() {
           <div className="bg-deep text-white px-6 md:px-8 py-5 flex justify-between items-start">
             <div>
               <div className="font-mono text-[10px] opacity-50 mb-1">
-                The Shilpa Method &middot; Program Graduate Document
+                The Hormone Method &middot; Program Graduate Document
               </div>
               <div className="font-display text-[22px] md:text-[26px]">
                 Sarah M., Age 46 &middot; Denver, CO
               </div>
             </div>
             <div className="font-body text-[12px] opacity-60 text-right hidden md:block">
-              Dr. Shilpa P. Saxena, MD
+              Dr. Shilpa Saxena &middot; Dr. Tara Scott
             </div>
           </div>
 
@@ -118,7 +118,7 @@ export default function DocumentPreview() {
             <div className="font-body text-[14px] text-muted leading-[1.6] space-y-3">
               <p>
                 Based on your symptom profile (fatigue, weight gain, brain fog, sleep disruption) and
-                risk assessment, Dr. Saxena recommends beginning with the following pathway:
+                risk assessment, Dr. Saxena and Dr. Scott recommend beginning with the following pathway:
               </p>
               <div className="bg-cream rounded-xl px-5 py-4 space-y-2">
                 <div className="flex justify-between">

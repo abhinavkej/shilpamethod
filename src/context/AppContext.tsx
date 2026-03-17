@@ -17,7 +17,7 @@ type Action =
 const initialState: AppState = {
   selectedSymptoms: [],
   riskAnswers: {},
-  spotsRemaining: 23,
+  spotsRemaining: 37,
   isRegistered: false,
   registrationName: '',
 }

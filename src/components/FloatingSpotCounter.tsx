@@ -39,8 +39,8 @@ export default function FloatingSpotCounter() {
           className="fixed bottom-6 left-6 z-50 bg-white rounded-full border border-border px-[18px] py-2.5 font-body text-[14px] text-deep"
           style={{ boxShadow: '0 4px 24px rgba(27,59,42,0.08)' }}
         >
-          <span className="font-medium">{state.spotsRemaining}</span> of 50 spots remaining
-          &middot; March 28–29
+          <span className="font-medium">{state.spotsRemaining}</span> of 500 spots remaining
+          &middot; $349 &middot; March 28–29
         </motion.div>
       )}
     </AnimatePresence>
