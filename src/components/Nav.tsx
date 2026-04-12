@@ -4,7 +4,7 @@ export default function Nav() {
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 100)
+    const onScroll = () => setScrolled(window.scrollY > 60)
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
@@ -15,22 +15,21 @@ export default function Nav() {
 
   return (
     <nav
-      className={`fixed top-[2px] left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-cream/80 backdrop-blur-[12px] border-b border-border/50'
-          : 'bg-cream border-b border-border/50'
+          ? 'bg-white/80 backdrop-blur-xl border-b border-border/60'
+          : 'bg-white/0'
       }`}
     >
-      <div className="max-w-5xl mx-auto px-6 flex items-center justify-between h-16">
-        <div>
-          <span className="font-display text-[22px] text-deep">The Hormone Method</span>
-          <div className="font-mono text-[10px] text-warm tracking-[1.5px]">Dr. Shilpa Saxena & Dr. Tara Scott</div>
-        </div>
+      <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-14">
+        <span className="text-[15px] font-medium text-primary tracking-tight">
+          The Hormone Method
+        </span>
         <button
           onClick={scrollToRegistration}
-          className="bg-terra text-white font-body text-[13px] md:text-sm px-4 md:px-5 py-2 md:py-2.5 rounded-full hover:bg-terra/90 transition-colors whitespace-nowrap shrink-0"
+          className="bg-primary text-white text-body-sm px-5 py-2 rounded-full hover:bg-accent-hover transition-colors"
         >
-          Reserve your spot &rarr;
+          Reserve your spot
         </button>
       </div>
     </nav>

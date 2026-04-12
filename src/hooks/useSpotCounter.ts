@@ -9,7 +9,7 @@ export function useSpotCounter() {
 
     const interval = setInterval(() => {
       dispatch({ type: 'DECREMENT_SPOTS' })
-    }, 90_000)
+    }, 45_000)
 
     return () => clearInterval(interval)
   }, [state.spotsRemaining, dispatch])

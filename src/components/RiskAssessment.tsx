@@ -18,13 +18,11 @@ function RiskPill({ level, label }: { level: RiskLevel; label: string }) {
   }
   const text = { low: 'Low', medium: 'Yellow', high: 'Red' }
   return (
-    <div className="flex flex-col items-center gap-1.5 p-3 rounded-xl bg-white border border-border">
-      <span
-        className={`inline-block px-3 py-1 rounded-full text-[12px] font-body font-medium ${styles[level]}`}
-      >
+    <div className="flex flex-col items-center gap-1.5 p-4 rounded-xl bg-white border border-border">
+      <span className={`inline-block px-3 py-1 rounded-full text-[12px] font-medium ${styles[level]}`}>
         {text[level]}
       </span>
-      <span className="font-body text-[12px] text-muted text-center">{label}</span>
+      <span className="text-[12px] text-secondary text-center">{label}</span>
     </div>
   )
 }
@@ -74,12 +72,12 @@ export default function RiskAssessment() {
 
   let resultText = ''
   if (hasRed) {
-    resultText = `Dr. Saxena will want to discuss your ${redFlags.join(' and ')} specifically. This does not exclude you from the program — it means Saturday's session becomes even more important for you. Dr. Kai will reach out before the weekend to prepare.`
+    resultText = `Dr. Saxena will want to discuss your ${redFlags.join(' and ')} specifically. This does not exclude you from the programme — it means Saturday's session becomes even more important for you. Dr. Kai will reach out before the weekend to prepare.`
   } else if (yellowCount > 0) {
-    resultText = `You have ${yellowCount} yellow flag${yellowCount > 1 ? 's' : ''}. These are areas where Dr. Saxena will offer specific guidance — not alarm, but precision. This is exactly what the program is designed for.`
+    resultText = `You have ${yellowCount} yellow flag${yellowCount > 1 ? 's' : ''}. These are areas where Dr. Saxena will offer specific guidance — not alarm, but precision. This is exactly what the programme is designed for.`
   } else if (allLow) {
     resultText =
-      "Your risk profile is favorable across all four axes. Dr. Saxena's session will help you understand what this means for your long-term hormonal strategy."
+      "Your risk profile is favourable across all four axes. Dr. Saxena's session will help you understand what this means for your long-term hormonal strategy."
   }
 
   const scrollToRegistration = () => {
@@ -89,23 +87,27 @@ export default function RiskAssessment() {
   return (
     <motion.section
       id="risk"
-      className="py-12 md:py-20 px-6"
+      className="py-24 md:py-32 px-6"
       initial="hidden"
       whileInView="visible"
       viewport={viewportConfig}
       variants={staggerContainer}
     >
       <div className="max-w-[560px] mx-auto">
+        <motion.p variants={fadeInUp} className="text-label text-secondary uppercase text-center mb-4">
+          60-Second Assessment
+        </motion.p>
+
         <motion.h2
           variants={fadeInUp}
-          className="font-display text-[32px] md:text-[40px] font-light text-deep mb-3 text-center"
+          className="text-display-md text-primary text-center mb-4"
         >
-          Understand your risk in 60 seconds.
+          Understand your risk.
         </motion.h2>
 
         <motion.p
           variants={fadeInUp}
-          className="font-body text-[16px] text-muted max-w-[500px] mx-auto text-center mb-10"
+          className="text-body-md text-secondary max-w-[500px] mx-auto text-center mb-12"
         >
           Four questions. No medical jargon. Dr. Saxena addresses your specific flags on Saturday.
         </motion.p>
@@ -120,11 +122,11 @@ export default function RiskAssessment() {
                 exit={{ opacity: 0, x: -40 }}
                 transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
               >
-                <div className="font-mono text-[11px] text-gold tracking-[1.5px] mb-3">
-                  QUESTION {currentQ + 1} OF {riskQuestions.length}
+                <div className="text-label text-secondary uppercase mb-3">
+                  Question {currentQ + 1} of {riskQuestions.length}
                 </div>
 
-                <h3 className="font-display text-[22px] font-normal text-deep leading-[1.35] mb-6">
+                <h3 className="text-display-sm text-primary mb-6">
                   {question.question}
                 </h3>
 
@@ -133,10 +135,10 @@ export default function RiskAssessment() {
                     <button
                       key={opt.value}
                       onClick={() => handleAnswer(question.id, opt.value)}
-                      className={`w-full text-left px-5 py-3.5 rounded-xl border-[1.5px] font-body text-[15px] cursor-pointer transition-all ${
+                      className={`w-full text-left px-5 py-3.5 rounded-xl border font-sans text-[15px] cursor-pointer transition-all ${
                         state.riskAnswers[question.id] === opt.value
-                          ? 'bg-deep text-white border-deep'
-                          : 'bg-white text-warm border-border hover:bg-lt-sage hover:border-sage'
+                          ? 'bg-primary text-white border-primary'
+                          : 'bg-white text-secondary border-border hover:border-primary/30'
                       }`}
                     >
                       {opt.label}
@@ -145,7 +147,7 @@ export default function RiskAssessment() {
                 </div>
 
                 {question.helperText && (
-                  <p className="font-body text-[13px] text-warm italic mt-4 leading-[1.6]">
+                  <p className="text-[13px] text-secondary italic mt-4 leading-relaxed">
                     {question.helperText}
                   </p>
                 )}
@@ -154,7 +156,7 @@ export default function RiskAssessment() {
                   <motion.p
                     initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="font-body text-[14px] text-sage mt-3 p-3 bg-lt-sage rounded-lg"
+                    className="text-body-sm text-sage mt-3 p-3 bg-sage-light rounded-lg"
                   >
                     {DEXA_EXPLANATION}
                   </motion.p>
@@ -170,8 +172,9 @@ export default function RiskAssessment() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
             className="bg-white rounded-2xl border border-border p-6"
+            style={{ boxShadow: '0 4px 40px rgba(0,0,0,0.06)' }}
           >
-            <h3 className="font-display text-[24px] text-deep mb-5">Your risk snapshot</h3>
+            <h3 className="text-display-sm text-primary mb-5">Your risk snapshot</h3>
 
             <div className="grid grid-cols-2 gap-3 mb-5">
               {riskQuestions.map((q) => (
@@ -183,18 +186,17 @@ export default function RiskAssessment() {
               ))}
             </div>
 
-            <p className="font-body text-[15px] text-muted leading-[1.7] mb-4">{resultText}</p>
+            <p className="text-body-md text-secondary mb-4">{resultText}</p>
 
-            <p className="font-body text-[13px] text-warm mb-6">
-              This is an educational assessment, not medical advice. It will be used to personalize
-              Dr. Saxena's session for your cohort.
+            <p className="text-[13px] text-secondary mb-6">
+              This is an educational assessment, not medical advice. It will be used to personalise Dr. Saxena's session for your cohort.
             </p>
 
             <button
               onClick={scrollToRegistration}
-              className="w-full bg-terra text-white font-body text-[16px] py-4 rounded-full hover:bg-terra/90 transition-colors cursor-pointer"
+              className="w-full bg-primary text-white text-[16px] py-4 rounded-full hover:bg-accent-hover transition-colors cursor-pointer"
             >
-              Reserve your spot — $149 &rarr;
+              Reserve your spot — $349
             </button>
           </motion.div>
         )}

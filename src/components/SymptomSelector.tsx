@@ -22,28 +22,32 @@ export default function SymptomSelector() {
   return (
     <motion.section
       id="symptoms"
-      className="py-12 md:py-20 px-6"
+      className="py-24 md:py-32 px-6 bg-surface-alt"
       initial="hidden"
       whileInView="visible"
       viewport={viewportConfig}
       variants={staggerContainer}
     >
       <div className="max-w-[680px] mx-auto">
+        <motion.p variants={fadeInUp} className="text-label text-secondary uppercase text-center mb-4">
+          Symptom Explorer
+        </motion.p>
+
         <motion.h2
           variants={fadeInUp}
-          className="font-display text-[28px] md:text-[36px] font-normal text-deep leading-[1.2] mb-3 text-center"
+          className="text-display-md text-primary text-center mb-4"
         >
-          Which of these have you noticed in the last six months?
+          The signals your body sends before a diagnosis.
         </motion.h2>
 
         <motion.p
           variants={fadeInUp}
-          className="font-body text-[15px] text-muted text-center mb-8"
+          className="text-body-md text-secondary text-center max-w-[500px] mx-auto mb-10"
         >
-          Select everything that resonates. You'll get an immediate explanation for each one.
+          Select any signal you've noticed. Dr. Saxena explains what's actually happening.
         </motion.p>
 
-        <motion.div variants={fadeInUp} className="flex flex-wrap justify-center gap-2.5 mb-6 [&>button]:w-[calc(50%-5px)] md:[&>button]:w-auto">
+        <motion.div variants={fadeInUp} className="flex flex-wrap justify-center gap-2.5 mb-8">
           {symptoms.map((symptom) => {
             const selected = state.selectedSymptoms.includes(symptom.id)
             return (
@@ -52,14 +56,14 @@ export default function SymptomSelector() {
                 whileTap={{ scale: 0.97 }}
                 animate={
                   selected
-                    ? { backgroundColor: '#1B3B2A', color: '#ffffff', borderColor: '#1B3B2A' }
-                    : { backgroundColor: '#ffffff', color: '#8B7E74', borderColor: '#E2D9CC' }
+                    ? { backgroundColor: '#1d1d1f', color: '#ffffff', borderColor: '#1d1d1f' }
+                    : { backgroundColor: '#ffffff', color: '#86868b', borderColor: '#d2d2d7' }
                 }
                 transition={{ type: 'spring', stiffness: 400, damping: 30, duration: 0.2 }}
                 onClick={() => handleChipClick(symptom.id)}
-                className="rounded-full border-[1.5px] px-3 md:px-5 py-2.5 font-body text-[13px] md:text-[15px] cursor-pointer text-center"
+                className="rounded-full border px-4 md:px-5 py-2.5 text-[13px] md:text-[15px] cursor-pointer text-center"
               >
-                <span className="mr-1 md:mr-1.5 text-[14px] md:text-[16px]">{symptom.icon}</span>
+                <span className="mr-1.5 text-[14px] md:text-[16px]">{symptom.icon}</span>
                 {symptom.label}
               </motion.button>
             )
@@ -75,27 +79,27 @@ export default function SymptomSelector() {
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
               className="bg-white border border-border rounded-2xl p-6 md:p-7 max-w-[640px] mx-auto"
-              style={{ boxShadow: '0 4px 32px rgba(27,59,42,0.08)' }}
+              style={{ boxShadow: '0 4px 32px rgba(0,0,0,0.06)' }}
             >
               <div className="flex items-start gap-3 mb-4">
                 <span className="text-2xl">{active.icon}</span>
                 <div>
-                  <div className="font-display text-[22px] font-normal text-deep">
+                  <div className="text-display-sm text-primary text-[22px]">
                     {active.label}
                   </div>
-                  <div className="font-mono text-[10px] text-gold tracking-[1px] mt-0.5">
+                  <div className="text-label text-sage uppercase mt-0.5">
                     Dr. Saxena explains:
                   </div>
                 </div>
               </div>
 
-              <p className="font-body text-[17px] text-muted leading-[1.75] mb-4">
+              <p className="text-body-md text-secondary mb-4">
                 {active.explanation}
               </p>
 
-              <hr className="border-border border-t-[0.5px] mb-3" />
+              <hr className="border-border mb-3" />
 
-              <p className="font-body text-[13px] text-warm italic">{active.stat}</p>
+              <p className="text-[13px] text-secondary italic">{active.stat}</p>
             </motion.div>
           )}
         </AnimatePresence>
@@ -104,10 +108,10 @@ export default function SymptomSelector() {
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="font-body text-[15px] text-sage text-center mt-6"
+            className="text-body-sm text-sage text-center mt-6"
           >
-            You've identified {state.selectedSymptoms.length} symptoms. This pattern is recognized.
-            Dr. Saxena will address each of these directly.
+            You've identified {state.selectedSymptoms.length} signals. This pattern is clinically recognised.
+            Dr. Saxena addresses each of these directly in the programme.
           </motion.p>
         )}
       </div>

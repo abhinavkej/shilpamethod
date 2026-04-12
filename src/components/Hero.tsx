@@ -4,64 +4,47 @@ import { fadeInUp, staggerContainer } from '../lib/motion'
 export default function Hero() {
   return (
     <motion.section
-      className="min-h-[70vh] flex items-center justify-center px-6 pt-20"
+      className="min-h-[85vh] flex items-center justify-center px-6 pt-14"
       initial="hidden"
       animate="visible"
       variants={staggerContainer}
     >
-      <div className="max-w-[560px] text-center">
-        <motion.div
+      <div className="max-w-[680px] text-center">
+        <motion.p
           variants={fadeInUp}
-          className="font-mono text-[11px] text-gold tracking-[2px] uppercase mb-6"
+          className="text-label text-secondary uppercase mb-8"
         >
-          THE HORMONE METHOD &middot; MARCH 28–29, 2026
-        </motion.div>
+          A 2-DAY PROGRAMME WITH DR. SHILPA SAXENA
+        </motion.p>
 
         <motion.h1
           variants={fadeInUp}
-          className="font-display text-[38px] md:text-[58px] font-light text-deep leading-[1.15] mb-4"
+          className="text-display-lg md:text-display-xl text-primary mb-6"
         >
           Your body has been trying to tell you something.
         </motion.h1>
 
         <motion.p
           variants={fadeInUp}
-          className="font-body text-[18px] text-muted max-w-[440px] mx-auto leading-[1.65]"
+          className="text-body-lg text-secondary max-w-[520px] mx-auto"
         >
-          A 2-day program with Dr. Shilpa Saxena &amp; Dr. Tara Scott — the education your doctor never gave you, so you
-          can make informed decisions about your hormonal health.
+          The education your doctor never had time to give you — so you can make informed decisions about your hormonal health.
         </motion.p>
 
-        {/* Two-person byline strip */}
         <motion.div
           variants={fadeInUp}
-          className="flex items-center justify-center gap-4 mt-8"
+          className="flex items-center justify-center gap-4 mt-10"
         >
-          <div className="flex items-center gap-2.5">
-            <img
-              src="https://forumhealth.com/wp-content/uploads/2019/05/Shilpa-Saxena-1-scaled-e1699545138555-768x768.webp"
-              alt="Dr. Shilpa Saxena"
-              className="w-10 h-10 rounded-full object-cover"
-            />
-            <div className="text-left">
-              <div className="font-body text-[13px] text-deep font-medium">Dr. Shilpa Saxena</div>
-              <div className="font-mono text-[9px] text-warm tracking-[1px]">FUNCTIONAL MEDICINE</div>
-            </div>
-          </div>
-          <div className="w-px h-8 bg-border" />
-          <div className="flex items-center gap-2.5">
-            <img
-              src="/tara-scott.png"
-              alt="Dr. Tara Scott"
-              className="w-10 h-10 rounded-full object-cover"
-            />
-            <div className="text-left">
-              <div className="font-body text-[13px] text-deep font-medium">Dr. Tara Scott</div>
-              <div className="font-mono text-[9px] text-warm tracking-[1px]">HORMONE SPECIALIST</div>
-            </div>
+          <img
+            src="https://forumhealth.com/wp-content/uploads/2019/05/Shilpa-Saxena-1-scaled-e1699545138555-768x768.webp"
+            alt="Dr. Shilpa Saxena"
+            className="w-12 h-12 rounded-full object-cover"
+          />
+          <div className="text-left">
+            <div className="text-[15px] font-medium text-primary">Dr. Shilpa Saxena, MD</div>
+            <div className="text-label text-secondary uppercase">Board-Certified · Functional Medicine · IFM Faculty</div>
           </div>
         </motion.div>
-
       </div>
     </motion.section>
   )
