@@ -56,7 +56,7 @@ export default function DocumentPreview() {
             <div className="bg-primary text-white px-6 md:px-8 py-5 flex justify-between items-start">
               <div>
                 <div className="text-[10px] font-mono opacity-50 mb-1">
-                  The Hormone Method &middot; Programme Graduate Document
+                  The Shilpa Method &middot; Programme Graduate Document
                 </div>
                 <div className="text-[22px] md:text-[26px] font-light tracking-tight">
                   Sarah M., Age 46 &middot; Denver, CO

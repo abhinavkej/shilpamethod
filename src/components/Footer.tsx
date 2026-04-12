@@ -3,7 +3,7 @@ export default function Footer() {
     <footer className="bg-primary text-white py-16 px-6">
       <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-between gap-8">
         <div>
-          <div className="text-[17px] font-medium tracking-tight">The Hormone Method</div>
+          <div className="text-[17px] font-medium tracking-tight">The Shilpa Method</div>
           <div className="text-[12px] opacity-40 mt-1">
             Dr. Shilpa Saxena · shilpamethod.com
           </div>

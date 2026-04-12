@@ -31,7 +31,7 @@ export default function Registration() {
 
   const handleShare = () => {
     navigator.clipboard.writeText(
-      'I just joined The Hormone Method — a 2-day programme with Dr. Shilpa Saxena on hormonal health. shilpamethod.com'
+      'I just joined The Shilpa Method — a 2-day programme with Dr. Shilpa Saxena on hormonal health. shilpamethod.com'
     )
     setCopied(true)
     setTimeout(() => setCopied(false), 2000)
@@ -51,10 +51,10 @@ export default function Registration() {
         <motion.div variants={fadeInUp} className="lg:w-1/2">
           <div className="bg-white rounded-2xl border border-border p-8" style={{ boxShadow: '0 2px 24px rgba(0,0,0,0.04)' }}>
             <p className="text-label text-secondary uppercase mb-3">
-              The Hormone Method
+              The Shilpa Method
             </p>
             <h3 className="text-display-sm text-primary mb-2">
-              March 28–29, 2026
+              April 26–27, 2026
             </h3>
             <p className="text-body-md text-secondary mb-6">
               Two days. 50 women. One physician. The answers your doctor hasn't given you.
@@ -156,7 +156,7 @@ export default function Registration() {
                     You're in, {state.registrationName}.
                   </div>
                   <div className="text-[16px] opacity-80 mb-1">
-                    Cohort 1 · March 28–29, 2026 · {500 - spotsRemaining} women enrolled
+                    Cohort 1 · April 26–27, 2026 · {500 - spotsRemaining} women enrolled
                   </div>
                   <p className="text-[15px] opacity-70 mt-4 leading-relaxed">
                     Dr. Kai will reach out within 24 hours to begin your pre-programme intake. Watch for an email from drkai@shilpamethod.com.

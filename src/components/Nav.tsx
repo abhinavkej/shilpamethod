@@ -23,7 +23,7 @@ export default function Nav() {
     >
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-14">
         <span className="text-[15px] font-medium text-primary tracking-tight">
-          The Hormone Method
+          The Shilpa Method
         </span>
         <button
           onClick={scrollToRegistration}
