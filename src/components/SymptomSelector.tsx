@@ -9,11 +9,12 @@ export default function SymptomSelector() {
   const [activeSymptom, setActiveSymptom] = useState<string | null>(null)
 
   const handleChipClick = (id: string) => {
-    dispatch({ type: 'TOGGLE_SYMPTOM', payload: id })
-    if (state.selectedSymptoms.includes(id)) {
-      if (activeSymptom === id) setActiveSymptom(null)
+    if (activeSymptom === id) {
+      setActiveSymptom(null)
+      dispatch({ type: 'SET_SYMPTOM', payload: null })
     } else {
       setActiveSymptom(id)
+      dispatch({ type: 'SET_SYMPTOM', payload: id })
     }
   }
 
@@ -104,16 +105,6 @@ export default function SymptomSelector() {
           )}
         </AnimatePresence>
 
-        {state.selectedSymptoms.length >= 3 && (
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="text-body-sm text-sage text-center mt-6"
-          >
-            You've identified {state.selectedSymptoms.length} signals. This pattern is clinically recognised.
-            Dr. Saxena addresses each of these directly in the programme.
-          </motion.p>
-        )}
       </div>
     </motion.section>
   )

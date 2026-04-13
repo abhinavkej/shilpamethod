@@ -12,7 +12,7 @@ export const symptoms: Symptom[] = [
     label: 'Unexplained weight gain',
     icon: '\u2696\uFE0F',
     explanation:
-      "Oestrogen plays a direct role in insulin sensitivity and where your body stores fat. As it shifts, your metabolism recalibrates — and the calorie maths that used to work simply doesn't anymore. This is biology, not willpower.",
+      "Estrogen plays a direct role in insulin sensitivity and where your body stores fat. As it shifts, your metabolism recalibrates — and the calorie math that used to work simply doesn't anymore. This is biology, not willpower.",
     stat: "The most common first symptom in this age group — reported by 78% of women in Dr. Saxena's practice.",
   },
   {
@@ -20,7 +20,7 @@ export const symptoms: Symptom[] = [
     label: "Fatigue that sleep doesn't fix",
     icon: '\u26A1',
     explanation:
-      "Hormonal fatigue is categorically different from tired. Oestrogen and progesterone regulate your mitochondria — your cells' energy production. When they shift, no amount of sleep fully restores you. This is one of the first and most reversible symptoms with the right approach.",
+      "Hormonal fatigue is categorically different from tired. Estrogen and progesterone regulate your mitochondria — your cells' energy production. When they shift, no amount of sleep fully restores you. This is one of the first and most reversible symptoms with the right approach.",
     stat: '74% of women describe this as the symptom that finally made them seek answers.',
   },
   {
@@ -28,7 +28,7 @@ export const symptoms: Symptom[] = [
     label: 'Brain fog or memory lapses',
     icon: '\uD83E\uDDE0',
     explanation:
-      "Oestrogen receptors line the hippocampus — the brain's memory centre. When oestrogen fluctuates, so does recall, word retrieval, and focus. This is not early dementia. It is almost certainly hormonal, and in most cases, highly reversible.",
+      "Estrogen receptors line the hippocampus — the brain's memory center. When estrogen fluctuates, so does recall, word retrieval, and focus. This is not early dementia. It is almost certainly hormonal, and in most cases, highly reversible.",
     stat: 'Reported by 62% — and almost universally dismissed by conventional providers.',
   },
   {
@@ -44,7 +44,7 @@ export const symptoms: Symptom[] = [
     label: 'Mood changes or new irritability',
     icon: '\uD83D\uDCAD',
     explanation:
-      "Oestrogen modulates serotonin and dopamine — your brain's primary mood regulators. Fluctuating oestrogen creates a neurochemical instability that looks like irritability, low frustration tolerance, or sadness. It is not a character change. It is chemistry.",
+      "Estrogen modulates serotonin and dopamine — your brain's primary mood regulators. Fluctuating estrogen creates a neurochemical instability that looks like irritability, low frustration tolerance, or sadness. It is not a character change. It is chemistry.",
     stat: '57% report mood changes as the symptom they feel most embarrassed to mention.',
   },
   {
@@ -52,7 +52,7 @@ export const symptoms: Symptom[] = [
     label: 'Hair thinning or texture change',
     icon: '\u2728',
     explanation:
-      'Hormonal hair changes are driven by the ratio of oestrogen to androgens, and by thyroid hormones that are sensitive to the same hormonal shifts. Hair follicles have oestrogen receptors. When oestrogen declines, follicle cycling changes. This is addressable — but requires the right diagnosis first.',
+      'Hormonal hair changes are driven by the ratio of estrogen to androgens, and by thyroid hormones that are sensitive to the same hormonal shifts. Hair follicles have estrogen receptors. When estrogen declines, follicle cycling changes. This is addressable — but requires the right diagnosis first.',
     stat: '44% — and almost always appears 6\u201312 months after the hormonal shift begins.',
   },
   {
@@ -68,7 +68,7 @@ export const symptoms: Symptom[] = [
     label: 'Hot flashes or night sweats',
     icon: '\uD83C\uDF21\uFE0F',
     explanation:
-      "Driven by oestrogen's effect on the hypothalamus — your brain's thermostat. Vasomotor symptoms are one of the most studied and most treatable aspects of hormonal transition. If this is your primary complaint, you have excellent options.",
+      "Driven by estrogen's effect on the hypothalamus — your brain's thermostat. Vasomotor symptoms are one of the most studied and most treatable aspects of hormonal transition. If this is your primary complaint, you have excellent options.",
     stat: '41% — often the last symptom to appear, not the first, despite being the most discussed.',
   },
   {
@@ -76,15 +76,15 @@ export const symptoms: Symptom[] = [
     label: 'Frozen shoulder or joint stiffness',
     icon: '\uD83E\uDDB4',
     explanation:
-      "Oestrogen has direct anti-inflammatory effects on joint tissue. As it declines, synovial fluid changes and tendon flexibility decreases. Frozen shoulder affects 10\u201317% of perimenopausal women and is almost never connected to hormones by a conventional provider. Dr. Saxena addresses this directly.",
-    stat: "One of the most validating moments in the programme — women who've had this for years finally have an answer.",
+      "Estrogen has direct anti-inflammatory effects on joint tissue. As it declines, synovial fluid changes and tendon flexibility decreases. Frozen shoulder affects 10\u201317% of perimenopausal women and is almost never connected to hormones by a conventional provider. Dr. Saxena addresses this directly.",
+    stat: "One of the most validating moments in the program — women who've had this for years finally have an answer.",
   },
   {
     id: 'libido',
     label: 'Low libido',
     icon: '\uD83D\uDC9D',
     explanation:
-      "Testosterone — yes, women produce it — governs libido, motivation, and a sense of vitality. It declines across the 40s alongside oestrogen. This is physiological, not psychological, and it responds well to the right clinical approach.",
+      "Testosterone — yes, women produce it — governs libido, motivation, and a sense of vitality. It declines across the 40s alongside estrogen. This is physiological, not psychological, and it responds well to the right clinical approach.",
     stat: '35% report this but only 8% bring it up with their doctor unprompted.',
   },
   {
@@ -100,7 +100,7 @@ export const symptoms: Symptom[] = [
     label: 'Feeling like yourself — but off',
     icon: '\uD83C\uDF3F',
     explanation:
-      "This is the symptom that is hardest to name but easiest to recognise. You function. You manage. But something that used to feel effortless now takes effort. You are not depressed. You are not 'just stressed.' You are hormonally transitioning — and nobody gave you a map.",
+      "This is the symptom that is hardest to name but easiest to recognize. You function. You manage. But something that used to feel effortless now takes effort. You are not depressed. You are not 'just stressed.' You are hormonally transitioning — and nobody gave you a map.",
     stat: '69% of women describe this as their truest symptom — and the one they were most afraid to say out loud.',
   },
 ]

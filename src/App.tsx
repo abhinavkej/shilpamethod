@@ -5,7 +5,6 @@ import Hero from './components/Hero'
 import SymptomSelector from './components/SymptomSelector'
 import ShilpaIntro from './components/ShilpaIntro'
 import DocumentPreview from './components/DocumentPreview'
-import RiskAssessment from './components/RiskAssessment'
 import Registration from './components/Registration'
 import FAQ from './components/FAQ'
 import Footer from './components/Footer'
@@ -21,7 +20,6 @@ function PageContent() {
         <SymptomSelector />
         <ShilpaIntro />
         <DocumentPreview />
-        <RiskAssessment />
         <Registration />
         <FAQ />
       </main>

@@ -37,10 +37,10 @@ export default function ShilpaIntro() {
               Board-Certified Family Physician with 20 years of advanced functional medicine practice. Faculty at the Institute for Functional Medicine, Andrew Weil Center for Integrative Medicine, George Washington University, and the University of Miami.
             </p>
             <p>
-              Chief Medical Officer at Forum Health — the largest functional medicine network in the United States. Creator of the Group Medical Appointment model, which brings precision medicine into a shared setting without compromising individualisation.
+              Chief Medical Officer at Forum Health — the largest functional medicine network in the United States. Creator of the Group Medical Appointment model, which brings precision medicine into a shared setting without compromising individualization.
             </p>
             <p>
-              This programme is that model, applied to hormonal health. Two days. One physician. The framework your provider didn't have time to teach you.
+              This program is that model, applied to hormonal health. Two days. One physician. The framework your provider didn't have time to teach you.
             </p>
           </div>
 

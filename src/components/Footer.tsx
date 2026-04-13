@@ -12,7 +12,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="text-[12px] opacity-35 max-w-[320px] leading-relaxed">
-          For educational purposes only. This programme does not establish a physician-patient
+          For educational purposes only. This program does not establish a physician-patient
           relationship and does not constitute medical advice. Lab recommendations are educational
           suggestions — ordering, interpretation, and clinical decisions require a licensed provider.
         </div>

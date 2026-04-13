@@ -18,7 +18,7 @@ export const riskQuestions: RiskQuestion[] = [
       { label: "I'm not sure", value: 'unsure' },
     ],
     helperText:
-      "Blood clots can present as a stroke, a clot in the leg (DVT), or unexplained repeat miscarriages. If unsure, 'Not sure' is a valid answer — Dr. Kai will help you clarify before the programme.",
+      "Blood clots can present as a stroke, a clot in the leg (DVT), or unexplained repeat miscarriages. If unsure, 'Not sure' is a valid answer — CoachKai will help you clarify before the program.",
   },
   {
     id: 'cancer',
@@ -54,7 +54,7 @@ export const riskQuestions: RiskQuestion[] = [
 ]
 
 export const DEXA_EXPLANATION =
-  "A DEXA scan measures bone density — it's a 10-minute, painless X-ray available at most imaging centres. Dr. Saxena will explain why this matters for women in your age group."
+  "A DEXA scan measures bone density — it's a 10-minute, painless X-ray available at most imaging centers. Dr. Saxena will explain why this matters for women in your age group."
 
 export function scoreRisk(questionId: string, answer: string): RiskLevel {
   switch (questionId) {

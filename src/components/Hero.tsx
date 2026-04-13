@@ -14,7 +14,7 @@ export default function Hero() {
           variants={fadeInUp}
           className="text-label text-secondary uppercase mb-8"
         >
-          A 2-DAY PROGRAMME WITH DR. SHILPA SAXENA
+          A 2-DAY PROGRAM WITH DR. SHILPA SAXENA
         </motion.p>
 
         <motion.h1

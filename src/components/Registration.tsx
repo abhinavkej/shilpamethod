@@ -31,7 +31,7 @@ export default function Registration() {
 
   const handleShare = () => {
     navigator.clipboard.writeText(
-      'I just joined The Shilpa Method — a 2-day programme with Dr. Shilpa Saxena on hormonal health. shilpamethod.com'
+      'I just joined The Shilpa Method — a 2-day program with Dr. Shilpa Saxena on hormonal health. shilpamethod.com'
     )
     setCopied(true)
     setTimeout(() => setCopied(false), 2000)
@@ -47,7 +47,7 @@ export default function Registration() {
       variants={staggerContainer}
     >
       <div className="max-w-5xl mx-auto flex flex-col lg:flex-row gap-10 lg:gap-20">
-        {/* Programme Summary */}
+        {/* Program Summary */}
         <motion.div variants={fadeInUp} className="lg:w-1/2">
           <div className="bg-white rounded-2xl border border-border p-8" style={{ boxShadow: '0 2px 24px rgba(0,0,0,0.04)' }}>
             <p className="text-label text-secondary uppercase mb-3">
@@ -65,7 +65,7 @@ export default function Registration() {
             <ul className="space-y-3 mb-6">
               {[
                 'Live sessions with Dr. Shilpa Saxena (2 × 90 minutes)',
-                'Your personalised hormonal risk profile',
+                'Your personalized hormonal risk profile',
                 'Your Patient Advocacy Document — with PubMed citations',
                 'Recommended lab panel with interpretation guide',
                 "30-day access to your cohort's private community",
@@ -84,7 +84,7 @@ export default function Registration() {
               <span className="font-medium">{spotsRemaining}</span> of 500 spots remaining
             </div>
 
-            <div className="text-[48px] font-light text-primary tracking-tight mt-4">$349</div>
+            <div className="text-[48px] font-light text-primary tracking-tight mt-4">$149</div>
             <div className="text-body-sm text-secondary">
               One-time. No subscription. No upsell.
             </div>
@@ -137,11 +137,11 @@ export default function Registration() {
                   >
                     {isWaitlist
                       ? 'Join the waitlist for the next cohort'
-                      : 'Reserve my spot — $349'}
+                      : 'Reserve my spot — $149'}
                   </button>
 
                   <p className="text-[13px] text-secondary text-center">
-                    Secure checkout. Full refund if the programme is cancelled.
+                    Secure checkout. Full refund if the program is cancelled.
                   </p>
                 </motion.form>
               ) : (
@@ -159,7 +159,7 @@ export default function Registration() {
                     Cohort 1 · April 26–27, 2026 · {500 - spotsRemaining} women enrolled
                   </div>
                   <p className="text-[15px] opacity-70 mt-4 leading-relaxed">
-                    Dr. Kai will reach out within 24 hours to begin your pre-programme intake. Watch for an email from drkai@shilpamethod.com.
+                    CoachKai will reach out within 24 hours to begin your pre-program intake. Watch for an email from coachkai@shilpamethod.com.
                   </p>
                   <p className="text-body-sm opacity-60 mt-3 leading-relaxed">
                     Cohort sizes are capped at 500 so Dr. Saxena can address your profile directly.

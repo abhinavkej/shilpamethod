@@ -30,17 +30,17 @@ export default function DocumentPreview() {
 
         <motion.h2
           variants={fadeInUp}
-          className="text-display-md text-primary mb-5"
+          className="text-display-md text-primary mb-3"
         >
           Your Patient Advocacy Document.
         </motion.h2>
 
-        <motion.p variants={fadeInUp} className="text-body-md text-secondary max-w-[520px] mx-auto mb-4">
-          By Sunday evening, Dr. Kai generates your personalised clinical summary — based on your symptom profile, your risk assessment, and Dr. Saxena's framework. With PubMed citations your doctor can verify.
+        <motion.p variants={fadeInUp} className="text-body-sm text-sage mb-6">
+          Formatted to share with your provider. Designed to change the conversation.
         </motion.p>
 
-        <motion.p variants={fadeInUp} className="text-body-sm text-sage mb-12">
-          Formatted to share with your provider. Designed to change the conversation.
+        <motion.p variants={fadeInUp} className="text-body-md text-secondary max-w-[520px] mx-auto mb-12">
+          By Sunday evening, CoachKai generates your personalized summary — based on your symptom profile, your risk assessment, and Dr. Saxena's framework. With PubMed citations your doctor can verify.
         </motion.p>
 
         {/* Document Card */}
@@ -56,7 +56,7 @@ export default function DocumentPreview() {
             <div className="bg-primary text-white px-6 md:px-8 py-5 flex justify-between items-start">
               <div>
                 <div className="text-[10px] font-mono opacity-50 mb-1">
-                  The Shilpa Method &middot; Programme Graduate Document
+                  The Shilpa Method &middot; Program Graduate Document
                 </div>
                 <div className="text-[22px] md:text-[26px] font-light tracking-tight">
                   Sarah M., Age 46 &middot; Denver, CO
@@ -70,12 +70,12 @@ export default function DocumentPreview() {
             {/* Body */}
             <div className="px-6 md:px-8 py-6">
               <div className="text-label text-sage uppercase mb-4">
-                Personalised Risk Assessment
+                Personalized Risk Assessment
               </div>
 
               <div className="space-y-3.5">
                 {[
-                  { pill: 'low' as const, text: 'Low', label: 'Cardiovascular risk', note: 'No family history of premature events. Favourable profile.' },
+                  { pill: 'low' as const, text: 'Low', label: 'Cardiovascular risk', note: 'No family history of premature events. Favorable profile.' },
                   { pill: 'medium' as const, text: 'Yellow', label: 'Clotting / thrombotic history', note: 'Possible maternal DVT — transdermal route recommended.' },
                   { pill: 'medium' as const, text: 'Yellow', label: 'Bone density', note: 'No DEXA on file. Baseline scan recommended before initiating therapy.' },
                   { pill: 'low' as const, text: 'Low', label: 'Hormone-sensitive cancer', note: 'No personal history. Maternal fibrocystic disease — not a contraindication per NAMS 2022.' },
@@ -98,7 +98,7 @@ export default function DocumentPreview() {
 
               <div className="space-y-3">
                 {[
-                  'Confirm maternal DVT history with your aunt — this determines your safest oestrogen delivery method.',
+                  'Confirm maternal DVT history with your aunt — this determines your safest estrogen delivery method.',
                   'Request specific lab panel from your GP: fasting insulin, DHEA-S, free T, TSH + free T3/T4, hsCRP.',
                   'Schedule DEXA scan — covered by most insurance. Do not wait for fracture risk to initiate.',
                 ].map((action, i) => (
@@ -117,7 +117,7 @@ export default function DocumentPreview() {
 
               <div className="text-body-sm text-secondary space-y-3">
                 <p>
-                  Based on your symptom profile and risk assessment, Dr. Saxena recommends:
+                  Based on your symptom profile and risk assessment, Dr. Saxena recommends you bring up the following with your OB-GYN:
                 </p>
                 <div className="bg-surface-alt rounded-xl px-5 py-4 space-y-2">
                   <div className="flex justify-between">
@@ -125,7 +125,7 @@ export default function DocumentPreview() {
                     <span className="text-secondary text-[13px]">0.05 mg/day</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-primary font-medium">Micronised progesterone (oral)</span>
+                    <span className="text-primary font-medium">Micronized progesterone (oral)</span>
                     <span className="text-secondary text-[13px]">100 mg nightly</span>
                   </div>
                   <div className="flex justify-between">
