@@ -4,34 +4,34 @@ import { useApp } from '../context/AppContext'
 import { useSpotCounter } from '../hooks/useSpotCounter'
 import { fadeInUp, staggerContainer, viewportConfig } from '../lib/motion'
 
+// {{PRICE}} — final price TBD. {{CONSENT_LANGUAGE_FINAL}} — legal consent still being drafted.
+const PRICE_TOKEN = '{{PRICE}}'
+const PRICE_DISPLAY = '{{PRICE}}'
+
 export default function Registration() {
   const { state, dispatch } = useApp()
   const spotsRemaining = useSpotCounter()
 
   const [firstName, setFirstName] = useState('')
   const [email, setEmail] = useState('')
-  const [clinicalInterest, setClinicalInterest] = useState(false)
+  const [forumPatient, setForumPatient] = useState(false)
   const [copied, setCopied] = useState(false)
 
   const isWaitlist = spotsRemaining <= 0
+  const cohortLabel = state.cohort === 'in' ? '🇮🇳 India cohort · 8:30 PM IST' : '🇺🇸 US cohort · 5 PM PT / 8 PM ET'
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     if (!firstName || !email) return
-
     dispatch({
       type: 'SUBMIT_REGISTRATION',
-      payload: {
-        name: firstName,
-        email,
-        clinicalInterest,
-      },
+      payload: { name: firstName, email, clinicalInterest: forumPatient },
     })
   }
 
   const handleShare = () => {
     navigator.clipboard.writeText(
-      'I just joined The Shilpa Method — a 2-day program with Dr. Shilpa Saxena on hormonal health. shilpamethod.com'
+      'I just joined the Shilpa Method Boot Camp — 3 live sessions with Dr. Shilpa Saxena on perimenopause & menopause. shilpamethod.com'
     )
     setCopied(true)
     setTimeout(() => setCopied(false), 2000)
@@ -40,60 +40,95 @@ export default function Registration() {
   return (
     <motion.section
       id="registration"
-      className="py-24 md:py-32 px-6 bg-surface-alt"
+      className="py-24 md:py-32 px-6 bg-cream"
       initial="hidden"
       whileInView="visible"
       viewport={viewportConfig}
       variants={staggerContainer}
     >
-      <div className="max-w-5xl mx-auto flex flex-col lg:flex-row gap-10 lg:gap-20">
-        {/* Program Summary */}
-        <motion.div variants={fadeInUp} className="lg:w-1/2">
-          <div className="bg-white rounded-2xl border border-border p-8" style={{ boxShadow: '0 2px 24px rgba(0,0,0,0.04)' }}>
-            <p className="text-label text-secondary uppercase mb-3">
-              The Shilpa Method
-            </p>
-            <h3 className="text-display-sm text-primary mb-2">
-              April 26–27, 2026
-            </h3>
-            <p className="text-body-md text-secondary mb-6">
-              Two days. 50 women. One physician. The answers your doctor hasn't given you.
-            </p>
+      <div className="max-w-5xl mx-auto">
+        <motion.p variants={fadeInUp} className="text-label text-coral uppercase text-center mb-5">
+          Reserve your spot
+        </motion.p>
 
-            <hr className="border-border mb-6" />
+        <motion.h2
+          variants={fadeInUp}
+          className="font-display text-display-xl text-forest text-center mb-4"
+        >
+          Three live sessions. <span className="italic">One document.</span>
+        </motion.h2>
 
-            <ul className="space-y-3 mb-6">
-              {[
-                'Live sessions with Dr. Shilpa Saxena (2 × 90 minutes)',
-                'Your personalized hormonal risk profile',
-                'Your Patient Advocacy Document — with PubMed citations',
-                'Recommended lab panel with interpretation guide',
-                "30-day access to your cohort's private community",
-                'Forum Health graduate discount — 10% supplement store + complimentary intake call',
-              ].map((item, i) => (
-                <li key={i} className="flex gap-3 items-start">
-                  <span className="w-1 h-1 rounded-full bg-primary mt-2.5 shrink-0" />
-                  <span className="text-body-sm text-secondary">{item}</span>
-                </li>
-              ))}
-            </ul>
+        <motion.p
+          variants={fadeInUp}
+          className="text-body-md text-slate text-center max-w-[560px] mx-auto mb-14"
+        >
+          Cohorts are capped to keep the Q&A meaningful.
+        </motion.p>
 
-            <hr className="border-border mb-6" />
+        <div className="grid lg:grid-cols-[1fr_1fr] gap-6 lg:gap-10">
+          {/* Pricing card */}
+          <motion.div variants={fadeInUp}>
+            <div className="bg-forest text-cream rounded-2xl p-8 h-full" style={{ boxShadow: '0 24px 60px -15px rgba(31,58,46,0.25)' }}>
+              <div className="font-mono text-[10px] text-coral-soft tracking-widest uppercase mb-2">
+                Shilpa Method Boot Camp
+              </div>
+              <div className="font-display text-[32px] text-cream mb-1">
+                April 28–30, 2026
+              </div>
+              <p className="text-body-sm text-cream/70 mb-6">{cohortLabel}</p>
 
-            <div className="text-body-md text-primary mb-1">
-              <span className="font-medium">{spotsRemaining}</span> of 500 spots remaining
+              <hr className="border-cream/15 mb-6" />
+
+              <ul className="space-y-2.5 mb-6">
+                {[
+                  '3 live Zoom sessions with Dr. Shilpa Saxena (75 min each)',
+                  'Your personalized Patient Advocacy Document',
+                  'Coach Kai — WhatsApp + browser, physician-reviewed',
+                  'Recommended lab panel with interpretation guide',
+                  'Opt-in alumni community of up to 50 women',
+                ].map((item, i) => (
+                  <li key={i} className="flex gap-3 items-start">
+                    <span className="text-coral mt-0.5">✓</span>
+                    <span className="text-[14px] text-cream/90">{item}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <hr className="border-cream/15 mb-6" />
+
+              <div className="flex items-baseline gap-2 mb-2">
+                <span className="font-display text-[52px] text-cream leading-none">{PRICE_DISPLAY}</span>
+                <span className="text-[13px] text-cream/50 font-mono uppercase tracking-widest">one-time</span>
+              </div>
+              <div className="text-[13px] text-cream/60 mb-4">
+                No subscription. No upsell.
+              </div>
+
+              {/* Forum Health perk */}
+              <div className="bg-coral/15 border border-coral/30 rounded-xl px-4 py-3">
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="font-mono text-[10px] tracking-widest uppercase text-coral-soft">
+                    Forum Health perk
+                  </span>
+                </div>
+                <div className="text-[14px] text-cream">
+                  <span className="font-medium">Forum Health patients get $50 off.</span>
+                </div>
+                <div className="text-[12px] text-cream/60 mt-1">
+                  Discount code is sent through Forum's patient communication channels.
+                </div>
+              </div>
+
+              <div className="mt-6 flex items-center justify-between text-[12px] text-cream/50">
+                <span>
+                  <span className="text-coral-soft font-medium">{spotsRemaining}</span> of 50 spots remaining in this cohort
+                </span>
+              </div>
             </div>
+          </motion.div>
 
-            <div className="text-[48px] font-light text-primary tracking-tight mt-4">$149</div>
-            <div className="text-body-sm text-secondary">
-              One-time. No subscription. No upsell.
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Form / Confirmation */}
-        <motion.div variants={fadeInUp} className="lg:w-1/2 flex items-center">
-          <div className="w-full">
+          {/* Form / Confirmation */}
+          <motion.div variants={fadeInUp}>
             <AnimatePresence mode="wait">
               {!state.isRegistered ? (
                 <motion.form
@@ -101,47 +136,57 @@ export default function Registration() {
                   initial={{ opacity: 1 }}
                   exit={{ opacity: 0, y: -12 }}
                   onSubmit={handleSubmit}
-                  className="space-y-4"
+                  className="bg-bone border border-border rounded-2xl p-8 h-full flex flex-col"
                 >
-                  <input
-                    type="text"
-                    placeholder="Your first name"
-                    value={firstName}
-                    onChange={(e) => setFirstName(e.target.value)}
-                    required
-                    className="w-full border border-border rounded-xl px-5 py-4 text-[16px] text-primary placeholder:text-secondary/50 focus:border-primary focus:outline-none transition-colors"
-                  />
-                  <input
-                    type="email"
-                    placeholder="your@email.com"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                    className="w-full border border-border rounded-xl px-5 py-4 text-[16px] text-primary placeholder:text-secondary/50 focus:border-primary focus:outline-none transition-colors"
-                  />
-                  <label className="flex items-start gap-3 cursor-pointer">
+                  <div className="mb-5">
+                    <label className="font-mono text-[10px] text-slate tracking-widest uppercase block mb-2">
+                      First name
+                    </label>
+                    <input
+                      type="text"
+                      value={firstName}
+                      onChange={(e) => setFirstName(e.target.value)}
+                      required
+                      className="w-full bg-cream border border-border rounded-xl px-4 py-3.5 text-[16px] text-ink focus:border-forest focus:outline-none transition-colors"
+                    />
+                  </div>
+
+                  <div className="mb-5">
+                    <label className="font-mono text-[10px] text-slate tracking-widest uppercase block mb-2">
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
+                      className="w-full bg-cream border border-border rounded-xl px-4 py-3.5 text-[16px] text-ink focus:border-forest focus:outline-none transition-colors"
+                    />
+                  </div>
+
+                  <label className="flex items-start gap-3 cursor-pointer mb-6">
                     <input
                       type="checkbox"
-                      checked={clinicalInterest}
-                      onChange={(e) => setClinicalInterest(e.target.checked)}
-                      className="mt-1 accent-primary"
+                      checked={forumPatient}
+                      onChange={(e) => setForumPatient(e.target.checked)}
+                      className="mt-1 accent-coral"
                     />
-                    <span className="text-body-sm text-secondary">
-                      I'd also like information about Forum Health clinical services in my area.
+                    <span className="text-[13px] text-slate">
+                      I'm a Forum Health patient — apply my $50 discount.
                     </span>
                   </label>
 
                   <button
                     type="submit"
-                    className="w-full bg-primary text-white text-[17px] py-4 rounded-full hover:bg-accent-hover transition-colors cursor-pointer"
+                    className="w-full bg-coral text-cream text-[16px] py-4 rounded-full hover:bg-rust transition-colors cursor-pointer mb-3"
                   >
-                    {isWaitlist
-                      ? 'Join the waitlist for the next cohort'
-                      : 'Reserve my spot — $149'}
+                    {isWaitlist ? 'Join the waitlist for the next cohort' : `Reserve my spot — ${PRICE_TOKEN}`}
                   </button>
 
-                  <p className="text-[13px] text-secondary text-center">
-                    Secure checkout. Full refund if the program is cancelled.
+                  {/* Disclaimer near CTA */}
+                  <p className="text-[12px] text-slate leading-relaxed mt-auto pt-4 border-t border-border/60">
+                    Shilpa Method Boot Camp is educational guidance, not medical advice. Participation
+                    does not establish a physician-patient relationship.
                   </p>
                 </motion.form>
               ) : (
@@ -150,34 +195,32 @@ export default function Registration() {
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5 }}
-                  className="bg-primary text-white rounded-2xl p-8"
+                  className="bg-forest text-cream rounded-2xl p-8"
                 >
-                  <div className="text-[36px] font-light tracking-tight mb-2">
+                  <div className="font-display text-[40px] leading-none mb-2">
                     You're in, {state.registrationName}.
                   </div>
-                  <div className="text-[16px] opacity-80 mb-1">
-                    Cohort 1 · April 26–27, 2026 · {500 - spotsRemaining} women enrolled
-                  </div>
-                  <p className="text-[15px] opacity-70 mt-4 leading-relaxed">
-                    CoachKai will reach out within 24 hours to begin your pre-program intake. Watch for an email from coachkai@shilpamethod.com.
+                  <div className="text-body-sm text-cream/70 mb-5">{cohortLabel}</div>
+
+                  <p className="text-body-md text-cream/85 mb-4">
+                    Coach Kai will reach out within 24 hours to begin your intake. Watch for an email
+                    from coachkai@shilpamethod.com.
                   </p>
-                  <p className="text-body-sm opacity-60 mt-3 leading-relaxed">
-                    Cohort sizes are capped at 500 so Dr. Saxena can address your profile directly.
+                  <p className="text-body-sm text-cream/60 mb-6">
+                    Intake starts now. Clinical Q&A opens one week before your cohort begins.
                   </p>
-                  <p className="text-body-sm opacity-50 mt-4">
-                    Forward this to a friend who needs this weekend.
-                  </p>
+
                   <button
                     onClick={handleShare}
-                    className="mt-4 bg-white/10 text-white text-body-sm px-6 py-2.5 rounded-full hover:bg-white/20 transition-colors cursor-pointer"
+                    className="bg-cream/10 text-cream text-[14px] px-5 py-2.5 rounded-full hover:bg-cream/20 transition-colors"
                   >
                     {copied ? 'Copied!' : 'Share with a friend'}
                   </button>
                 </motion.div>
               )}
             </AnimatePresence>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
     </motion.section>
   )

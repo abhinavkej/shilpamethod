@@ -36,10 +36,10 @@ export default function FloatingSpotCounter() {
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -20 }}
           transition={{ duration: 0.3 }}
-          className="fixed bottom-6 left-6 z-50 bg-white rounded-full border border-border px-[18px] py-2.5 text-[14px] text-primary"
-          style={{ boxShadow: '0 4px 24px rgba(0,0,0,0.06)' }}
+          className="fixed bottom-6 left-6 z-50 bg-forest text-cream rounded-full px-5 py-2.5 text-[13px]"
+          style={{ boxShadow: '0 12px 32px rgba(31,58,46,0.25)' }}
         >
-          <span className="font-medium">{state.spotsRemaining}</span> of 500 spots remaining
+          <span className="text-coral-soft font-medium">{state.spotsRemaining}</span> of 50 spots remaining
         </motion.div>
       )}
     </AnimatePresence>

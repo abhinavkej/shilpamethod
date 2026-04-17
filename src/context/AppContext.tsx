@@ -1,7 +1,10 @@
 import { createContext, useContext, useReducer, type ReactNode } from 'react'
 
+export type Cohort = 'us' | 'in'
+
 interface AppState {
   selectedSymptoms: string[]
+  cohort: Cohort
   spotsRemaining: number
   isRegistered: boolean
   registrationName: string
@@ -9,11 +12,13 @@ interface AppState {
 
 type Action =
   | { type: 'SET_SYMPTOM'; payload: string | null }
+  | { type: 'SET_COHORT'; payload: Cohort }
   | { type: 'DECREMENT_SPOTS' }
   | { type: 'SUBMIT_REGISTRATION'; payload: { name: string; email: string; clinicalInterest: boolean } }
 
 const initialState: AppState = {
   selectedSymptoms: [],
+  cohort: 'us',
   spotsRemaining: 37,
   isRegistered: false,
   registrationName: '',
@@ -23,6 +28,8 @@ function reducer(state: AppState, action: Action): AppState {
   switch (action.type) {
     case 'SET_SYMPTOM':
       return { ...state, selectedSymptoms: action.payload ? [action.payload] : [] }
+    case 'SET_COHORT':
+      return { ...state, cohort: action.payload }
     case 'DECREMENT_SPOTS':
       return { ...state, spotsRemaining: Math.max(0, state.spotsRemaining - 1) }
     case 'SUBMIT_REGISTRATION':

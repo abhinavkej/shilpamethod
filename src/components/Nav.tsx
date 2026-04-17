@@ -9,28 +9,53 @@ export default function Nav() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  const scrollToRegistration = () => {
-    document.getElementById('registration')?.scrollIntoView({ behavior: 'smooth' })
+  const scrollTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-white/80 backdrop-blur-xl border-b border-border/60'
-          : 'bg-white/0'
+        scrolled ? 'bg-cream/85 backdrop-blur-xl border-b border-border/60' : 'bg-transparent'
       }`}
     >
-      <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-14">
-        <span className="text-[15px] font-medium text-primary tracking-tight">
-          The Shilpa Method
-        </span>
+      <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-16">
         <button
-          onClick={scrollToRegistration}
-          className="bg-primary text-white text-body-sm px-5 py-2 rounded-full hover:bg-accent-hover transition-colors"
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="flex items-baseline gap-2"
         >
-          Reserve your spot
+          <span className="font-display text-[22px] text-forest tracking-tight">Shilpa Method</span>
+          <span className="font-mono text-[10px] text-slate tracking-widest uppercase hidden sm:inline">
+            Boot Camp
+          </span>
         </button>
+
+        <div className="flex items-center gap-6">
+          <button
+            onClick={() => scrollTo('document')}
+            className="text-[14px] text-slate hover:text-forest transition-colors hidden md:block"
+          >
+            The Document
+          </button>
+          <button
+            onClick={() => scrollTo('program')}
+            className="text-[14px] text-slate hover:text-forest transition-colors hidden md:block"
+          >
+            Program
+          </button>
+          <button
+            onClick={() => scrollTo('cohorts')}
+            className="text-[14px] text-slate hover:text-forest transition-colors hidden md:block"
+          >
+            Cohorts
+          </button>
+          <button
+            onClick={() => scrollTo('registration')}
+            className="bg-forest text-cream text-[14px] px-5 py-2 rounded-full hover:bg-ivy transition-colors"
+          >
+            Reserve your spot
+          </button>
+        </div>
       </div>
     </nav>
   )
