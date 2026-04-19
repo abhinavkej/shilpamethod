@@ -13,8 +13,21 @@ const phases: Array<{
 }> = [
   {
     phase: '1',
-    label: 'Onboarding · ~5 min',
-    blurb: '5-step post-payment flow. WhatsApp opt-in, phone, timezone, preferences.',
+    label: 'First dashboard · inline onboarding (Slice 3)',
+    blurb:
+      'First visit post magic-link. Two-step inline onboarding (time zone + notifications) on /dashboard itself — no separate routes. Structural preview fades behind. When complete, runway shell takes over.',
+    links: [
+      { to: '/preview/dashboard?phase=onboarding', label: '/dashboard (onboarding)' },
+      { to: '/preview/dashboard?phase=runway&intake=incomplete', label: '/dashboard (runway · intake incomplete)' },
+      { to: '/preview/dashboard?phase=runway&intake=complete', label: '/dashboard (runway · intake complete)' },
+      { to: '/preview/dashboard?phase=none', label: '/dashboard (no enrollment)' },
+    ],
+  },
+  {
+    phase: '2',
+    label: 'Standalone onboarding routes (prior iteration · deprecated)',
+    blurb:
+      "Kept live for reference. Slice 3 supersedes this: phone moves to checkout, TZ + prefs move inline to /dashboard. These routes will be removed during Next.js migration.",
     links: [
       { to: '/preview/onboarding/welcome', label: '/onboarding/welcome' },
       { to: '/preview/onboarding/phone', label: '/onboarding/phone' },
@@ -24,11 +37,10 @@ const phases: Array<{
     ],
   },
   {
-    phase: '2',
-    label: 'Runway · T-14 → T-1',
-    blurb: '14-day pre-program dashboard with Today\'s Focus, intake nudges, cohort teaser.',
+    phase: '3',
+    label: 'Intake · 10 min · 4 steps',
+    blurb: 'Family history, symptom severity, lifestyle sliders, open goals.',
     links: [
-      { to: '/preview/dashboard?phase=runway&days=10', label: '/dashboard (runway)' },
       { to: '/preview/intake', label: '/intake overview' },
       { to: '/preview/intake/risk', label: '/intake/risk' },
       { to: '/preview/intake/symptoms', label: '/intake/symptoms' },
@@ -37,7 +49,7 @@ const phases: Array<{
     ],
   },
   {
-    phase: '3',
+    phase: '4',
     label: 'Live program · Day 1/2/3',
     blurb: 'Day-of dashboard + session detail. 5-state hero card (pre / imminent / live / just-ended / recording).',
     links: [
@@ -48,7 +60,7 @@ const phases: Array<{
     ],
   },
   {
-    phase: '4',
+    phase: '5',
     label: 'Patient Advocacy Document',
     blurb: 'Generated T+1 hour after Day 3. Inline PDF + download + tokenized doctor share.',
     links: [
@@ -58,7 +70,7 @@ const phases: Array<{
     ],
   },
   {
-    phase: '5',
+    phase: '6',
     label: 'Post-program · T+1 → T+90',
     blurb: 'Appointment tracker state machine, Forum / Mukta routing, continuation options.',
     links: [
@@ -68,7 +80,7 @@ const phases: Array<{
     ],
   },
   {
-    phase: '6',
+    phase: '7',
     label: 'Member extras',
     blurb: 'Community directory (privacy-gated), resources grid, account settings.',
     links: [
@@ -78,7 +90,7 @@ const phases: Array<{
     ],
   },
   {
-    phase: '7',
+    phase: '8',
     label: 'Admin',
     blurb: 'Cohort editor, user deep-dive, live-session control panel, post-program tracking.',
     links: [
