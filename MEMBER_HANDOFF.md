@@ -1,4 +1,4 @@
-# Shilpa Method — Member Experience Handoff
+# The Hormone Method (by Forum Health) — Member Experience Handoff
 
 > **Owner:** Areef
 > **Reads-with:** `HANDOFF.md` (marketing + foundation) · this document extends it.
@@ -110,13 +110,13 @@ CRON_SECRET="openssl rand -base64 32"
 Every template is ≤ 1024 chars, no marketing lingo, transactional only. Variables use `{{1}}`, `{{2}}`, etc. Meta will reject marketing tone — keep it transactional.
 
 ### 4.1 `hormone_welcome_v1` (Onboarding)
-> Hi {{1}} 👋 I'm Coach Kai. I'll be your guide through The Shilpa Method. Reply YES to confirm you got this and we'll get started.
+> Hi {{1}} 👋 I'm Coach Kai. I'll be your guide through The Hormone Method. Reply YES to confirm you got this and we'll get started.
 
 ### 4.2 `hormone_intake_reminder_v1` (Pre-program)
 > Hi {{1}} — quick nudge from Coach Kai. Your intake is {{2}}% done. Five more minutes and you're set: {{3}}
 
 ### 4.3 `hormone_session_24h_v1` (T-1 day per session)
-> Hi {{1}} — Day {{2}} of The Shilpa Method is tomorrow at {{3}}. Topic: {{4}}. Your Meet link: {{5}}
+> Hi {{1}} — Day {{2}} of The Hormone Method is tomorrow at {{3}}. Topic: {{4}}. Your Meet link: {{5}}
 
 ### 4.4 `hormone_session_1h_v1` (T-1 hour per session)
 > {{1}}, Day {{2}} starts in 1 hour. Be in a quiet spot with a notebook. Meet link: {{3}}

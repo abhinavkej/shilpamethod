@@ -61,7 +61,7 @@ export default function DIWY() {
               DIWY
             </div>
             <h3 className="font-display text-[28px] text-cream mb-1">Do It With You</h3>
-            <p className="text-body-sm text-coral-soft mb-5">Shilpa Method Boot Camp</p>
+            <p className="text-body-sm text-coral-soft mb-5">The Hormone Method Boot Camp · by Forum Health</p>
 
             <p className="text-body-md text-cream/85 leading-relaxed mb-5 flex-1">
               Live guidance from a board-certified lipidologist + Coach Kai between sessions.

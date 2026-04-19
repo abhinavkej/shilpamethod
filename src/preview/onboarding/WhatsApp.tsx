@@ -32,7 +32,7 @@ export default function OnboardingWhatsApp() {
           </div>
           <div className="bg-[#ECE5DD] p-4 space-y-2 min-h-[220px]">
             <div className="bg-white rounded-xl px-3 py-2 text-[13px] text-ink max-w-[85%] shadow-sm">
-              Hi Sarah 👋 I'm Coach Kai. I'll be your guide through The Shilpa Method. Reply YES to
+              Hi Sarah 👋 I'm Coach Kai. I'll be your guide through The Hormone Method by Forum Health. Reply YES to
               confirm you got this and we'll get started.
             </div>
             <div className="text-[10px] text-slate/70 text-center pt-2">wa.me/+14155551234</div>

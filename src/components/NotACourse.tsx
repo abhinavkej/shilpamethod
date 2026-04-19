@@ -66,7 +66,7 @@ export default function NotACourse() {
             </div>
             <div className="p-4 md:p-5 border-l border-border bg-forest text-cream">
               <div className="font-mono text-[10px] text-coral-soft tracking-widest uppercase mb-1">
-                Shilpa Method
+                The Hormone Method
               </div>
               <div className="text-[14px] text-cream">Boot Camp</div>
             </div>

@@ -1,6 +1,6 @@
 /**
  * ═══════════════════════════════════════════════════════════════════
- *   SHILPA METHOD — ONE-STOP PLACEHOLDERS
+ *   THE HORMONE METHOD · BY FORUM HEALTH — ONE-STOP PLACEHOLDERS
  * ═══════════════════════════════════════════════════════════════════
  *
  *   Hi Areef —
@@ -208,7 +208,7 @@ export const GOOGLE = {
 // Spec: §11 — admin pastes the invite URL after manually creating the group.
 export const COHORT_GROUP = {
   inviteUrl: 'https://chat.whatsapp.com/PLACEHOLDER',
-  groupNameTemplate: 'Shilpa Method · Cohort {n} · {month} {year}',
+  groupNameTemplate: 'The Hormone Method · Cohort {n} · {month} {year}',
   // TODO(areef): create the WhatsApp group manually after WAITLIST triggers,
   // paste the invite URL into /admin/cohorts/[id]/group.
 } as const

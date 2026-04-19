@@ -43,7 +43,7 @@ export default function DocumentViewer() {
       {/* Inline PDF preview — mock */}
       <div className="bg-bone border border-border rounded-2xl overflow-hidden shadow-sm">
         {[
-          { n: 1, title: 'Cover', body: 'Patient Advocacy Document · Prepared for Sarah Chen · The Shilpa Method · Cohort 1 · June 2–4, 2026' },
+          { n: 1, title: 'Cover', body: 'Patient Advocacy Document · Prepared for Sarah Chen · The Hormone Method by Forum Health · Cohort 1 · June 2–4, 2026' },
           { n: 2, title: 'How to Use This Document', body: 'This is for your doctor. Bring it to your appointment. The PubMed citations let your doctor verify the underlying evidence. They don\'t have to agree with everything — this is a conversation starter.' },
           { n: 3, title: 'Your Symptom Profile', body: 'Table: each symptom rated with severity, duration, clinical relevance. Footer cohort context: "Symptoms reported across 47 women in this cohort: top 5 with %."' },
           { n: 4, title: 'Risk Stratification', body: 'Four axes — Clotting · Cancer · Cardiovascular · Bone — each with green/yellow/red status, specific data points from intake, 1-2 PubMed citations per axis.' },

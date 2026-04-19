@@ -10,7 +10,7 @@ export default function OnboardingWelcome() {
         You're in, Sarah.
       </h1>
 
-      <Mono className="block mb-8">The Shilpa Method · Cohort 1 · June 2–4, 2026</Mono>
+      <Mono className="block mb-8">The Hormone Method · by Forum Health · Cohort 1 · June 2–4, 2026</Mono>
 
       {/* 90-second welcome video placeholder — TODO(areef): swap in custom Shilpa greeting */}
       <div

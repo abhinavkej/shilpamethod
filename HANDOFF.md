@@ -1,4 +1,4 @@
-# Shilpa Method — CTO Handoff
+# The Hormone Method (by Forum Health) — CTO Handoff
 
 > **Owner:** Areef
 > **Last revised:** on the copy-freeze pass (docx v2 + PDF build-prompt merged)
@@ -91,7 +91,7 @@ Run `npx prisma db push` after `DATABASE_URL` is set (schema is defined in PDF �
 | `STRIPE_SECRET_KEY` | Secret API key | Stripe Dashboard → Developers → API keys → Secret key (test) |
 | `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` | Publishable | same page, Publishable key (test) |
 | `STRIPE_WEBHOOK_SECRET` | Webhook signing secret | Create webhook at `/api/webhooks/stripe` listening to `checkout.session.completed` + `charge.refunded` |
-| `STRIPE_PRICE_ID_USD` | One-time $149 price | Create Product "Shilpa Method Boot Camp" → Prices → $149 USD one-time |
+| `STRIPE_PRICE_ID_USD` | One-time $149 price | Create Product "The Hormone Method Boot Camp" → Prices → $149 USD one-time |
 | `STRIPE_PRICE_ID_INR` | One-time ₹4,999 price | Same product → second price, INR |
 | `STRIPE_FORUM_HEALTH_COUPON_ID` | $50 off coupon for Forum Health patients | Stripe → Coupons → fixed amount $50 USD + ₹4,000 INR equivalent |
 

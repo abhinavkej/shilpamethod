@@ -24,9 +24,9 @@ export default function Nav() {
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           className="flex items-baseline gap-2"
         >
-          <span className="font-display text-[22px] text-forest tracking-tight">Shilpa Method</span>
+          <span className="font-display text-[22px] text-forest tracking-tight">The Hormone Method</span>
           <span className="font-mono text-[10px] text-slate tracking-widest uppercase hidden sm:inline">
-            Boot Camp
+            by Forum Health
           </span>
         </button>
 

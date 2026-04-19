@@ -21,9 +21,9 @@ export default function MemberHeader({ firstName = 'Sarah', email = 'sarah@examp
     <header className="sticky top-10 z-40 bg-cream/90 backdrop-blur-sm border-b border-border/60">
       <div className="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
         <Link to="/preview/dashboard" className="flex items-baseline gap-2">
-          <span className="font-display text-[20px] text-forest tracking-tight">Shilpa Method</span>
+          <span className="font-display text-[20px] text-forest tracking-tight">The Hormone Method</span>
           <span className="font-mono text-[10px] text-slate tracking-widest uppercase hidden sm:inline">
-            Member
+            by Forum Health
           </span>
         </Link>
         <div className="flex items-center gap-6">
