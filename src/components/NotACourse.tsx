@@ -15,17 +15,17 @@ const ROWS = [
   {
     label: 'Takeaway',
     course: 'A 280-page generic PDF',
-    us: '1–2 page Patient Advocacy Document — personalized to you',
+    us: '2-page personalized Patient Advocacy Document',
   },
   {
     label: 'Follow-up',
-    course: 'Community Discord, if lucky',
-    us: 'Coach Kai (WhatsApp + browser) · physician-reviewed',
+    course: 'Automated, generic emails',
+    us: 'Physician team checks in; option to join a community with your cohort',
   },
   {
     label: 'Price anchor',
-    course: '$349',
-    us: '{{PRICE}}',
+    course: '$400 – $999',
+    us: '$149',
   },
 ]
 
@@ -41,16 +41,14 @@ export default function NotACourse() {
       <div className="max-w-4xl mx-auto">
         <motion.h2
           variants={fadeInUp}
-          className="font-display text-display-xl text-forest text-center mb-4"
+          className="font-display text-display-lg text-forest text-center max-w-[780px] mx-auto mb-5"
         >
-          This is not a course.
-          <br />
-          <span className="italic text-coral">It's a conversation.</span>
+          A personalized program to help you understand your lifestyle and medication options.
         </motion.h2>
 
         <motion.p
           variants={fadeInUp}
-          className="text-body-md text-slate text-center max-w-[560px] mx-auto mb-14"
+          className="text-body-md text-slate text-center max-w-[620px] mx-auto mb-14"
         >
           Courses are monologues. This is a dialogue — with Shilpa, with your cohort, with your
           own labs and story at the center.

@@ -33,7 +33,7 @@ export default function Alumni() {
               {[
                 'Peer-to-peer Q&A with women walking the same stretch as you',
                 'Shared wins — and shared appointments that finally went differently',
-                'A continuing conversation with Shilpa and Coach Kai',
+                'A continuing conversation with Shilpa through Coach Kai',
               ].map((item) => (
                 <li key={item} className="flex gap-3 items-start">
                   <span className="w-1.5 h-1.5 rounded-full bg-coral mt-2.5 flex-none" />
@@ -43,7 +43,7 @@ export default function Alumni() {
             </motion.ul>
 
             <motion.p variants={fadeInUp} className="text-[13px] text-slate italic">
-              Included with your registration. Opt in when you're ready, not before.
+              Included with your registration. Opt in when you're ready.
             </motion.p>
           </div>
 

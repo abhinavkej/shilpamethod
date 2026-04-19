@@ -4,9 +4,9 @@ import { useApp } from '../context/AppContext'
 import { useSpotCounter } from '../hooks/useSpotCounter'
 import { fadeInUp, staggerContainer, viewportConfig } from '../lib/motion'
 
-// {{PRICE}} — final price TBD. {{CONSENT_LANGUAGE_FINAL}} — legal consent still being drafted.
-const PRICE_TOKEN = '{{PRICE}}'
-const PRICE_DISPLAY = '{{PRICE}}'
+// Price: $149 USD / ₹4,999 INR per the Apr 15 boot-camp spec.
+const PRICE_TOKEN = '$149'
+const PRICE_DISPLAY = '$149'
 
 export default function Registration() {
   const { state, dispatch } = useApp()
@@ -18,7 +18,10 @@ export default function Registration() {
   const [copied, setCopied] = useState(false)
 
   const isWaitlist = spotsRemaining <= 0
-  const cohortLabel = state.cohort === 'in' ? '🇮🇳 India cohort · 8:30 PM IST' : '🇺🇸 US cohort · 5 PM PT / 8 PM ET'
+  const cohortLabel =
+    state.cohort === 'c2'
+      ? 'Cohort 2 · 8 AM PST / 11 AM EST / 8:30 PM IST'
+      : 'Cohort 1 · 5 PM PST / 8 PM EST / 5:30 AM IST (next day)'
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -62,7 +65,7 @@ export default function Registration() {
           variants={fadeInUp}
           className="text-body-md text-slate text-center max-w-[560px] mx-auto mb-14"
         >
-          Cohorts are capped to keep the Q&A meaningful.
+          Cohorts are capped to keep the interactions meaningful.
         </motion.p>
 
         <div className="grid lg:grid-cols-[1fr_1fr] gap-6 lg:gap-10">
@@ -83,7 +86,7 @@ export default function Registration() {
                 {[
                   '3 live Zoom sessions with Dr. Shilpa Saxena (75 min each)',
                   'Your personalized Patient Advocacy Document',
-                  'Coach Kai — WhatsApp + browser, physician-reviewed',
+                  'Coach Kai — Physician-interface Portal',
                   'Recommended lab panel with interpretation guide',
                   'Opt-in alumni community of up to 50 women',
                 ].map((item, i) => (
@@ -101,7 +104,7 @@ export default function Registration() {
                 <span className="text-[13px] text-cream/50 font-mono uppercase tracking-widest">one-time</span>
               </div>
               <div className="text-[13px] text-cream/60 mb-4">
-                No subscription. No upsell.
+                No subscription.
               </div>
 
               {/* Forum Health perk */}

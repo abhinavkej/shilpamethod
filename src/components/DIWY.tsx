@@ -73,7 +73,7 @@ export default function DIWY() {
               {[
                 'Live, two-way sessions',
                 'Personalized document you keep',
-                'Physician-reviewed AI follow-up',
+                'Physician-reviewed follow-up',
               ].map((item) => (
                 <li key={item} className="flex items-start gap-2 text-[14px] text-cream">
                   <span className="text-coral mt-0.5">✓</span>

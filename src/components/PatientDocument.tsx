@@ -46,13 +46,11 @@ export default function PatientDocument() {
             className="font-display text-display-xl mb-6"
           >
             This is what you walk away with.<br />
-            <span className="italic text-coral-soft">Yours. Specific. Printable.</span>
+            <span className="italic text-coral-soft">Personalized. Understandable. Actionable.</span>
           </motion.h2>
 
-          <motion.p variants={fadeInUp} className="font-sans text-body-md text-cream/75 max-w-[620px] mx-auto">
-            During the boot camp you fill out a workbook. At the end, that workbook becomes
-            a 1–2 page Patient Advocacy Document. Earned, not generic — built for the appointment
-            you've been putting off.
+          <motion.p variants={fadeInUp} className="font-sans text-body-md text-cream/75 max-w-[640px] mx-auto">
+            During the boot camp you co-create a plan with Dr. Saxena that works for you. That 2-page Patient Advocacy Document will help you have a more constructive conversation with your doctor. It's time to prioritize your health and happiness.
           </motion.p>
         </div>
 
@@ -198,8 +196,8 @@ export default function PatientDocument() {
           </div>
         </motion.div>
 
-        <motion.p variants={fadeInUp} className="text-center text-body-sm text-cream/60 mt-12 max-w-[520px] mx-auto italic">
-          Every participant gets one. No two are alike. You fill out the workbook live during the boot camp — this document is the output.
+        <motion.p variants={fadeInUp} className="text-center text-body-sm text-cream/60 mt-12 max-w-[560px] mx-auto italic">
+          Every participant co-creates their own advocacy document with Dr. Saxena during the boot camp. No two are alike.
         </motion.p>
       </div>
     </motion.section>

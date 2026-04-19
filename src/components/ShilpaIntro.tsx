@@ -45,18 +45,14 @@ export default function ShilpaIntro() {
 
           <div className="space-y-4 text-body-md text-slate">
             <p>
-              Board-Certified Family Physician and lipidologist with 20 years of advanced functional
-              medicine practice. Faculty at the Institute for Functional Medicine, Andrew Weil Center
-              for Integrative Medicine, George Washington University, and the University of Miami.
+              Board-Certified Family Physician with 20 years of advanced functional medicine
+              practice. Faculty at the Institute for Functional Medicine, Andrew Weil Center for
+              Integrative Medicine, George Washington University, and the University of Miami.
             </p>
             <p>
               Chief Medical Officer at Forum Health — the largest functional medicine network in the
               United States. Creator of the Group Medical Appointment model, which brings precision
               medicine into a shared setting without compromising individualization.
-            </p>
-            <p>
-              This boot camp is that model, applied to perimenopause and menopause. Three days. One
-              physician. The framework your provider didn't have time to teach you.
             </p>
           </div>
 

@@ -81,10 +81,7 @@ export default function Program() {
                 Session mechanics
               </div>
               <div className="font-display text-[36px] md:text-[44px] leading-none">
-                75 min<span className="text-coral-soft">·</span>
-              </div>
-              <div className="text-[13px] text-cream/60 mt-1">
-                may extend to 90 when the energy calls for it
+                75 min
               </div>
             </div>
 

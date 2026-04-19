@@ -41,8 +41,7 @@ export const faqItems: FAQItem[] = [
   },
   {
     question: "I'm in India. Can I attend?",
-    answer:
-      "Yes. The India cohort runs Tuesday / Wednesday / Thursday at 8:30–9:45 PM IST. Participants in India receive educational guidance and, where relevant, referrals to trained practitioners in your region. Our program is educational, not medical advice.",
+    answer: 'Yes. Join the cohort that works best for you.',
   },
   {
     question: "I'm a Forum Health patient — do I get a discount?",

@@ -15,7 +15,7 @@ export default function CoachKai() {
         {/* Left — copy */}
         <div>
           <motion.p variants={fadeInUp} className="text-label text-coral uppercase mb-5">
-            Between sessions
+            Want to chat with Dr. Saxena and her team between sessions?
           </motion.p>
 
           <motion.h2
@@ -29,9 +29,9 @@ export default function CoachKai() {
             variants={fadeInUp}
             className="text-body-lg text-slate mb-6"
           >
-            An AI assistant trained on Shilpa's reasoning. Available on
+            An interface to interact with Dr. Shilpa Saxena. Available on
             <span className="text-forest font-medium"> WhatsApp</span> and in your
-            <span className="text-forest font-medium"> browser</span> — whichever you're most comfortable with.
+            <span className="text-forest font-medium"> mobile or desktop browser</span> — whichever you're most comfortable with.
           </motion.p>
 
           <motion.div
@@ -50,14 +50,18 @@ export default function CoachKai() {
             <Bullet>
               <strong className="text-forest">Intake-only, starting now:</strong> use Coach Kai to enter
               your family history, current medications, and background before the boot camp begins.
+              This information is assembled by Dr. Saxena's team.
             </Bullet>
             <Bullet>
-              <strong className="text-forest">Clinical questions open one week before your boot camp:</strong>{' '}
-              that's when Coach Kai graduates from intake to full Q&A.
+              <strong className="text-forest">Clinical questions open one week before your boot camp through the 3 day program:</strong>{' '}
+              that's when Coach Kai becomes your go-to place to ask questions and get answers from
+              Dr. Saxena and her team.
             </Bullet>
             <Bullet>
-              <strong className="text-forest">After the boot camp:</strong> keeps working with you —
-              labs, questions, and alumni-only check-ins.
+              <strong className="text-forest">After the boot camp:</strong> Coach Kai becomes the
+              interface for you to keep asking questions through the opt-in community, be it on your
+              latest labs, feedback on conversations with your doctor, or some funky new supplement
+              you heard about on social media.
             </Bullet>
           </motion.div>
 

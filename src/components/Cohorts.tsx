@@ -1,14 +1,12 @@
-import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useApp } from '../context/AppContext'
 import { fadeInUp, staggerContainer, viewportConfig } from '../lib/motion'
 
 export default function Cohorts() {
   const { state, dispatch } = useApp()
-  const [selected, setSelected] = useState<'us' | 'in'>(state.cohort || 'us')
+  const selected = state.cohort
 
-  const pick = (c: 'us' | 'in') => {
-    setSelected(c)
+  const pick = (c: 'c1' | 'c2') => {
     dispatch({ type: 'SET_COHORT', payload: c })
   }
 
@@ -28,64 +26,59 @@ export default function Cohorts() {
 
         <motion.h2
           variants={fadeInUp}
-          className="font-display text-display-xl text-forest text-center mb-4"
+          className="font-display text-display-xl text-forest text-center mb-14"
         >
           Two cohorts. <span className="italic">Two time zones.</span>
         </motion.h2>
 
-        <motion.p
-          variants={fadeInUp}
-          className="text-body-md text-slate text-center max-w-[540px] mx-auto mb-14"
-        >
-          Same boot camp, built for where you actually live.
-        </motion.p>
-
         <motion.div variants={fadeInUp} className="grid md:grid-cols-2 gap-5">
           <CohortCard
-            flag="🇺🇸"
-            region="US cohort"
+            name="Cohort 1"
             days="Tuesday · Wednesday · Thursday"
-            primaryTime="5:00 PM Pacific"
-            secondaryTime="8:00 PM Eastern"
-            selected={selected === 'us'}
-            onClick={() => pick('us')}
+            lines={[
+              '5:00 PM PST',
+              '8:00 PM EST',
+              '5:30 AM India (next day)',
+            ]}
+            selected={selected === 'c1'}
+            onClick={() => pick('c1')}
           />
           <CohortCard
-            flag="🇮🇳"
-            region="India cohort"
+            name="Cohort 2"
             days="Tuesday · Wednesday · Thursday"
-            primaryTime="8:30 – 9:45 PM IST"
-            secondaryTime="Same 3-day format"
-            selected={selected === 'in'}
-            onClick={() => pick('in')}
-            disclaimer={
-              "Participants in India receive educational guidance and, where relevant, referrals to trained practitioners in your region. Our program is educational, not medical advice."
-            }
+            lines={[
+              '8:00 AM PST',
+              '11:00 AM EST',
+              '8:30 PM IST',
+            ]}
+            selected={selected === 'c2'}
+            onClick={() => pick('c2')}
           />
         </motion.div>
+
+        <motion.p
+          variants={fadeInUp}
+          className="text-[13px] text-slate italic text-center mt-8 max-w-[520px] mx-auto"
+        >
+          Our program is educational, not medical advice.
+        </motion.p>
       </div>
     </motion.section>
   )
 }
 
 function CohortCard({
-  flag,
-  region,
+  name,
   days,
-  primaryTime,
-  secondaryTime,
+  lines,
   selected,
   onClick,
-  disclaimer,
 }: {
-  flag: string
-  region: string
+  name: string
   days: string
-  primaryTime: string
-  secondaryTime: string
+  lines: string[]
   selected: boolean
   onClick: () => void
-  disclaimer?: string
 }) {
   return (
     <button
@@ -98,7 +91,13 @@ function CohortCard({
       style={selected ? { boxShadow: '0 20px 50px -15px rgba(31,58,46,0.3)' } : undefined}
     >
       <div className="flex items-start justify-between mb-5">
-        <div className="text-[42px] leading-none">{flag}</div>
+        <div
+          className={`font-mono text-[10px] tracking-widest uppercase ${
+            selected ? 'text-coral-soft' : 'text-coral'
+          }`}
+        >
+          {name}
+        </div>
         {selected && (
           <div className="font-mono text-[10px] text-coral-soft tracking-widest uppercase bg-coral/20 px-3 py-1 rounded-full">
             Selected
@@ -106,27 +105,24 @@ function CohortCard({
         )}
       </div>
 
-      <div className={`font-mono text-[10px] tracking-widest uppercase mb-1 ${selected ? 'text-coral-soft' : 'text-coral'}`}>
-        {region}
-      </div>
-      <div className={`font-display text-[26px] mb-4 ${selected ? 'text-cream' : 'text-forest'}`}>
+      <div className={`font-display text-[26px] mb-6 ${selected ? 'text-cream' : 'text-forest'}`}>
         {days}
       </div>
 
-      <div className={`text-[18px] font-medium ${selected ? 'text-cream' : 'text-forest'}`}>
-        {primaryTime}
+      <div className="space-y-1.5">
+        {lines.map((line, i) => (
+          <div
+            key={line}
+            className={`${
+              i === 0
+                ? `text-[18px] font-medium ${selected ? 'text-cream' : 'text-forest'}`
+                : `text-[14px] ${selected ? 'text-cream/70' : 'text-slate'}`
+            }`}
+          >
+            {line}
+          </div>
+        ))}
       </div>
-      <div className={`text-[13px] mt-1 ${selected ? 'text-cream/60' : 'text-slate'}`}>
-        {secondaryTime}
-      </div>
-
-      {disclaimer && (
-        <div className={`mt-5 pt-4 border-t ${selected ? 'border-cream/20' : 'border-border'}`}>
-          <p className={`text-[12px] leading-relaxed italic ${selected ? 'text-cream/70' : 'text-slate'}`}>
-            {disclaimer}
-          </p>
-        </div>
-      )}
     </button>
   )
 }
