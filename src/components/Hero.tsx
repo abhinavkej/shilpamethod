@@ -16,6 +16,21 @@ export default function Hero() {
       {/* Background wash */}
       <div className="absolute inset-0 bg-gradient-to-b from-sand/40 via-cream to-cream pointer-events-none" aria-hidden />
 
+      {/* Floating quote card — anchored to the section, not the text block, so it
+          lives in the right-side gutter instead of overlapping the headline.
+          Hidden below xl (1280px) where there isn't room for both the 760px
+          headline block and this 260px card without collision. */}
+      <motion.div
+        variants={fadeInUp}
+        className="hidden xl:block absolute top-28 right-8 rotate-[3deg] bg-white border border-border rounded-2xl px-5 py-4 max-w-[240px] text-left z-10"
+        style={{ boxShadow: '0 12px 40px rgba(31,58,46,0.08)' }}
+      >
+        <div className="text-label text-coral uppercase mb-2">LIVE · TWO-WAY</div>
+        <div className="font-display text-[17px] text-forest italic leading-snug">
+          "A personalized program to help you understand your lifestyle and medication options."
+        </div>
+      </motion.div>
+
       <div className="max-w-[760px] text-center relative">
         <motion.p
           variants={fadeInUp}
@@ -69,17 +84,6 @@ export default function Hero() {
           </div>
         </motion.div>
 
-        {/* Floating quote card */}
-        <motion.div
-          variants={fadeInUp}
-          className="hidden md:block absolute -right-8 top-6 rotate-[3deg] bg-white border border-border rounded-2xl px-5 py-4 max-w-[260px] text-left"
-          style={{ boxShadow: '0 12px 40px rgba(31,58,46,0.08)' }}
-        >
-          <div className="text-label text-coral uppercase mb-2">LIVE · TWO-WAY</div>
-          <div className="font-display text-[18px] text-forest italic leading-snug">
-            "A personalized program to help you understand your lifestyle and medication options."
-          </div>
-        </motion.div>
       </div>
     </motion.section>
   )
