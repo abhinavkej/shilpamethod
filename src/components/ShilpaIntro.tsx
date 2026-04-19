@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { fadeInUp, staggerContainer, viewportConfig } from '../lib/motion'
+import { SHILPA_HEADSHOT_URL } from '../config/placeholders'
 
 export default function ShilpaIntro() {
   return (
@@ -15,7 +16,7 @@ export default function ShilpaIntro() {
         <motion.div variants={fadeInUp} className="relative">
           <div className="aspect-[4/5] rounded-[28px] overflow-hidden">
             <img
-              src="https://forumhealth.com/wp-content/uploads/2019/05/Shilpa-Saxena-1-scaled-e1699545138555-768x768.webp"
+              src={SHILPA_HEADSHOT_URL}
               alt="Dr. Shilpa Saxena"
               loading="lazy"
               className="w-full h-full object-cover"

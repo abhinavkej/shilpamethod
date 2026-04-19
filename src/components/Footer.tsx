@@ -1,5 +1,7 @@
-// {{CONSENT_LANGUAGE_FINAL}} — final legal consent language still being drafted.
-const CONSENT_LANGUAGE_FINAL = '{{CONSENT_LANGUAGE_FINAL}}'
+import { LEGAL, CONTACT } from '../config/placeholders'
+
+// Consent placeholder lives in src/config/placeholders.ts (LEGAL.consentLanguage).
+const CONSENT_LANGUAGE_FINAL = LEGAL.consentLanguage
 
 export default function Footer() {
   return (
@@ -35,8 +37,8 @@ export default function Footer() {
               Contact
             </div>
             <ul className="space-y-2 text-body-sm text-cream/80">
-              <li>hello@shilpamethod.com</li>
-              <li>coachkai@shilpamethod.com</li>
+              <li>{CONTACT.general}</li>
+              <li>{CONTACT.coachKai}</li>
             </ul>
           </div>
         </div>

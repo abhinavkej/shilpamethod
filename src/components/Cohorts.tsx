@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { useApp } from '../context/AppContext'
 import { fadeInUp, staggerContainer, viewportConfig } from '../lib/motion'
+// Cohort timings live in src/config/placeholders.ts if Areef wants to edit.
 
 export default function Cohorts() {
   const { state, dispatch } = useApp()

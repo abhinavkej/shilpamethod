@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useApp } from '../context/AppContext'
+import { PROGRAM } from '../config/placeholders'
 
 export default function FloatingSpotCounter() {
   const { state } = useApp()
@@ -39,7 +40,7 @@ export default function FloatingSpotCounter() {
           className="fixed bottom-6 left-6 z-50 bg-forest text-cream rounded-full px-5 py-2.5 text-[13px]"
           style={{ boxShadow: '0 12px 32px rgba(31,58,46,0.25)' }}
         >
-          <span className="text-coral-soft font-medium">{state.spotsRemaining}</span> of 50 spots remaining
+          <span className="text-coral-soft font-medium">{state.spotsRemaining}</span> of {PROGRAM.capacityPerCohort} spots remaining
         </motion.div>
       )}
     </AnimatePresence>

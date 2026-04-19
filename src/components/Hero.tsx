@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { fadeInUp, staggerContainer } from '../lib/motion'
+import { SHILPA_HEADSHOT_URL } from '../config/placeholders'
 
 export default function Hero() {
   const scroll = (id: string) =>
@@ -57,7 +58,7 @@ export default function Hero() {
           className="flex items-center justify-center gap-4 mt-14"
         >
           <img
-            src="https://forumhealth.com/wp-content/uploads/2019/05/Shilpa-Saxena-1-scaled-e1699545138555-768x768.webp"
+            src={SHILPA_HEADSHOT_URL}
             alt="Dr. Shilpa Saxena"
             className="w-14 h-14 rounded-full object-cover"
             style={{ objectPosition: 'center 20%' }}

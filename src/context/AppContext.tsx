@@ -1,4 +1,5 @@
 import { createContext, useContext, useReducer, type ReactNode } from 'react'
+import { PROGRAM } from '../config/placeholders'
 
 export type Cohort = 'c1' | 'c2'
 
@@ -19,7 +20,7 @@ type Action =
 const initialState: AppState = {
   selectedSymptoms: [],
   cohort: 'c1',
-  spotsRemaining: 37,
+  spotsRemaining: PROGRAM.seededSpotsRemaining,
   isRegistered: false,
   registrationName: '',
 }

@@ -3,10 +3,11 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useApp } from '../context/AppContext'
 import { useSpotCounter } from '../hooks/useSpotCounter'
 import { fadeInUp, staggerContainer, viewportConfig } from '../lib/motion'
+import { PRICE, PROGRAM, CONTACT, FORUM_HEALTH } from '../config/placeholders'
 
-// Price: $149 USD / ₹4,999 INR per the Apr 15 boot-camp spec.
-const PRICE_TOKEN = '$149'
-const PRICE_DISPLAY = '$149'
+// Source of truth for everything editable: src/config/placeholders.ts
+const PRICE_TOKEN = PRICE.usd
+const PRICE_DISPLAY = PRICE.usd
 
 export default function Registration() {
   const { state, dispatch } = useApp()
@@ -18,10 +19,7 @@ export default function Registration() {
   const [copied, setCopied] = useState(false)
 
   const isWaitlist = spotsRemaining <= 0
-  const cohortLabel =
-    state.cohort === 'c2'
-      ? 'Cohort 2 · 8 AM PST / 11 AM EST / 8:30 PM IST'
-      : 'Cohort 1 · 5 PM PST / 8 PM EST / 5:30 AM IST (next day)'
+  const cohortLabel = state.cohort === 'c2' ? PROGRAM.cohort2Label : PROGRAM.cohort1Label
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -76,7 +74,7 @@ export default function Registration() {
                 Shilpa Method Boot Camp
               </div>
               <div className="font-display text-[32px] text-cream mb-1">
-                April 28–30, 2026
+                {PROGRAM.displayDate}
               </div>
               <p className="text-body-sm text-cream/70 mb-6">{cohortLabel}</p>
 
@@ -115,7 +113,7 @@ export default function Registration() {
                   </span>
                 </div>
                 <div className="text-[14px] text-cream">
-                  <span className="font-medium">Forum Health patients get $50 off.</span>
+                  <span className="font-medium">Forum Health patients get {FORUM_HEALTH.discountUsd}.</span>
                 </div>
                 <div className="text-[12px] text-cream/60 mt-1">
                   Discount code is sent through Forum's patient communication channels.
@@ -124,7 +122,7 @@ export default function Registration() {
 
               <div className="mt-6 flex items-center justify-between text-[12px] text-cream/50">
                 <span>
-                  <span className="text-coral-soft font-medium">{spotsRemaining}</span> of 50 spots remaining in this cohort
+                  <span className="text-coral-soft font-medium">{spotsRemaining}</span> of {PROGRAM.capacityPerCohort} spots remaining in this cohort
                 </span>
               </div>
             </div>
@@ -207,7 +205,7 @@ export default function Registration() {
 
                   <p className="text-body-md text-cream/85 mb-4">
                     Coach Kai will reach out within 24 hours to begin your intake. Watch for an email
-                    from coachkai@shilpamethod.com.
+                    from {CONTACT.coachKai}.
                   </p>
                   <p className="text-body-sm text-cream/60 mb-6">
                     Intake starts now. Clinical Q&A opens one week before your cohort begins.

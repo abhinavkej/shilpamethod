@@ -1,10 +1,11 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 import { fadeInUp, staggerContainer, viewportConfig } from '../lib/motion'
+import { DOCUMENT } from '../config/placeholders'
 
-// {{DOCUMENT_NAME}} — final name TBD between "Your Hormone Health Blueprint" and "Your Hormone Story"
-const DOCUMENT_NAME = '{{DOCUMENT_NAME}}'
-const DOCUMENT_NAME_DISPLAY = 'Your Hormone Story'
+// Source of truth: src/config/placeholders.ts (DOCUMENT.displayName).
+const DOCUMENT_NAME_DISPLAY = DOCUMENT.displayName
+const DOCUMENT_FOOTER_NAME = DOCUMENT.footerName
 
 function RiskPill({ level, text }: { level: 'low' | 'medium' | 'high'; text: string }) {
   const colors = {
@@ -187,7 +188,7 @@ export default function PatientDocument() {
             {/* Footer band */}
             <div className="bg-sand px-7 md:px-10 py-3 border-t border-border flex justify-between items-center">
               <span className="font-mono text-[9px] text-slate tracking-widest uppercase">
-                {DOCUMENT_NAME} · Page 1 of 2
+                {DOCUMENT_FOOTER_NAME} · Page 1 of 2
               </span>
               <span className="font-mono text-[9px] text-slate tracking-widest uppercase">
                 Confidential · Educational only
