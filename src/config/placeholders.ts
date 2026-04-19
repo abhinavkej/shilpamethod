@@ -163,3 +163,70 @@ export const CHECKOUT = {
   stripeSuccessPath: '/welcome', // Phase 2
   stripeCancelPath: '/checkout', // Phase 2
 } as const
+
+// ─── WhatsApp / Coach Kai (member experience) ────────────────────────
+// Spec: hormone_method_member_experience_prompt.pdf §4 + §4.5
+// TODO(areef): Meta approves templates via your BSP (Twilio/360dialog). Paste
+// the approved ContentSid (or template name) for each here after approval.
+export const WHATSAPP = {
+  // Coach Kai's WhatsApp Business number. Sandbox first, production on launch.
+  coachKaiNumberE164Env: 'WHATSAPP_FROM_NUMBER',
+  coachKaiNumberE164Display: '+1 415 555 1234', // sandbox placeholder
+  deepLinkBase: 'https://wa.me/14155551234', // swap the digits on launch
+
+  // Template IDs (env-var names, swap to Meta-approved IDs post-review)
+  templateWelcomeEnv: 'WHATSAPP_TEMPLATE_WELCOME', // hormone_welcome_v1
+  templateIntakeReminderEnv: 'WHATSAPP_TEMPLATE_INTAKE_REMINDER', // hormone_intake_reminder_v1
+  templateSession24hEnv: 'WHATSAPP_TEMPLATE_SESSION_REMINDER_24H', // hormone_session_24h_v1
+  templateSession1hEnv: 'WHATSAPP_TEMPLATE_SESSION_REMINDER_1H', // hormone_session_1h_v1
+  templateSessionLiveEnv: 'WHATSAPP_TEMPLATE_SESSION_LIVE', // hormone_session_live_v1
+  templateRecordingReadyEnv: 'WHATSAPP_TEMPLATE_RECORDING_READY', // hormone_recording_ready_v1
+  templateReflectionEnv: 'WHATSAPP_TEMPLATE_REFLECTION_PROMPT', // hormone_reflection_v1
+  templateDocumentReadyEnv: 'WHATSAPP_TEMPLATE_DOCUMENT_READY', // hormone_document_ready_v1
+  templateDoctorFollowupEnv: 'WHATSAPP_TEMPLATE_DOCTOR_FOLLOWUP', // hormone_doctor_followup_v1
+
+  // Twilio credentials (or 360dialog — adjust schema if using different BSP)
+  accountSidEnv: 'WHATSAPP_ACCOUNT_SID',
+  authTokenEnv: 'WHATSAPP_AUTH_TOKEN',
+  webhookSecretEnv: 'WHATSAPP_WEBHOOK_SECRET',
+} as const
+
+// ─── Google Meet / Calendar (sessions) ───────────────────────────────
+// Spec: §5 — service account with domain-wide delegation, impersonates
+// Shilpa so events land on her calendar with her as host.
+export const GOOGLE = {
+  serviceAccountEmailEnv: 'GOOGLE_SERVICE_ACCOUNT_EMAIL',
+  serviceAccountPrivateKeyEnv: 'GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY',
+  calendarIdEnv: 'GOOGLE_CALENDAR_ID', // "primary" or dedicated
+  delegateEmailEnv: 'GOOGLE_CALENDAR_DELEGATE_EMAIL', // shilpa@shilpamethod.com
+  // TODO(areef): enable domain-wide delegation on shilpamethod.com Google Workspace
+  // and scope https://www.googleapis.com/auth/calendar on the service account.
+} as const
+
+// ─── Cohort group (WhatsApp) ─────────────────────────────────────────
+// Spec: §11 — admin pastes the invite URL after manually creating the group.
+export const COHORT_GROUP = {
+  inviteUrl: 'https://chat.whatsapp.com/PLACEHOLDER',
+  groupNameTemplate: 'Shilpa Method · Cohort {n} · {month} {year}',
+  // TODO(areef): create the WhatsApp group manually after WAITLIST triggers,
+  // paste the invite URL into /admin/cohorts/[id]/group.
+} as const
+
+// ─── Post-program referral endpoints ─────────────────────────────────
+// Spec: §10.3 / §10.4 — V1 is email-based, V2 integrates with Forum's CRM.
+export const REFERRAL = {
+  forumHealthEmailTo: 'lisa@forumhealth.com', // TODO(areef): confirm with Forum
+  muktaClinicEmailTo: 'mukta@muktaclinic.in', // TODO(areef): confirm with Dr. Mukta
+} as const
+
+// ─── Cron / scheduled task endpoints ─────────────────────────────────
+// Spec: §12 — notifications every 5 min, document-generation nightly 2 AM,
+// cohort-status update daily 9 AM.
+export const CRON = {
+  secretEnv: 'CRON_SECRET',
+  paths: {
+    notifications: '/api/cron/notifications', // every 5 min
+    documentGeneration: '/api/cron/document-generation', // 2 AM daily
+    cohortStatus: '/api/cron/cohort-status', // 9 AM daily
+  },
+} as const
