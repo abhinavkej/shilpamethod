@@ -176,6 +176,7 @@ export const WHATSAPP = {
 
   // Template IDs (env-var names, swap to Meta-approved IDs post-review)
   templateWelcomeEnv: 'WHATSAPP_TEMPLATE_WELCOME', // hormone_welcome_v1
+  templateNudge24hEnv: 'WHATSAPP_TEMPLATE_NUDGE_24H', // welcome_nudge_24h_v1 — post-checkout skip-if-signed-in nudge (Slice 2)
   templateIntakeReminderEnv: 'WHATSAPP_TEMPLATE_INTAKE_REMINDER', // hormone_intake_reminder_v1
   templateSession24hEnv: 'WHATSAPP_TEMPLATE_SESSION_REMINDER_24H', // hormone_session_24h_v1
   templateSession1hEnv: 'WHATSAPP_TEMPLATE_SESSION_REMINDER_1H', // hormone_session_1h_v1
@@ -217,6 +218,22 @@ export const COHORT_GROUP = {
 export const REFERRAL = {
   forumHealthEmailTo: 'lisa@forumhealth.com', // TODO(areef): confirm with Forum
   muktaClinicEmailTo: 'mukta@muktaclinic.in', // TODO(areef): confirm with Dr. Mukta
+} as const
+
+// ─── Post-checkout (Slice 2) — welcome moment ────────────────────────
+// Spec: hormone_method_post_checkout_prompt.md.pdf §4 + §13.
+// The /welcome page renders a video block if SHILPA_WELCOME_VIDEO_URL is set,
+// otherwise falls back to the 4-paragraph "from Dr. Saxena" text card.
+export const WELCOME = {
+  // TODO(areef): record a custom 60-sec greeting, host on Vercel Blob or a CDN,
+  // paste the URL in Vercel env vars. Leave blank to keep text fallback live.
+  videoUrlEnv: 'SHILPA_WELCOME_VIDEO_URL',
+  // Magic-link policy from §3 — two durations for two use cases.
+  magicLinkWelcomeSeconds: 60 * 60 * 24, // 24h for the welcome email / WA button
+  magicLinkLoginSeconds: 60 * 10, // 10 min for self-serve /login
+  // Stripe session_id is treated as a single-use ephemeral auth token for
+  // /api/welcome/update-phone within this window (§10.2).
+  phoneEditWindowMinutes: 60,
 } as const
 
 // ─── Cron / scheduled task endpoints ─────────────────────────────────

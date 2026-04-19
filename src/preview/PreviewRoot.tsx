@@ -30,6 +30,11 @@ import AdminCohort from './admin/Cohort'
 import AdminUser from './admin/User'
 import AdminLiveSession from './admin/LiveSession'
 import AdminPostProgram from './admin/PostProgram'
+import Checkout from './checkout/Checkout'
+import Welcome from './welcome/Welcome'
+import WelcomeMocks from './welcome/Mocks'
+import Login from './login/Login'
+import LoginCheck from './login/Check'
 
 function PreviewBanner() {
   const loc = useLocation()
@@ -57,6 +62,13 @@ export default function PreviewRoot() {
       <div className="pt-10 min-h-screen bg-cream text-ink">
         <Routes>
           <Route index element={<PreviewIndex />} />
+
+          {/* Post-checkout first 10 minutes — Slice 2 */}
+          <Route path="checkout" element={<Checkout />} />
+          <Route path="welcome" element={<Welcome />} />
+          <Route path="welcome/mocks" element={<WelcomeMocks />} />
+          <Route path="login" element={<Login />} />
+          <Route path="login/check" element={<LoginCheck />} />
 
           {/* Onboarding — §3 */}
           <Route path="onboarding/welcome" element={<OnboardingWelcome />} />
