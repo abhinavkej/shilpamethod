@@ -42,6 +42,10 @@ export default function Registration() {
     setSubmitState('sending')
     setErrorMsg('')
 
+    // Always set a client-side preview link immediately — don't gate on email delivery.
+    // This lets stakeholders click into the onboarding flow even when RESEND_API_KEY is unset.
+    setMemberLink(`/preview/dashboard?phase=onboarding&name=${encodeURIComponent(cleanName)}`)
+
     try {
       const resp = await fetch('/api/register', {
         method: 'POST',
@@ -77,8 +81,11 @@ export default function Registration() {
       })
       setSubmitState('idle')
     } catch (err: any) {
-      setSubmitState('error')
+      // Network error or JSON parse failure (e.g. local Vite dev with no /api/register handler).
+      // Still show the confirmation so the full flow is navigable locally without a deployed API.
       setErrorMsg(err?.message || 'Network error — please try again.')
+      dispatch({ type: 'SUBMIT_REGISTRATION', payload: { name: cleanName, email: cleanEmail, clinicalInterest: forumPatient } })
+      setSubmitState('idle')
     }
   }
 
@@ -286,14 +293,27 @@ export default function Registration() {
                     </>
                   )}
 
-                  {memberLink && (
-                    <a
-                      href={memberLink}
-                      className="inline-flex items-center gap-2 bg-coral text-cream text-[14px] px-5 py-2.5 rounded-full hover:bg-rust transition-colors mb-3"
-                    >
-                      Preview your member area →
-                    </a>
-                  )}
+                  {/* DEV NOTE — email + Stripe not yet live:
+                      • RESEND_API_KEY unset → Formsubmit ops notification only, no user email.
+                        Wire up: Vercel env var RESEND_API_KEY (see HANDOFF.md §2.4). Areef to do.
+                      • "Reserve my spot — $149" posts the interest form, NOT a Stripe checkout.
+                        Stripe integration is Phase 2 (see HANDOFF.md §8). */}
+                  <div className="bg-cream/10 border border-cream/20 rounded-xl px-4 py-3 mb-4 text-[11px] text-cream/60 font-mono leading-relaxed">
+                    <span className="text-coral-soft font-semibold">DEV</span>
+                    {emailDeliveredTo
+                      ? ` · Welcome email sent via Resend ✓`
+                      : ` · Email pending — RESEND_API_KEY not set · Areef to wire (HANDOFF.md §2.4)`}
+                    <br />
+                    <span className="text-coral-soft font-semibold">DEV</span>
+                    {` · Stripe checkout not yet wired — "Reserve my spot" captures interest only`}
+                  </div>
+
+                  <a
+                    href={memberLink || `/preview/dashboard?phase=onboarding&name=${encodeURIComponent(state.registrationName || 'Sarah')}`}
+                    className="inline-flex items-center gap-2 bg-coral text-cream text-[14px] px-5 py-2.5 rounded-full hover:bg-rust transition-colors mb-3"
+                  >
+                    Preview your member area →
+                  </a>
 
                   <button
                     onClick={handleShare}

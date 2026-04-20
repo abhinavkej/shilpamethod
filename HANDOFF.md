@@ -1,5 +1,28 @@
 # The Hormone Method (by Forum Health) — CTO Handoff
 
+---
+
+## ⚠️ PENDING STITCHING — running list (Areef to resolve)
+
+Items below are the wires that are deliberately NOT connected yet. The preview prototype and marketing site are built to spec; these are the backend / service-account items blocking production.
+
+| # | What | Why it's blocked | How to unblock | Owner |
+|---|---|---|---|---|
+| 1 | **Welcome email not sending** | `RESEND_API_KEY` not set in Vercel env vars. Formsubmit ops notification fires but no user-facing email. | Add `RESEND_API_KEY` to Vercel project env vars + verify `shilpamethod.com` domain in Resend. See §2.4 below. | Areef |
+| 2 | **Stripe checkout not wired** | "Reserve my spot — $149" button captures interest only (no payment collected). | Build Phase 2: Next.js migration + Stripe Checkout + webhook. See §8 below. | Areef |
+| 3 | **Email + WhatsApp on payment not wired** | The acceptance test "Pay $149 with a Stripe test card → confirm email + WhatsApp arrive" cannot pass until Stripe webhook fires and Twilio WA template is approved. | Phase 2 (Stripe webhook) + submit `hormone_welcome_v1` to Meta for WhatsApp approval. See `POST_CHECKOUT_HANDOFF.md §4`. | Areef |
+| 4 | **Magic link auth not wired** | No NextAuth, no Neon DB, no `VerificationToken` table. Magic link in welcome email is a preview-only deep link. | Phase 2: NextAuth email provider + Neon `DATABASE_URL`. See §2.2. | Areef |
+| 5 | **WhatsApp Coach Kai not wired** | No Twilio account, no approved WA templates. | Create Twilio WA Business account, submit templates, add `WHATSAPP_TEMPLATE_WELCOME` env var. | Areef |
+| 6 | **Onboarding → dashboard completion** | Preview: `onComplete` now wires to runway phase ✅. Prod: requires `PATCH /api/onboarding/preferences` endpoint + DB write. | Phase 2/3 migration. | Areef |
+| 7 | **YouTube clip IDs missing** | 6 past-webinar clips render as placeholders. | Paste 11-char YouTube IDs into `src/config/placeholders.ts` → `WEBINAR_CLIPS[n].youtubeId`. | Shilpa / Areef |
+| 8 | **Legal copy (consent, T&S, privacy)** | Footer consent is placeholder. `/terms` and `/privacy` routes don't exist. | Engage counsel. See §4 below. | Product |
+
+**Quick test to validate email is live:** submit the form at shilpamethod.com/#registration — if you get a styled welcome email from `coachkai@shilpamethod.com` (or `onboarding@resend.dev` in test), item 1 is done.
+
+**Quick test to validate Stripe is live:** go to `/preview/checkout`, enter test card `4242 4242 4242 4242`, check inbox + WhatsApp for delivery within 10s. Items 2 + 3 are done.
+
+---
+
 ## 🚀 Go-live in 5 minutes — make the registration email actually send
 
 The repo now ships with a real backend endpoint: `/api/register.ts` is a Vercel
