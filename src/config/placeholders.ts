@@ -98,7 +98,7 @@ export const WEBINAR_CLIPS: WebinarClip[] = [
     durationLabel: '1:47',
     transcript:
       "Progesterone is your primary sleep hormone. As it declines in perimenopause, the architecture of your sleep changes — you fall asleep, but you can't stay there. The 3 AM wake-up is a hormonal signature, not anxiety.",
-    youtubeId: '', // TODO(areef)
+    youtubeId: 'azl0TeotG58',
   },
   {
     n: 2,
@@ -107,7 +107,7 @@ export const WEBINAR_CLIPS: WebinarClip[] = [
     durationLabel: '2:12',
     transcript:
       "My doctor said my labs were fine. My body said otherwise. I was told I was too young for perimenopause, and too 'normal' for any of the things I was feeling. That five-year gap is where most women lose themselves — and nobody gave us a map.",
-    youtubeId: '', // TODO(areef)
+    youtubeId: 'QS5NmLLyT8E',
   },
   {
     n: 3,
@@ -116,7 +116,7 @@ export const WEBINAR_CLIPS: WebinarClip[] = [
     durationLabel: '3:04',
     transcript:
       'HRT is the umbrella. BHRT — bioidentical hormone therapy — uses molecules identical to what your body produces. The fear around hormones comes largely from a 2002 study using synthetic hormones, which has been substantially reanalyzed in the 20+ years since.',
-    youtubeId: '', // TODO(areef)
+    youtubeId: 'Goi78Ru87Ws',
   },
   {
     n: 4,
@@ -125,7 +125,7 @@ export const WEBINAR_CLIPS: WebinarClip[] = [
     durationLabel: '2:38',
     transcript:
       "Fasting insulin. Not just glucose — insulin. The two together give you HOMA-IR, and HOMA-IR tells you where metabolic resistance is headed years before a fasting glucose flag appears. If your doctor hasn't ordered fasting insulin, you're flying with half the instruments.",
-    youtubeId: '', // TODO(areef)
+    youtubeId: 'w9kEtrpuFsg',
   },
   {
     n: 5,
@@ -134,7 +134,7 @@ export const WEBINAR_CLIPS: WebinarClip[] = [
     durationLabel: '1:58',
     transcript:
       "I walked into my OB-GYN with a 2-page document. Specific questions, specific labs, a specific timeline. For the first time in four years, the appointment wasn't a negotiation — it was a conversation. That's what this boot camp builds for you.",
-    youtubeId: '', // TODO(areef)
+    youtubeId: 'F2pc4EihN-I',
   },
   {
     n: 6,
@@ -143,7 +143,7 @@ export const WEBINAR_CLIPS: WebinarClip[] = [
     durationLabel: '2:26',
     transcript:
       'Estrogen has direct anti-inflammatory effects on joint tissue. As it declines, synovial fluid changes and tendon flexibility decreases. Frozen shoulder affects 10–17% of perimenopausal women and is almost never connected to hormones by a conventional provider.',
-    youtubeId: '', // TODO(areef)
+    youtubeId: 'wUZ8n-2aKDM',
   },
 ]
 

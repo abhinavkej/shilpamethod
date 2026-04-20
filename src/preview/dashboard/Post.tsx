@@ -5,9 +5,12 @@ import { Link } from 'react-router-dom'
 
 type Outcome = null | 'doctor_supportive' | 'doctor_dismissive' | 'labs_ordered' | 'hrt_started'
 
+const BOOKING_SCRIPT = `"Hi, I'd like to schedule an appointment with [Doctor's name] to discuss some hormonal health concerns I've been experiencing — specifically perimenopause symptoms including sleep disruption, mood changes, and fatigue. I have a document prepared that summarizes my symptom history and some specific lab tests I'd like to request. The appointment will be more efficient if I can share it ahead of time — is there a way to send it to the office beforehand?"`
+
 export default function PostProgramDashboard() {
   const [stage, setStage] = useState<'not_booked' | 'booked' | 'past'>('not_booked')
   const [outcome, setOutcome] = useState<Outcome>(null)
+  const [showScript, setShowScript] = useState(false)
 
   return (
     <main className="max-w-4xl mx-auto px-6 pb-20 pt-8">
@@ -59,20 +62,41 @@ export default function PostProgramDashboard() {
             <h2 className="font-display text-[22px] text-forest mb-4">
               Have you booked your appointment yet?
             </h2>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2 mb-4">
               <button
                 onClick={() => setStage('booked')}
-                className="bg-forest text-cream text-[14px] px-5 py-2.5 rounded-full hover:bg-ivy"
+                className="bg-forest text-cream text-[14px] px-5 py-2.5 rounded-full hover:bg-ivy transition-colors"
               >
                 Yes, I've booked →
               </button>
-              <button className="border border-border text-slate text-[14px] px-5 py-2.5 rounded-full hover:border-forest hover:text-forest">
-                No — need a booking script
+              <button
+                onClick={() => setShowScript((s) => !s)}
+                className="border border-border text-slate text-[14px] px-5 py-2.5 rounded-full hover:border-forest hover:text-forest transition-colors"
+              >
+                No — give me a booking script
               </button>
-              <button className="border border-border text-slate text-[14px] px-5 py-2.5 rounded-full hover:border-forest hover:text-forest">
-                My doctor said no
-              </button>
+              <Link
+                to="/preview/forum-referral"
+                className="border border-border text-slate text-[14px] px-5 py-2.5 rounded-full hover:border-forest hover:text-forest transition-colors"
+              >
+                My doctor said no →
+              </Link>
             </div>
+            {showScript && (
+              <div className="bg-sand/40 border border-border rounded-xl p-5 mt-2">
+                <div className="font-mono text-[10px] text-coral tracking-widest uppercase mb-3">Booking script — read or paste this</div>
+                <p className="text-[14px] text-slate leading-relaxed italic mb-4">{BOOKING_SCRIPT}</p>
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => navigator.clipboard.writeText(BOOKING_SCRIPT)}
+                    className="text-[13px] bg-forest text-cream px-4 py-2 rounded-full hover:bg-ivy transition-colors"
+                  >
+                    Copy to clipboard
+                  </button>
+                  <p className="text-[12px] text-slate self-center">Then call your OB-GYN's office directly.</p>
+                </div>
+              </div>
+            )}
           </div>
         )}
 
