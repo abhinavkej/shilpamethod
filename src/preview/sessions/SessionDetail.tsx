@@ -49,6 +49,29 @@ export default function SessionDetail() {
         ))}
       </div>
 
+      {/* Day navigation */}
+      <div className="flex items-center gap-3 mb-6">
+        {Number(day) > 1 && (
+          <Link
+            to={`/preview/sessions/${Number(day) - 1}`}
+            className="flex items-center gap-1.5 text-[13px] text-slate hover:text-forest border border-border hover:border-forest px-4 py-2 rounded-full transition-colors"
+          >
+            ← Day {Number(day) - 1}
+          </Link>
+        )}
+        <span className="font-mono text-[10px] text-coral tracking-widest uppercase px-3 py-1.5 bg-coral/10 rounded-full">
+          Day {day} of 3
+        </span>
+        {Number(day) < 3 && (
+          <Link
+            to={`/preview/sessions/${Number(day) + 1}`}
+            className="flex items-center gap-1.5 text-[13px] text-slate hover:text-forest border border-border hover:border-forest px-4 py-2 rounded-full transition-colors"
+          >
+            Day {Number(day) + 1} →
+          </Link>
+        )}
+      </div>
+
       {/* Header */}
       <Mono className="block mb-2">Day {day} · {meta.date}, {meta.time} local</Mono>
       <h1 className="font-display text-display-md text-forest mb-3">{meta.title}</h1>

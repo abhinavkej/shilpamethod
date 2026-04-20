@@ -123,10 +123,13 @@ export default function DocumentViewer() {
       {/* Print-only styles */}
       <style>{`
         @media print {
+          * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; color-adjust: exact !important; }
           .no-print { display: none !important; }
           body { background: white !important; }
           .print-doc { max-width: 100% !important; padding: 0 !important; }
           .print-section { page-break-inside: avoid; }
+          .print-cover { background-color: #1F3A2E !important; color: #F8F3E8 !important; }
+          .print-sand { background-color: #EFE7D4 !important; }
         }
       `}</style>
 
@@ -163,7 +166,7 @@ export default function DocumentViewer() {
         {/* Document sections */}
         <div className="space-y-0 border border-border rounded-2xl overflow-hidden">
           {/* Cover */}
-          <div className="bg-forest text-cream px-8 py-8 print-section">
+          <div className="bg-forest text-cream px-8 py-8 print-section print-cover" style={{ backgroundColor: '#1F3A2E', color: '#F8F3E8' }}>
             <div className="font-mono text-[10px] text-coral-soft tracking-widest uppercase mb-3">Patient Advocacy Document</div>
             <h2 className="font-display text-[36px] text-cream leading-tight mb-2">Your Hormone Story.</h2>
             <p className="text-[14px] text-cream/70">Prepared for Sarah Chen</p>
@@ -188,7 +191,7 @@ export default function DocumentViewer() {
           </div>
 
           {/* Symptom profile */}
-          <div className="bg-sand/20 px-8 py-6 border-t border-border/60 print-section overflow-x-auto">
+          <div className="bg-sand/20 px-8 py-6 border-t border-border/60 print-section print-sand overflow-x-auto">
             <div className="font-mono text-[10px] text-coral tracking-widest uppercase mb-3">Your Symptom Profile</div>
             <table className="w-full text-[13px] min-w-[500px]">
               <thead>
@@ -229,7 +232,7 @@ export default function DocumentViewer() {
           </div>
 
           {/* Recommended labs */}
-          <div className="bg-sand/20 px-8 py-6 border-t border-border/60 print-section">
+          <div className="bg-sand/20 px-8 py-6 border-t border-border/60 print-section print-sand">
             <div className="font-mono text-[10px] text-coral tracking-widest uppercase mb-3">Recommended Labs</div>
             <div className="grid sm:grid-cols-2 gap-3">
               {DOC_SECTIONS[4].labs!.map((lab) => (
@@ -256,7 +259,7 @@ export default function DocumentViewer() {
           </div>
 
           {/* Lifestyle */}
-          <div className="bg-sand/20 px-8 py-6 border-t border-border/60 print-section">
+          <div className="bg-sand/20 px-8 py-6 border-t border-border/60 print-section print-sand">
             <div className="font-mono text-[10px] text-coral tracking-widest uppercase mb-3">Lifestyle Foundations</div>
             <div className="space-y-4">
               {DOC_SECTIONS[6].lifestyle!.map((item) => (

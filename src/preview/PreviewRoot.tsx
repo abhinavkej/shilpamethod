@@ -25,6 +25,7 @@ import ForumReferral from './referral/Forum'
 import MuktaReferral from './referral/Mukta'
 import Community from './community/Community'
 import Resources from './resources/Resources'
+import ArticleReader from './articles/Article'
 import Account from './account/Account'
 import AdminHome from './admin/Home'
 import AdminCohort from './admin/Cohort'
@@ -40,17 +41,27 @@ import LoginCheck from './login/Check'
 const WA_NUMBER = 'https://wa.me/14155551234'
 
 const QUICK_REPLIES = [
-  "When does my cohort start?",
-  "How do I prepare for Day 1?",
   "What labs should I order?",
-  "I need help with my intake form.",
+  "Is HRT safe for me?",
+  "Why am I waking at 3 AM?",
+  "How do I prepare for Day 1?",
 ]
 
 const KAI_RESPONSES: Record<string, string> = {
   "When does my cohort start?": "Cohort 1 begins June 2, 2026 at 7 PM ET. You'll receive a Zoom link 24 hours before. Is there anything else you'd like to know?",
-  "How do I prepare for Day 1?": "Find a quiet spot, have a notebook ready, and if possible block 75 minutes uninterrupted. Sessions run 7:00–8:15 PM ET. Joining 5 minutes early helps!",
-  "What labs should I order?": "Dr. Saxena recommends: Estradiol, FSH, testosterone (free & total), SHBG, fasting insulin, HbA1c, TSH, and 25-OH Vitamin D. Your Patient Advocacy Document will have the full panel with context.",
-  "I need help with my intake form.": "The intake takes about 10 minutes. Go step by step — there are no wrong answers. If a question feels unclear, just describe what you've experienced in your own words.",
+  "How do I prepare for Day 1?": "Find a quiet spot, have a notebook ready, and if possible block 75 minutes uninterrupted. Sessions run 7:00–8:15 PM ET. Joining 5 minutes early helps! Dr. Saxena suggests having any recent lab results nearby too — even if they just say 'normal.'",
+  "What labs should I order?": "Dr. Saxena's core panel: Estradiol (E2), FSH, Free & Total Testosterone, SHBG, Progesterone (day 21 if cycling), TSH + Free T3/T4, Fasting Insulin + HbA1c, 25-OH Vitamin D, DHEA-S, and a Lipid panel with hs-CRP. Your Patient Advocacy Document will list all of these with context your doctor can act on.",
+  "I need help with my intake form.": "The intake takes about 10 minutes. Go step by step — there are no wrong answers. If a question feels unclear, just describe what you've experienced in your own words. Your answers go directly into your Patient Advocacy Document.",
+  "Is HRT safe for me?": "Safety depends on your individual history across four axes: clotting risk, cancer history, cardiovascular health, and bone density. The form that's right for most perimenopausal women is transdermal estradiol (patch or gel) + micronized progesterone — not oral synthetic hormones. The 2002 WHI study that scared many physicians used different forms on older women. Dr. Saxena covers this in detail on Day 2.",
+  "Why am I waking at 3 AM?": "This is one of the most reliable early signs of perimenopause. Progesterone metabolizes into allopregnanolone, which calms the nervous system. As progesterone drops, you lose that natural sedative — and the result is a 3–4 AM cortisol spike that kicks you out of deep sleep. Melatonin often doesn't fix it because it's not a sleep-onset problem. Progesterone replacement or magnesium glycinate 400mg before bed can help. Dr. Saxena covers this on Day 1.",
+  "What is perimenopause?": "Perimenopause is the hormonal transition that happens before your period stops — it can begin in your late 30s or early 40s, sometimes 8–10 years before the final period. Estrogen and progesterone become unpredictable: they spike high and crash low within single cycles. The variability is what causes symptoms like hot flashes, sleep disruption, mood changes, and brain fog.",
+  "What is the Patient Advocacy Document?": "It's a clinical summary you bring to your doctor appointment — written in language they can act on. It includes your symptom history with severity and duration, your lab results with clinical context, a risk profile across four axes, and specific discussion questions for your appointment. It's designed for 7-minute appointments where there's no time for history-taking.",
+  "What is brain fog?": "The word-finding difficulty, mid-sentence blanks, and general mental cloudiness you may be experiencing are directly linked to estrogen. Estrogen receptors are dense in the hippocampus — the brain region responsible for verbal memory and recall. As estrogen fluctuates, this function becomes unreliable. It's not stress and it's not early dementia. It's hormonal, and it's measurable.",
+  "What is BHRT?": "BHRT stands for bioidentical hormone therapy — hormones that are chemically identical to what your body produces. The most important versions are: estradiol (the same estrogen your ovaries make) and micronized progesterone (Prometrium). These are FDA-approved and available at any pharmacy. They're distinct from older synthetic hormones like Premarin and Provera, which have a different risk profile.",
+  "What is the difference between HRT and BHRT?": "HRT is the broad category — anything that replenishes hormones. BHRT is a subset using molecules identical to your own. The key distinctions: transdermal bioidentical estradiol carries lower clotting risk than oral synthetic estrogen; micronized progesterone has a better breast safety profile than synthetic progestins. Route and type both matter — not just 'yes or no to hormones.'",
+  "How do I bring a document to my doctor?": "Print it out and hand it to the nurse when you're roomed — before you see the doctor. Ask them to put it in the chart. When the doctor comes in, say 'I've prepared a summary — it should be in the notes.' If they haven't seen it, hand them the copy: 'I want to make the most of our time. Can we use this as a guide?' Most physicians respond well to organized patients.",
+  "What is SHBG?": "SHBG (sex hormone-binding globulin) binds to estrogen and testosterone and makes them biologically unavailable. You can have a 'normal' total hormone reading and still be functionally deficient because most of it is bound. Oral contraceptives and oral estrogen both raise SHBG dramatically — transdermal routes avoid this. Testing SHBG alongside testosterone and estrogen gives the full picture.",
+  "What is fasting insulin?": "Fasting insulin, combined with fasting glucose, gives you HOMA-IR — a measure of insulin resistance. It catches metabolic problems years before fasting glucose becomes abnormal. It's important in perimenopause because estrogen helps cells respond to insulin, so as estrogen drops, insulin resistance often rises. Ask for it by name on your next annual panel.",
 }
 
 function CoachKaiWidget() {
@@ -245,6 +256,7 @@ export default function PreviewRoot() {
           {/* Community, resources, account */}
           <Route path="community" element={<Community />} />
           <Route path="resources" element={<Resources />} />
+          <Route path="articles/:slug" element={<ArticleReader />} />
           <Route path="account" element={<Account />} />
 
           {/* Admin — §14 */}

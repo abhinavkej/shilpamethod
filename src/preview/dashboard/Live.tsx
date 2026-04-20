@@ -59,11 +59,26 @@ const SESSION_CONTENT: Record<SessionDay, {
   },
 }
 
+const XP_PER_ANSWER = 15
+const BADGE_THRESHOLDS = [
+  { xp: 15, label: 'First answer', emoji: '✍️' },
+  { xp: 45, label: 'Day complete', emoji: '⭐' },
+  { xp: 90, label: 'Halfway there', emoji: '🔥' },
+  { xp: 135, label: 'All 3 days done', emoji: '🏅' },
+]
+
 export default function LiveDashboard() {
   const [activeDay, setActiveDay] = useState<SessionDay>(1)
   const [workbookAnswers, setWorkbookAnswers] = useState<Record<string, string>>({})
   const [saved, setSaved] = useState(false)
   const content = SESSION_CONTENT[activeDay]
+
+  const answeredCount = Object.values(workbookAnswers).filter((v) => v.trim().length > 0).length
+  const totalQuestions = (SESSION_CONTENT[1].workbookPrompts.length + SESSION_CONTENT[2].workbookPrompts.length + SESSION_CONTENT[3].workbookPrompts.length)
+  const xp = answeredCount * XP_PER_ANSWER
+  const maxXp = totalQuestions * XP_PER_ANSWER
+  const progressPct = Math.round((answeredCount / totalQuestions) * 100)
+  const latestBadge = BADGE_THRESHOLDS.filter((b) => xp >= b.xp).at(-1)
 
   const handleSave = () => {
     setSaved(true)
@@ -122,23 +137,67 @@ export default function LiveDashboard() {
 
         {/* Right: Workbook */}
         <div className="bg-sand/40 border border-border rounded-2xl p-6">
-          <div className="font-mono text-[10px] text-coral tracking-widest uppercase mb-2">Your workbook · Day {activeDay}</div>
+          {/* Progress header */}
+          <div className="flex items-center justify-between mb-3">
+            <div className="font-mono text-[10px] text-coral tracking-widest uppercase">Your workbook · Day {activeDay}</div>
+            <div className="flex items-center gap-2">
+              {latestBadge && (
+                <span className="text-[12px]" title={latestBadge.label}>{latestBadge.emoji}</span>
+              )}
+              <span className="font-mono text-[10px] text-forest font-bold">{xp} / {maxXp} XP</span>
+            </div>
+          </div>
+
+          {/* Progress bar */}
+          <div className="mb-4">
+            <div className="flex justify-between text-[10px] font-mono text-slate mb-1">
+              <span>{answeredCount} of {totalQuestions} questions answered</span>
+              <span>{progressPct}%</span>
+            </div>
+            <div className="h-1.5 bg-border rounded-full overflow-hidden">
+              <div
+                className="h-full bg-coral rounded-full transition-all duration-500"
+                style={{ width: `${progressPct}%` }}
+              />
+            </div>
+          </div>
+
           <h2 className="font-display text-[22px] text-forest mb-1">Capture while it's fresh</h2>
           <p className="text-[13px] text-slate mb-5">These go straight into your Patient Advocacy Document.</p>
           <div className="space-y-5">
-            {content.workbookPrompts.map((p) => (
-              <div key={p.id}>
-                <label className="block text-[13px] text-forest font-medium mb-2">{p.q}</label>
-                <textarea
-                  rows={3}
-                  value={workbookAnswers[p.id] || ''}
-                  onChange={(e) => setWorkbookAnswers({ ...workbookAnswers, [p.id]: e.target.value })}
-                  placeholder={p.placeholder}
-                  className="w-full bg-white border border-border rounded-xl px-3 py-2.5 text-[13px] text-ink focus:border-forest focus:outline-none transition-colors placeholder:text-slate/40 resize-none"
-                />
-              </div>
-            ))}
+            {content.workbookPrompts.map((p) => {
+              const answered = (workbookAnswers[p.id] || '').trim().length > 0
+              return (
+                <div key={p.id}>
+                  <label className="flex items-start gap-2 text-[13px] text-forest font-medium mb-2">
+                    <span className={`mt-0.5 w-4 h-4 rounded-full border flex-none flex items-center justify-center text-[9px] transition-all ${answered ? 'bg-coral border-coral text-cream' : 'border-border'}`}>
+                      {answered ? '✓' : ''}
+                    </span>
+                    {p.q}
+                  </label>
+                  <textarea
+                    rows={3}
+                    value={workbookAnswers[p.id] || ''}
+                    onChange={(e) => setWorkbookAnswers({ ...workbookAnswers, [p.id]: e.target.value })}
+                    placeholder={p.placeholder}
+                    className="w-full bg-white border border-border rounded-xl px-3 py-2.5 text-[13px] text-ink focus:border-forest focus:outline-none transition-colors placeholder:text-slate/40 resize-none"
+                  />
+                </div>
+              )
+            })}
           </div>
+
+          {/* Badge unlocked banner */}
+          {latestBadge && answeredCount > 0 && (
+            <div className="mt-4 bg-forest/10 border border-forest/20 rounded-xl px-4 py-2.5 flex items-center gap-3">
+              <span className="text-[20px]">{latestBadge.emoji}</span>
+              <div>
+                <div className="text-[12px] font-medium text-forest">{latestBadge.label} unlocked</div>
+                <div className="text-[11px] text-slate">+{XP_PER_ANSWER} XP per answer · keep going</div>
+              </div>
+            </div>
+          )}
+
           <button
             onClick={handleSave}
             className="mt-4 w-full bg-forest text-cream text-[14px] py-3 rounded-full hover:bg-ivy transition-colors"

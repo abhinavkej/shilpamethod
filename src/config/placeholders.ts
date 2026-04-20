@@ -81,7 +81,7 @@ export const LEGAL = {
 // TODO(areef): paste the real YouTube IDs once the clips are exported.
 // Playlist referenced in the PDF: PL0P26CWBMQZp25RVUHbshhy_OMdpUbabx
 export interface WebinarClip {
-  n: 1 | 2 | 3 | 4 | 5 | 6
+  n: number
   speaker: 'Shilpa' | 'Jocelyn'
   title: string
   durationLabel: string
@@ -144,6 +144,69 @@ export const WEBINAR_CLIPS: WebinarClip[] = [
     transcript:
       'Estrogen has direct anti-inflammatory effects on joint tissue. As it declines, synovial fluid changes and tendon flexibility decreases. Frozen shoulder affects 10–17% of perimenopausal women and is almost never connected to hormones by a conventional provider.',
     youtubeId: 'wUZ8n-2aKDM',
+  },
+  {
+    n: 7,
+    speaker: 'Shilpa',
+    title: 'Why bone density loss accelerates in perimenopause',
+    durationLabel: '2:55',
+    transcript:
+      "Estrogen is the primary protector of bone mineral density. When it drops — even before your last period — bone resorption outpaces formation. The DEXA scan most women get at 65 is a decade too late. We want a baseline in your early 40s, so we know what we're defending.",
+    youtubeId: '-VlVN91Tgwk',
+  },
+  {
+    n: 8,
+    speaker: 'Shilpa',
+    title: "Progesterone and the 3 AM wake-up — what's actually happening",
+    durationLabel: '2:18',
+    transcript:
+      "Progesterone metabolizes into allopregnanolone, which modulates GABA-A receptors — the same receptors targeted by sleep medications. When progesterone falls, you lose that natural sedative. The result isn't insomnia; it's a specific 3–4 AM cortisol spike that kicks you out of deep sleep.",
+    youtubeId: 'pXMHU4-VdzU',
+  },
+  {
+    n: 9,
+    speaker: 'Jocelyn',
+    title: 'Brain fog in perimenopause — the day I stopped finishing sentences',
+    durationLabel: '1:52',
+    transcript:
+      "I was in a meeting and I forgot the word 'strategy.' I stood there for ten seconds. My colleagues thought I was distracted. I knew something was wrong. That's the thing about estrogen and verbal memory — the decline is quiet, then it's not. Nobody warned me this was hormonal.",
+    youtubeId: 'nT9Dh-LBkZU',
+  },
+  {
+    n: 10,
+    speaker: 'Shilpa',
+    title: 'Estrogen and cardiovascular risk — the timing window matters',
+    durationLabel: '3:11',
+    transcript:
+      "The Women's Health Initiative scared a generation of women off estrogen by reporting increased cardiovascular risk. What the headlines missed: those women were in their 60s, starting HRT a decade after menopause. The Timing Hypothesis, now supported by 20 years of data, shows estrogen started within 10 years of menopause is cardioprotective, not harmful.",
+    youtubeId: 'jVhukPemG10',
+  },
+  {
+    n: 11,
+    speaker: 'Shilpa',
+    title: 'SHBG — the hormone nobody explains, that changes everything',
+    durationLabel: '2:34',
+    transcript:
+      "Sex hormone-binding globulin grabs testosterone and estrogen and makes them unavailable. You can have a 'normal' total estrogen reading and still be functionally deficient because 80% of it is bound. Oral contraceptives and oral estrogen both raise SHBG dramatically. Transdermal routes avoid this entirely.",
+    youtubeId: 'xH0JnkZjZTI',
+  },
+  {
+    n: 12,
+    speaker: 'Shilpa',
+    title: 'The insulin-hormone connection you have to understand',
+    durationLabel: '2:47',
+    transcript:
+      "Insulin resistance and estrogen deficiency amplify each other. Estrogen helps cells respond to insulin; when it drops, insulin sensitivity drops too. High insulin promotes aromatization — converting androgen into estrogen in fat tissue. This is why abdominal fat increases in perimenopause, and why it's not just about calories.",
+    youtubeId: 'n4SAz6s1OAQ',
+  },
+  {
+    n: 13,
+    speaker: 'Jocelyn',
+    title: "What happened when I finally brought a document to my doctor",
+    durationLabel: '2:08',
+    transcript:
+      "She actually read it. That was the thing I didn't expect — she sat there, read the first page, and said 'you've done your homework.' The conversation was completely different. She ordered every lab I asked for. That document changed the dynamic from patient-asking-for-permission to two people reviewing evidence together.",
+    youtubeId: 'OpPWRbpzuTA',
   },
 ]
 

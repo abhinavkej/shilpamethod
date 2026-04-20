@@ -1,12 +1,7 @@
+import { Link } from 'react-router-dom'
 import { PageShell, H1, Mono } from '../ui'
 import { WEBINAR_CLIPS } from '../../config/placeholders'
-
-const READING = [
-  { t: "The Women's Health Initiative — what they got wrong", d: '8-min read' },
-  { t: 'Why your TSH alone is not enough', d: '5-min read' },
-  { t: 'The four risk axes, in plain English', d: '6-min read' },
-  { t: 'How to read your own lipid panel like a cardiologist', d: '10-min read' },
-]
+import { ARTICLES } from '../../data/articles'
 
 const YT_PLAYLIST = 'PL0P26CWBMQZp25RVUHbshhy_0MdpUbabx'
 
@@ -42,11 +37,15 @@ export default function Resources() {
       <section className="mb-12">
         <div className="font-mono text-[11px] text-coral tracking-widest uppercase mb-4">Reading list</div>
         <div className="bg-white border border-border rounded-2xl divide-y divide-border/60">
-          {READING.map((r) => (
-            <div key={r.t} className="flex items-center justify-between px-5 py-4 hover:bg-sand/30 cursor-pointer">
-              <div className="text-[15px] text-forest">{r.t}</div>
-              <div className="font-mono text-[11px] text-slate tracking-widest uppercase">{r.d}</div>
-            </div>
+          {ARTICLES.map((a) => (
+            <Link
+              key={a.slug}
+              to={`/preview/articles/${a.slug}`}
+              className="flex items-center justify-between px-5 py-4 hover:bg-sand/30 cursor-pointer group"
+            >
+              <div className="text-[15px] text-forest group-hover:underline underline-offset-4">{a.title}</div>
+              <div className="font-mono text-[11px] text-slate tracking-widest uppercase flex-none ml-4">{a.readTime} read</div>
+            </Link>
           ))}
         </div>
       </section>
