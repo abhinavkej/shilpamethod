@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useSearchParams, Link } from 'react-router-dom'
+import { useSearchParams } from 'react-router-dom'
 import MemberHeader from './MemberHeader'
 import Onboarding from './Onboarding'
 import RunwayDashboard from './Runway'
