@@ -152,13 +152,52 @@ export default function LiveDashboard() {
       </div>
 
       {/* Session nav links */}
-      <div className="flex flex-wrap gap-3 text-[13px]">
+      <div className="flex flex-wrap gap-3 text-[13px] mb-8">
         <Link to="/preview/sessions/1" className="text-forest hover:underline underline-offset-4">
           Session detail page →
         </Link>
         <Link to="/preview/document" className="text-forest hover:underline underline-offset-4">
           Your document →
         </Link>
+      </div>
+
+      {/* Plain-English state guide */}
+      <div className="bg-white border border-border rounded-2xl p-6">
+        <div className="font-mono text-[10px] text-coral tracking-widest uppercase mb-4">How your session day works</div>
+        <div className="space-y-4">
+          {[
+            {
+              when: 'More than 1 hour before',
+              what: 'A countdown timer shows on your dashboard. A short checklist appears — quiet space, notebook, water — so you feel ready and not rushed when Shilpa joins.',
+            },
+            {
+              when: 'Within the hour before (like right now)',
+              what: 'This screen. The join button shows but stays greyed out until 15 minutes before. That gives you time to close other tabs and settle in.',
+            },
+            {
+              when: 'Session is live',
+              what: 'A big green "Join Zoom" button appears. Click it and you\'re in. The workbook on the right stays open so you can type notes without leaving the page.',
+            },
+            {
+              when: 'Just ended (within 60 minutes)',
+              what: 'One simple prompt: "What hit hardest tonight?" Whatever you type here gets saved directly into your Patient Advocacy Document. No need to remember it later.',
+            },
+            {
+              when: 'Recording ready (60+ minutes after)',
+              what: 'The session replay appears inline — no separate link to find. The workbook reopens so you can fill in anything you missed during the live session.',
+            },
+          ].map((s, i) => (
+            <div key={i} className="flex gap-4 items-start">
+              <div className="w-6 h-6 rounded-full bg-coral/15 text-coral font-mono text-[11px] flex items-center justify-center flex-none mt-0.5">
+                {i + 1}
+              </div>
+              <div>
+                <div className="text-[13px] font-medium text-forest">{s.when}</div>
+                <p className="text-[13px] text-slate leading-relaxed mt-0.5">{s.what}</p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </main>
   )

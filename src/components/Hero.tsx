@@ -22,7 +22,7 @@ export default function Hero() {
           headline block and this 260px card without collision. */}
       <motion.div
         variants={fadeInUp}
-        className="hidden xl:block absolute top-28 right-8 rotate-[3deg] bg-white border border-border rounded-2xl px-5 py-4 max-w-[240px] text-left z-10"
+        className="hidden xl:block absolute bottom-20 right-8 rotate-[-2deg] bg-white border border-border rounded-2xl px-5 py-4 max-w-[240px] text-left z-10"
         style={{ boxShadow: '0 12px 40px rgba(31,58,46,0.08)' }}
       >
         <div className="text-label text-coral uppercase mb-2">LIVE · TWO-WAY</div>
