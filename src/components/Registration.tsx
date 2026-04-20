@@ -20,6 +20,7 @@ export default function Registration() {
   const [submitState, setSubmitState] = useState<'idle' | 'sending' | 'error'>('idle')
   const [errorMsg, setErrorMsg] = useState('')
   const [emailDeliveredTo, setEmailDeliveredTo] = useState<string | null>(null)
+  const [memberLink, setMemberLink] = useState<string | null>(null)
 
   const isWaitlist = spotsRemaining <= 0
   const cohortLabel = state.cohort === 'c2' ? PROGRAM.cohort2Label : PROGRAM.cohort1Label
@@ -61,7 +62,13 @@ export default function Registration() {
         setErrorMsg(data?.hint || data?.error || 'Email service temporarily unavailable.')
         setEmailDeliveredTo(null)
       } else {
-        setEmailDeliveredTo(cleanEmail)
+        // The server returns { paths: { formsubmit, resend }, memberLink }.
+        // Resend success means we sent the beautifully-designed welcome to the user.
+        // Without it, Formsubmit still notified ops; we don't promise a user-facing
+        // welcome email in that case.
+        const resendOk = data?.paths?.resend?.ok === true
+        setEmailDeliveredTo(resendOk ? cleanEmail : null)
+        if (data?.memberLink) setMemberLink(data.memberLink)
       }
 
       dispatch({
@@ -277,6 +284,15 @@ export default function Registration() {
                         Intake starts now. Clinical Q&A opens one week before your cohort begins.
                       </p>
                     </>
+                  )}
+
+                  {memberLink && (
+                    <a
+                      href={memberLink}
+                      className="inline-flex items-center gap-2 bg-coral text-cream text-[14px] px-5 py-2.5 rounded-full hover:bg-rust transition-colors mb-3"
+                    >
+                      Preview your member area →
+                    </a>
                   )}
 
                   <button

@@ -1,20 +1,22 @@
 /**
  * Vercel Serverless Function — POST /api/register
  *
- * The first real backend endpoint. Accepts the Registration form submission
- * from src/components/Registration.tsx, fires:
- *   1. A welcome email to the user (Resend)
- *   2. A notification email to ops (abhinavkej@gmail.com) so we see every signup
+ * Fires TWO email paths in parallel so something always lands:
  *
- * Required env var in Vercel:
- *   RESEND_API_KEY   — https://resend.com → API keys (free tier, 3000/mo)
+ *   1. Formsubmit.co (zero-config fallback — always fires)
+ *      POSTs the form data to https://formsubmit.co/ajax/<email>.
+ *      First submission triggers an activation email to
+ *      abhinavkej@gmail.com; click once and future submissions flow
+ *      through automatically. No API key, no signup required.
  *
- * Optional env vars:
- *   EMAIL_FROM             — defaults to Resend's sandbox sender
- *   EMAIL_OPS_NOTIFICATION — defaults to abhinavkej@gmail.com
+ *   2. Resend (designed path — fires if RESEND_API_KEY is set)
+ *      Sends the Cormorant/cream/coral welcome email to the user
+ *      AND a separate ops notification to abhinavkej@gmail.com.
+ *      Prettier, two-way. Takes ~3 min to set up.
  *
- * Until RESEND_API_KEY is set, the endpoint returns 503 with a clear
- * error telling you what's missing. Once set, emails actually send.
+ * The endpoint returns 200 as long as AT LEAST ONE path succeeded.
+ * Every submission is also logged to Vercel function logs so nothing
+ * is lost even in a total outage.
  */
 
 import type { VercelRequest, VercelResponse } from '@vercel/node'
@@ -22,18 +24,18 @@ import { Resend } from 'resend'
 import { renderWelcomeEmail } from '../lib/emails/welcome.js'
 import { renderOpsEmail } from '../lib/emails/ops.js'
 
+const FORMSUBMIT_INBOX = 'abhinavkej@gmail.com'
+const BASE_URL = 'https://www.shilpamethod.com'
+
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  // CORS for local dev / preview domains
   res.setHeader('Access-Control-Allow-Origin', '*')
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS')
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
-
   if (req.method === 'OPTIONS') return res.status(204).end()
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' })
 
   const { firstName, email, forumPatient, cohort } = req.body || {}
 
-  // Minimal validation
   if (!firstName || typeof firstName !== 'string' || firstName.length > 100) {
     return res.status(400).json({ error: 'First name is required' })
   }
@@ -41,61 +43,100 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(400).json({ error: 'Valid email is required' })
   }
 
-  const apiKey = process.env.RESEND_API_KEY
-  if (!apiKey) {
-    // Still log the attempt so a real submission while keys are missing isn't lost
-    console.log('[register] RESEND_API_KEY missing. Submission:', {
-      firstName,
-      email,
-      forumPatient,
-      cohort,
-      at: new Date().toISOString(),
-    })
-    return res.status(503).json({
-      error: 'Email service is not configured yet.',
-      hint: 'Set RESEND_API_KEY in Vercel env vars. See HANDOFF.md §2.4.',
-    })
+  const cohortLabel =
+    cohort === 'c2'
+      ? 'Cohort 2 · 8 AM PST / 11 AM EST / 8:30 PM IST'
+      : 'Cohort 1 · 5 PM PST / 8 PM EST / 5:30 AM IST (next day)'
+
+  // Personalized member-area deep link so the recipient (Abhinav, today) can
+  // click straight into the end-to-end member preview with their name wired in.
+  const memberLink = `${BASE_URL}/preview/dashboard?phase=onboarding&name=${encodeURIComponent(
+    firstName
+  )}`
+
+  const submissionLog = {
+    firstName,
+    email,
+    cohort,
+    cohortLabel,
+    forumPatient: !!forumPatient,
+    memberLink,
+    at: new Date().toISOString(),
   }
+  console.log('[register] submission:', submissionLog)
 
-  const resend = new Resend(apiKey)
-  const fromAddress = process.env.EMAIL_FROM || 'Coach Kai <onboarding@resend.dev>'
-  const opsAddress = process.env.EMAIL_OPS_NOTIFICATION || 'abhinavkej@gmail.com'
-  const replyTo = process.env.EMAIL_REPLY_TO || 'hello@shilpamethod.com'
+  const results: Record<string, any> = {}
 
+  // ───── Path 1: Formsubmit.co (zero-config, always fires) ─────
   try {
-    const cohortLabel =
-      cohort === 'c2'
-        ? 'Cohort 2 · 8 AM PST / 11 AM EST / 8:30 PM IST'
-        : 'Cohort 1 · 5 PM PST / 8 PM EST / 5:30 AM IST (next day)'
-
-    // 1) Welcome email to the registrant
-    const welcomeResult = await resend.emails.send({
-      from: fromAddress,
-      to: email,
-      replyTo,
-      subject: `You're in, ${firstName}.`,
-      html: renderWelcomeEmail({ firstName, cohortLabel, forumPatient: !!forumPatient }),
+    const fsResp = await fetch(`https://formsubmit.co/ajax/${FORMSUBMIT_INBOX}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify({
+        _subject: `[Hormone Method signup] ${firstName} · ${email}`,
+        _template: 'box',
+        _captcha: 'false',
+        name: firstName,
+        email,
+        cohort: cohortLabel,
+        forum_patient: forumPatient ? 'Yes — $50 off applies' : 'No',
+        member_access_link: memberLink,
+        submitted_at: new Date().toISOString(),
+      }),
     })
-
-    // 2) Notification email to ops so you see every signup as it happens
-    const opsResult = await resend.emails.send({
-      from: fromAddress,
-      to: opsAddress,
-      replyTo: email,
-      subject: `[Signup] ${firstName} (${email}) — ${cohortLabel}`,
-      html: renderOpsEmail({ firstName, email, cohortLabel, forumPatient: !!forumPatient }),
-    })
-
-    return res.status(200).json({
-      ok: true,
-      welcomeEmailId: welcomeResult.data?.id,
-      opsEmailId: opsResult.data?.id,
-    })
+    results.formsubmit = {
+      ok: fsResp.ok,
+      status: fsResp.status,
+      body: await fsResp.text().then((t) => t.slice(0, 200)),
+    }
   } catch (err: any) {
-    console.error('[register] send failed:', err)
-    return res.status(500).json({
-      error: 'Failed to send email',
-      detail: err?.message || String(err),
-    })
+    results.formsubmit = { ok: false, error: err?.message || String(err) }
   }
+
+  // ───── Path 2: Resend (designed, only if API key is set) ─────
+  const apiKey = process.env.RESEND_API_KEY
+  if (apiKey) {
+    const resend = new Resend(apiKey)
+    const fromAddress = process.env.EMAIL_FROM || 'Coach Kai <onboarding@resend.dev>'
+    const opsAddress = process.env.EMAIL_OPS_NOTIFICATION || FORMSUBMIT_INBOX
+    const replyTo = process.env.EMAIL_REPLY_TO || 'hello@shilpamethod.com'
+
+    try {
+      const [welcomeResult, opsResult] = await Promise.all([
+        resend.emails.send({
+          from: fromAddress,
+          to: email,
+          replyTo,
+          subject: `You're in, ${firstName}.`,
+          html: renderWelcomeEmail({ firstName, cohortLabel, forumPatient: !!forumPatient }),
+        }),
+        resend.emails.send({
+          from: fromAddress,
+          to: opsAddress,
+          replyTo: email,
+          subject: `[Signup] ${firstName} (${email}) — ${cohortLabel}`,
+          html: renderOpsEmail({ firstName, email, cohortLabel, forumPatient: !!forumPatient }),
+        }),
+      ])
+      results.resend = {
+        ok: true,
+        welcomeEmailId: welcomeResult.data?.id,
+        opsEmailId: opsResult.data?.id,
+      }
+    } catch (err: any) {
+      results.resend = { ok: false, error: err?.message || String(err) }
+    }
+  } else {
+    results.resend = { ok: false, skipped: 'RESEND_API_KEY not set' }
+  }
+
+  const anySuccess = results.formsubmit?.ok || results.resend?.ok
+  return res.status(anySuccess ? 200 : 500).json({
+    ok: anySuccess,
+    paths: results,
+    memberLink, // returned so the client can surface it on success
+  })
 }
