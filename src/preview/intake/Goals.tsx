@@ -37,9 +37,14 @@ export default function IntakeGoals() {
               onChange={(e) => setAnswers({ ...answers, [q.key]: e.target.value })}
               className="w-full bg-white border border-border rounded-xl px-4 py-3 text-[15px] text-ink focus:border-forest focus:outline-none transition-colors"
             />
-            <button className="text-[12px] text-coral hover:underline underline-offset-4 mt-2">
-              Coach Kai can help →
-            </button>
+            <a
+              href="https://wa.me/14155551234"
+              target="_blank"
+              rel="noreferrer"
+              className="text-[12px] text-coral hover:underline underline-offset-4 mt-2 inline-block"
+            >
+              Coach Kai can help on WhatsApp →
+            </a>
           </div>
         ))}
       </div>
