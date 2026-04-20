@@ -24,14 +24,14 @@ function PageContent() {
       <Nav />
       <main>
         <Hero />
+        <ShilpaIntro />
+        <Clips />
         <PatientDocument />
         <DIWY />
         <NotACourse />
         <Program />
         <Cohorts />
         <CoachKai />
-        <Clips />
-        <ShilpaIntro />
         <SymptomSelector />
         <Registration />
         <Alumni />

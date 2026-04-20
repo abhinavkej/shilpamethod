@@ -12,7 +12,7 @@ const SESSION_CONTENT: Record<SessionDay, {
   workbookPrompts: { id: string; q: string; placeholder: string }[]
 }> = {
   1: {
-    title: 'Identify Your Story',
+    title: 'Define Needs',
     subtitle: 'Understanding what your body is telling you — and why most doctors miss it.',
     keyPoints: [
       "Perimenopause can start in your early 40s — sometimes late 30s. Most doctors wait for a missed period. That's too late.",
@@ -27,8 +27,8 @@ const SESSION_CONTENT: Record<SessionDay, {
     ],
   },
   2: {
-    title: 'Read Your Labs',
-    subtitle: 'The 12 numbers that actually matter — and how to interpret them for you, not a statistical average.',
+    title: 'Calculate Risks',
+    subtitle: 'The four risk axes — and the 12 numbers that actually matter. How to interpret them for you, not a statistical average.',
     keyPoints: [
       'FSH >10 in your 40s is a signal. FSH >25 means perimenopause is well underway. Your doctor may not flag it unless it\'s >40.',
       'Estradiol fluctuates wildly day to day. A single "normal" reading means almost nothing. Trend matters.',
@@ -43,8 +43,8 @@ const SESSION_CONTENT: Record<SessionDay, {
     ],
   },
   3: {
-    title: 'Write Your Story',
-    subtitle: 'Building the document that walks your doctor through your case — in language they understand.',
+    title: 'Create Solutions',
+    subtitle: 'Build the document that walks your doctor through your case — in language they understand.',
     keyPoints: [
       'Most doctors spend 7 minutes per appointment. Your Patient Advocacy Document gives them everything upfront so those 7 minutes are spent on decisions, not history-taking.',
       'Every recommendation in your document links to a PubMed citation. Your doctor can verify anything they question.',

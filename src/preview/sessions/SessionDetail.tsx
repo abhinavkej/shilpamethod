@@ -11,9 +11,9 @@ type State = 'pre' | 'imminent' | 'live' | 'ended' | 'recording'
 type Tab = 'live' | 'workbook' | 'recording' | 'discussion' | 'resources'
 
 const DAY_META = {
-  '1': { title: "Identify Your Story", date: 'Tuesday, June 2, 2026', time: '7:00 PM ET', description: 'Foundations. The hormonal cascade in perimenopause, why standard labs miss this, what symptoms actually mean.' },
-  '2': { title: 'Understand Your Numbers', date: 'Wednesday, June 3, 2026', time: '7:00 PM ET', description: 'The labs your doctor should be running. The four risk axes: clotting, cancer, cardiovascular, bone.' },
-  '3': { title: 'Build Your Playbook', date: 'Thursday, June 4, 2026', time: '7:00 PM ET', description: 'Building your action plan. Sexual health and longevity. Walking out with your Patient Advocacy Document.' },
+  '1': { title: "Define Needs", date: 'Tuesday, June 2, 2026', time: '7:00 PM ET', description: 'Foundations. The hormonal cascade in perimenopause, why standard labs miss this, what symptoms actually mean.' },
+  '2': { title: 'Calculate Risks', date: 'Wednesday, June 3, 2026', time: '7:00 PM ET', description: 'The labs your doctor should be running. The four risk axes: clotting, cancer, cardiovascular, bone.' },
+  '3': { title: 'Create Solutions', date: 'Thursday, June 4, 2026', time: '7:00 PM ET', description: 'Building your action plan. Sexual health and longevity. Walking out with your Patient Advocacy Document.' },
 }
 
 export default function SessionDetail() {

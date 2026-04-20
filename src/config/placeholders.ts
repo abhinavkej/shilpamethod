@@ -21,8 +21,8 @@
 export const PROGRAM = {
   // TODO(areef): CONFIRM FINAL DATES. Docx says April 28–30, 2026; PDF spec says June 2–4, 2026.
   displayDate: 'April 28–30, 2026',
-  cohort1Label: 'Cohort 1 · 5 PM PST / 8 PM EST / 5:30 AM IST (next day)',
-  cohort2Label: 'Cohort 2 · 8 AM PST / 11 AM EST / 8:30 PM IST',
+  cohort1Label: 'Cohort 1 · 8 PM ET · 5:30 AM IST (next day)',
+  cohort2Label: 'Cohort 2 · 11 AM ET · 8:30 PM IST',
   capacityPerCohort: 50,
   // Spots remaining — read live from DB once Phase-2 backend ships.
   // Until then this is a seeded static value that ticks down every 45s.

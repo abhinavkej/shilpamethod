@@ -26,6 +26,7 @@ import MuktaReferral from './referral/Mukta'
 import Community from './community/Community'
 import Resources from './resources/Resources'
 import ArticleReader from './articles/Article'
+import IntakeFormDraft from './intake-form-draft/IntakeFormDraft'
 import Account from './account/Account'
 import AdminHome from './admin/Home'
 import AdminCohort from './admin/Cohort'
@@ -257,6 +258,7 @@ export default function PreviewRoot() {
           <Route path="community" element={<Community />} />
           <Route path="resources" element={<Resources />} />
           <Route path="articles/:slug" element={<ArticleReader />} />
+          <Route path="intake-form-draft" element={<IntakeFormDraft />} />
           <Route path="account" element={<Account />} />
 
           {/* Admin — §14 */}

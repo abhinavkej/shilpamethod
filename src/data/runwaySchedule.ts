@@ -77,7 +77,7 @@ export const RUNWAY_SCHEDULE: Record<number, RunwayDay> = {
   },
   4: {
     title: 'What to expect Tuesday, Wednesday, Thursday',
-    body: "Day 1: Identify Your Story. Day 2: Understand Your Numbers. Day 3: Build Your Playbook. All live on Google Meet, 7:00–8:15 PM ET (may extend to 8:30 when the energy calls for it).",
+    body: "Day 1: Define Needs. Day 2: Calculate Risks. Day 3: Create Solutions. All live on Google Meet, 7:00–8:15 PM ET (may extend to 8:30 when the energy calls for it).",
     contentType: 'logistics',
   },
   3: {

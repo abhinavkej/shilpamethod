@@ -4,21 +4,21 @@ import { fadeInUp, staggerContainer, viewportConfig } from '../lib/motion'
 const DAYS = [
   {
     day: 'Day 1 · Tuesday',
-    theme: 'Identify Your Story',
+    theme: 'Define Needs',
     blurb:
-      'What are your symptoms actually telling you? Map your timeline, your family history, your signals — against the hormonal shifts happening underneath.',
+      'Map what your body is actually telling you. Your symptom pattern, your timeline, your family history — against the hormonal shifts happening underneath.',
   },
   {
     day: 'Day 2 · Wednesday',
-    theme: 'Understand Your Numbers',
+    theme: 'Calculate Risks',
     blurb:
-      'The labs your doctor should be running and what each one means for you. How to read your own bloodwork like an endocrinologist — not like a web search.',
+      'The four risk axes — clotting, cancer, cardiovascular, bone — and the labs that map each one. How to read your own bloodwork like an endocrinologist.',
   },
   {
     day: 'Day 3 · Thursday',
-    theme: 'Build Your Playbook',
+    theme: 'Create Solutions',
     blurb:
-      'Translate your story + your numbers into a personalized Patient Advocacy Document. The specific questions, labs, and next steps you walk into your next appointment with.',
+      'Translate your needs + your risk profile into a personalized Patient Advocacy Document. The specific questions, labs, and next steps you walk into your next appointment with.',
   },
 ]
 

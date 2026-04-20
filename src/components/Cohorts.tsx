@@ -37,9 +37,9 @@ export default function Cohorts() {
             name="Cohort 1"
             days="Tuesday · Wednesday · Thursday"
             lines={[
-              '5:00 PM PST',
-              '8:00 PM EST',
+              '8:00 PM ET',
               '5:30 AM India (next day)',
+              'Other zones calculated at checkout',
             ]}
             selected={selected === 'c1'}
             onClick={() => pick('c1')}
@@ -48,9 +48,9 @@ export default function Cohorts() {
             name="Cohort 2"
             days="Tuesday · Wednesday · Thursday"
             lines={[
-              '8:00 AM PST',
-              '11:00 AM EST',
+              '11:00 AM ET',
               '8:30 PM IST',
+              'Other zones calculated at checkout',
             ]}
             selected={selected === 'c2'}
             onClick={() => pick('c2')}

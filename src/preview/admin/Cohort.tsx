@@ -16,7 +16,7 @@ export default function AdminCohort() {
               <div>
                 <div className="font-mono text-[10px] text-slate tracking-widest uppercase mb-1">Day {d}</div>
                 <div className="text-[18px] text-forest font-medium">
-                  {d === 1 ? 'Identify Your Story' : d === 2 ? 'Understand Your Numbers' : 'Build Your Playbook'}
+                  {d === 1 ? 'Define Needs' : d === 2 ? 'Calculate Risks' : 'Create Solutions'}
                 </div>
               </div>
               <div className="font-mono text-[11px] text-slate">June {1 + d}, 2026 · 7 PM ET</div>

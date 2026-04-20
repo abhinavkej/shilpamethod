@@ -62,7 +62,7 @@ export default function NotACourse() {
               <div className="font-mono text-[10px] text-slate tracking-widest uppercase mb-1">
                 Typical online course
               </div>
-              <div className="text-[14px] text-slate">e.g., Stacy Sims Menopause 2.0</div>
+              <div className="text-[14px] text-slate">The average $400+ pre-recorded course</div>
             </div>
             <div className="p-4 md:p-5 border-l border-border bg-forest text-cream">
               <div className="font-mono text-[10px] text-coral-soft tracking-widest uppercase mb-1">

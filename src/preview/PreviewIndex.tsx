@@ -140,6 +140,27 @@ export default function PreviewIndex() {
           at repo root for the env vars, templates, and service accounts Areef needs to lift this
           into the real Next.js member app.
         </p>
+
+        {/* Pinned: intake form draft for Shilpa's review */}
+        <div className="mt-8 bg-forest text-cream rounded-2xl px-6 py-5 flex flex-col sm:flex-row items-start sm:items-center gap-4 justify-between">
+          <div>
+            <div className="font-mono text-[10px] text-coral-soft tracking-widest uppercase mb-1">
+              For Dr. Saxena's review
+            </div>
+            <div className="font-display text-[20px] leading-snug">
+              Intake form — v1 draft (downloadable PDF)
+            </div>
+            <div className="text-[13px] text-cream/70 mt-1">
+              Mapped to Define Needs · Calculate Risks · Create Solutions. Edit → share back → we ship v2.
+            </div>
+          </div>
+          <Link
+            to="/preview/intake-form-draft"
+            className="bg-coral text-cream px-5 py-2.5 rounded-full text-[14px] hover:bg-rust flex-none"
+          >
+            Open + print →
+          </Link>
+        </div>
       </div>
 
       <div className="grid gap-5">

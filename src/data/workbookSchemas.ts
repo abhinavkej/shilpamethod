@@ -18,7 +18,7 @@ export interface WorkbookSchema {
 }
 
 export const WORKBOOK_DAY_1: WorkbookSchema = {
-  title: 'Day 1 Workbook — Define Your Need',
+  title: 'Day 1 Workbook — Define Needs',
   intro: 'These questions sharpen what you bring to Day 2 and Day 3. Take your time — no one else sees this.',
   questions: [
     {
@@ -56,7 +56,7 @@ export const WORKBOOK_DAY_1: WorkbookSchema = {
 }
 
 export const WORKBOOK_DAY_2: WorkbookSchema = {
-  title: 'Day 2 Workbook — Know Your Risk',
+  title: 'Day 2 Workbook — Calculate Risks',
   intro: 'Rate yourself across the four risk axes Dr. Saxena walked through. Be honest — this shapes your document.',
   questions: [
     {
@@ -92,7 +92,7 @@ export const WORKBOOK_DAY_2: WorkbookSchema = {
 }
 
 export const WORKBOOK_DAY_3: WorkbookSchema = {
-  title: 'Day 3 Workbook — Build Your Playbook',
+  title: 'Day 3 Workbook — Create Solutions',
   intro: "Translate the weekend into a specific plan for the appointment you're going to book this month.",
   questions: [
     {
