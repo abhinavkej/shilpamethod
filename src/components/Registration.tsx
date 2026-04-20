@@ -24,9 +24,20 @@ export default function Registration() {
   const isWaitlist = spotsRemaining <= 0
   const cohortLabel = state.cohort === 'c2' ? PROGRAM.cohort2Label : PROGRAM.cohort1Label
 
+  // Title-case a first name: "abhinav kej" → "Abhinav Kej", "MARY" → "Mary"
+  const normalizeName = (n: string) =>
+    n
+      .trim()
+      .toLowerCase()
+      .split(/\s+/)
+      .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+      .join(' ')
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!firstName || !email) return
+    const cleanName = normalizeName(firstName)
+    const cleanEmail = email.trim().toLowerCase()
+    if (!cleanName || !cleanEmail) return
     setSubmitState('sending')
     setErrorMsg('')
 
@@ -35,8 +46,8 @@ export default function Registration() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          firstName,
-          email,
+          firstName: cleanName,
+          email: cleanEmail,
           forumPatient,
           cohort: state.cohort,
         }),
@@ -45,16 +56,17 @@ export default function Registration() {
 
       if (!resp.ok) {
         // Still flip to the confirmation state so the UI is honest about what happened;
-        // stash a diagnostic line so we know why the email didn't land.
+        // stash a diagnostic line so we know why the email didn't land (dev-only, not
+        // shown to end users — the UI always shows the friendly fallback copy).
         setErrorMsg(data?.hint || data?.error || 'Email service temporarily unavailable.')
         setEmailDeliveredTo(null)
       } else {
-        setEmailDeliveredTo(email)
+        setEmailDeliveredTo(cleanEmail)
       }
 
       dispatch({
         type: 'SUBMIT_REGISTRATION',
-        payload: { name: firstName, email, clinicalInterest: forumPatient },
+        payload: { name: cleanName, email: cleanEmail, clinicalInterest: forumPatient },
       })
       setSubmitState('idle')
     } catch (err: any) {
@@ -261,11 +273,6 @@ export default function Registration() {
                         We have your details. Coach Kai will reach out within 24 hours to begin your
                         intake. Watch for an email from {CONTACT.coachKai}.
                       </p>
-                      {errorMsg && (
-                        <p className="text-body-sm text-cream/50 mb-4 italic">
-                          (Email service note: {errorMsg})
-                        </p>
-                      )}
                       <p className="text-body-sm text-cream/60 mb-6">
                         Intake starts now. Clinical Q&A opens one week before your cohort begins.
                       </p>
