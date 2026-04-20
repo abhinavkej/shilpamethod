@@ -19,8 +19,8 @@
 
 import type { VercelRequest, VercelResponse } from '@vercel/node'
 import { Resend } from 'resend'
-import { renderWelcomeEmail } from '../lib/emails/welcome'
-import { renderOpsEmail } from '../lib/emails/ops'
+import { renderWelcomeEmail } from '../lib/emails/welcome.js'
+import { renderOpsEmail } from '../lib/emails/ops.js'
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   // CORS for local dev / preview domains
