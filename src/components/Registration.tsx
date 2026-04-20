@@ -17,17 +17,50 @@ export default function Registration() {
   const [email, setEmail] = useState('')
   const [forumPatient, setForumPatient] = useState(false)
   const [copied, setCopied] = useState(false)
+  const [submitState, setSubmitState] = useState<'idle' | 'sending' | 'error'>('idle')
+  const [errorMsg, setErrorMsg] = useState('')
+  const [emailDeliveredTo, setEmailDeliveredTo] = useState<string | null>(null)
 
   const isWaitlist = spotsRemaining <= 0
   const cohortLabel = state.cohort === 'c2' ? PROGRAM.cohort2Label : PROGRAM.cohort1Label
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!firstName || !email) return
-    dispatch({
-      type: 'SUBMIT_REGISTRATION',
-      payload: { name: firstName, email, clinicalInterest: forumPatient },
-    })
+    setSubmitState('sending')
+    setErrorMsg('')
+
+    try {
+      const resp = await fetch('/api/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          firstName,
+          email,
+          forumPatient,
+          cohort: state.cohort,
+        }),
+      })
+      const data = await resp.json()
+
+      if (!resp.ok) {
+        // Still flip to the confirmation state so the UI is honest about what happened;
+        // stash a diagnostic line so we know why the email didn't land.
+        setErrorMsg(data?.hint || data?.error || 'Email service temporarily unavailable.')
+        setEmailDeliveredTo(null)
+      } else {
+        setEmailDeliveredTo(email)
+      }
+
+      dispatch({
+        type: 'SUBMIT_REGISTRATION',
+        payload: { name: firstName, email, clinicalInterest: forumPatient },
+      })
+      setSubmitState('idle')
+    } catch (err: any) {
+      setSubmitState('error')
+      setErrorMsg(err?.message || 'Network error — please try again.')
+    }
   }
 
   const handleShare = () => {
@@ -179,10 +212,18 @@ export default function Registration() {
 
                   <button
                     type="submit"
-                    className="w-full bg-coral text-cream text-[16px] py-4 rounded-full hover:bg-rust transition-colors cursor-pointer mb-3"
+                    disabled={submitState === 'sending'}
+                    className="w-full bg-coral text-cream text-[16px] py-4 rounded-full hover:bg-rust transition-colors cursor-pointer mb-3 disabled:opacity-60 disabled:cursor-not-allowed"
                   >
-                    {isWaitlist ? 'Join the waitlist for the next cohort' : `Reserve my spot — ${PRICE_TOKEN}`}
+                    {submitState === 'sending'
+                      ? 'Sending your welcome…'
+                      : isWaitlist
+                      ? 'Join the waitlist for the next cohort'
+                      : `Reserve my spot — ${PRICE_TOKEN}`}
                   </button>
+                  {submitState === 'error' && (
+                    <p className="text-[12px] text-rust mb-3">{errorMsg}</p>
+                  )}
 
                   {/* Disclaimer near CTA */}
                   <p className="text-[12px] text-slate leading-relaxed mt-auto pt-4 border-t border-border/60">
@@ -203,13 +244,33 @@ export default function Registration() {
                   </div>
                   <div className="text-body-sm text-cream/70 mb-5">{cohortLabel}</div>
 
-                  <p className="text-body-md text-cream/85 mb-4">
-                    Coach Kai will reach out within 24 hours to begin your intake. Watch for an email
-                    from {CONTACT.coachKai}.
-                  </p>
-                  <p className="text-body-sm text-cream/60 mb-6">
-                    Intake starts now. Clinical Q&A opens one week before your cohort begins.
-                  </p>
+                  {emailDeliveredTo ? (
+                    <>
+                      <p className="text-body-md text-cream/85 mb-4">
+                        Check <span className="text-coral-soft font-medium">{emailDeliveredTo}</span> —
+                        a welcome from Coach Kai just landed in your inbox (look in spam if you don't see
+                        it within 2 minutes).
+                      </p>
+                      <p className="text-body-sm text-cream/60 mb-6">
+                        We'll be in touch before your cohort begins. Intake opens next.
+                      </p>
+                    </>
+                  ) : (
+                    <>
+                      <p className="text-body-md text-cream/85 mb-4">
+                        We have your details. Coach Kai will reach out within 24 hours to begin your
+                        intake. Watch for an email from {CONTACT.coachKai}.
+                      </p>
+                      {errorMsg && (
+                        <p className="text-body-sm text-cream/50 mb-4 italic">
+                          (Email service note: {errorMsg})
+                        </p>
+                      )}
+                      <p className="text-body-sm text-cream/60 mb-6">
+                        Intake starts now. Clinical Q&A opens one week before your cohort begins.
+                      </p>
+                    </>
+                  )}
 
                   <button
                     onClick={handleShare}

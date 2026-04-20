@@ -1,5 +1,50 @@
 # The Hormone Method (by Forum Health) — CTO Handoff
 
+## 🚀 Go-live in 5 minutes — make the registration email actually send
+
+The repo now ships with a real backend endpoint: `/api/register.ts` is a Vercel
+Serverless Function wired to Resend. The Registration form on the live site
+POSTs to it. Until one env var is set, it returns 503 and the UI falls back
+to honest "we have your details" copy. Once set, a real welcome email fires to
+the registrant **and** a signup notification fires to ops (abhinavkej@gmail.com
+by default).
+
+**To flip it on:**
+
+1. Sign up at https://resend.com (free tier: 3000 emails/month).
+2. Generate an API key.
+3. In the Vercel dashboard → Project → Settings → Environment Variables, add:
+   ```
+   RESEND_API_KEY = re_xxxxxxxxxxxxxxxxxxxx
+   ```
+4. Redeploy (any push triggers it, or click "Redeploy" in the Vercel UI).
+
+That's it. No domain verification needed to start — Resend's `onboarding@resend.dev`
+sender works out of the box. Swap to `coachkai@shilpamethod.com` once you
+verify `shilpamethod.com` in the Resend dashboard (DNS records required).
+
+**Optional env vars** (safe defaults baked in):
+
+| Var | Default |
+|---|---|
+| `EMAIL_FROM` | `Coach Kai <onboarding@resend.dev>` |
+| `EMAIL_OPS_NOTIFICATION` | `abhinavkej@gmail.com` |
+| `EMAIL_REPLY_TO` | `hello@shilpamethod.com` |
+
+**Files that make this work:**
+- `api/register.ts` — Vercel Serverless Function (POST handler)
+- `lib/emails/welcome.ts` — HTML welcome email (Cormorant H1, cream bg, terra CTA)
+- `lib/emails/ops.ts` — plain ops-notification email
+- `src/components/Registration.tsx` — form now calls `fetch('/api/register', ...)`
+
+Everything else in this handoff is for the bigger Phase-2+ work (member dashboards,
+auth, Stripe, WhatsApp, Google Meet). You don't need any of it to start collecting
+real signups with real emails.
+
+---
+
+
+
 > **Owner:** Areef
 > **Last revised:** on the copy-freeze pass (docx v2 + PDF build-prompt merged)
 > **Live site:** https://shilpamethod.com
