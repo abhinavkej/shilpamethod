@@ -37,9 +37,9 @@ export default function Cohorts() {
             name="Cohort 1"
             days="Tuesday · Wednesday · Thursday"
             lines={[
+              '5:00 PM PT',
               '8:00 PM ET',
-              '5:30 AM India (next day)',
-              'Other zones calculated at checkout',
+              '5:30 AM IST (next day)',
             ]}
             selected={selected === 'c1'}
             onClick={() => pick('c1')}
@@ -48,9 +48,9 @@ export default function Cohorts() {
             name="Cohort 2"
             days="Tuesday · Wednesday · Thursday"
             lines={[
+              '8:00 AM PT',
               '11:00 AM ET',
               '8:30 PM IST',
-              'Other zones calculated at checkout',
             ]}
             selected={selected === 'c2'}
             onClick={() => pick('c2')}
@@ -111,14 +111,10 @@ function CohortCard({
       </div>
 
       <div className="space-y-1.5">
-        {lines.map((line, i) => (
+        {lines.map((line) => (
           <div
             key={line}
-            className={`${
-              i === 0
-                ? `text-[18px] font-medium ${selected ? 'text-cream' : 'text-forest'}`
-                : `text-[14px] ${selected ? 'text-cream/70' : 'text-slate'}`
-            }`}
+            className={`text-[15px] ${selected ? 'text-cream/90' : 'text-slate'}`}
           >
             {line}
           </div>
