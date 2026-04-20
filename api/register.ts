@@ -68,29 +68,38 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const results: Record<string, any> = {}
 
   // ───── Path 1: Formsubmit.co (zero-config, always fires) ─────
+  // Use the non-AJAX endpoint with form-encoded body and a browser UA —
+  // the /ajax/ variant sits behind a Cloudflare challenge that blocks
+  // automated server-to-server requests.
   try {
-    const fsResp = await fetch(`https://formsubmit.co/ajax/${FORMSUBMIT_INBOX}`, {
+    const fsBody = new URLSearchParams({
+      _subject: `[Hormone Method signup] ${firstName} · ${email}`,
+      _template: 'box',
+      _captcha: 'false',
+      name: firstName,
+      email,
+      cohort: cohortLabel,
+      forum_patient: forumPatient ? 'Yes — $50 off applies' : 'No',
+      member_access_link: memberLink,
+      submitted_at: new Date().toISOString(),
+    })
+    const fsResp = await fetch(`https://formsubmit.co/${FORMSUBMIT_INBOX}`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
+        'Content-Type': 'application/x-www-form-urlencoded',
+        Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+        'User-Agent':
+          'Mozilla/5.0 (compatible; ShilpaMethodBot/1.0; +https://shilpamethod.com)',
       },
-      body: JSON.stringify({
-        _subject: `[Hormone Method signup] ${firstName} · ${email}`,
-        _template: 'box',
-        _captcha: 'false',
-        name: firstName,
-        email,
-        cohort: cohortLabel,
-        forum_patient: forumPatient ? 'Yes — $50 off applies' : 'No',
-        member_access_link: memberLink,
-        submitted_at: new Date().toISOString(),
-      }),
+      body: fsBody.toString(),
+      redirect: 'manual',
     })
+    // Formsubmit returns a 302 redirect to a thank-you page on success.
+    // Anything in the 2xx or 3xx range means the submission was accepted.
+    const accepted = fsResp.status >= 200 && fsResp.status < 400
     results.formsubmit = {
-      ok: fsResp.ok,
+      ok: accepted,
       status: fsResp.status,
-      body: await fsResp.text().then((t) => t.slice(0, 200)),
     }
   } catch (err: any) {
     results.formsubmit = { ok: false, error: err?.message || String(err) }
