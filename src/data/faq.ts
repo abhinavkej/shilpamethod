@@ -7,12 +7,12 @@ export const faqItems: FAQItem[] = [
   {
     question: 'Is this a course or a live program?',
     answer:
-      "Live. Three sessions on Tuesday, Wednesday, and Thursday — 75 minutes each on Zoom. 25 minutes of Shilpa teaching, 50 minutes of live Q&A and workshop. It may extend to 90 minutes when the energy calls for it. This is not a course. It's a conversation.",
+      "Live. Three sessions on Tuesday, Wednesday, and Thursday — 75 minutes each on Google Meet. 25 minutes of Shilpa teaching, 50 minutes of live Q&A and workshop. It may extend to 90 minutes when the energy calls for it. This is not a course. It's a conversation.",
   },
   {
     question: 'Will this program push BHRT on me?',
     answer:
-      "No. The framework — Define Need, Assess Risk, Create Solution — exists precisely to ensure you don't end up with a solution before you understand your situation. Dr. Saxena covers the full spectrum: lifestyle interventions, bioidentical hormones, conventional pathways. Many women leave the boot camp choosing lifestyle changes first. Some choose BHRT. Some choose a combination. You get the information to make the call.",
+      "No. The framework — Define Needs, Calculate Risks, Create Solutions — exists precisely to ensure you don't end up with a solution before you understand your situation. Dr. Saxena covers the full spectrum: lifestyle interventions, bioidentical hormones, conventional pathways. Many women leave the boot camp choosing lifestyle changes first. Some choose BHRT. Some choose a combination. You get the information to make the call.",
   },
   {
     question: "My OB-GYN already told me I don't need hormones. What's the point of this?",

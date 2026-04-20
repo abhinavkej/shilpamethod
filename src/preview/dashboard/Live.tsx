@@ -100,7 +100,7 @@ export default function LiveDashboard() {
         </p>
         <div className="flex flex-wrap gap-3">
           <button className="bg-coral/30 text-cream/50 text-[14px] px-5 py-2.5 rounded-full cursor-not-allowed border border-coral/30">
-            Join Zoom in 42 mins →
+            Join Meet in 42 mins →
           </button>
           <div className="flex gap-2">
             {([1, 2, 3] as SessionDay[]).map((d) => (
@@ -235,7 +235,7 @@ export default function LiveDashboard() {
             },
             {
               when: 'Session is live',
-              what: 'A big green "Join Zoom" button appears. Click it and you\'re in. The workbook on the right stays open so you can type notes without leaving the page.',
+              what: 'A big green "Join Meet" button appears. Click it and you\'re in. The workbook on the right stays open so you can type notes without leaving the page.',
             },
             {
               when: 'Just ended (within 60 minutes)',

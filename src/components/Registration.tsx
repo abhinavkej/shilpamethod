@@ -141,7 +141,7 @@ export default function Registration() {
 
               <ul className="space-y-2.5 mb-6">
                 {[
-                  '3 live Zoom sessions with Dr. Shilpa Saxena (75 min each)',
+                  '3 live Google Meet sessions with Dr. Shilpa Saxena (75 min each)',
                   'Your personalized Patient Advocacy Document',
                   'Coach Kai — Physician-interface Portal',
                   'Recommended lab panel with interpretation guide',

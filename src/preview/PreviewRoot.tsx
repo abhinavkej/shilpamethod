@@ -49,7 +49,7 @@ const QUICK_REPLIES = [
 ]
 
 const KAI_RESPONSES: Record<string, string> = {
-  "When does my cohort start?": "Cohort 1 begins June 2, 2026 at 7 PM ET. You'll receive a Zoom link 24 hours before. Is there anything else you'd like to know?",
+  "When does my cohort start?": "Cohort 1 begins June 2, 2026 at 7 PM ET. You'll receive a Google Meet link 24 hours before. Is there anything else you'd like to know?",
   "How do I prepare for Day 1?": "Find a quiet spot, have a notebook ready, and if possible block 75 minutes uninterrupted. Sessions run 7:00–8:15 PM ET. Joining 5 minutes early helps! Dr. Saxena suggests having any recent lab results nearby too — even if they just say 'normal.'",
   "What labs should I order?": "Dr. Saxena's core panel: Estradiol (E2), FSH, Free & Total Testosterone, SHBG, Progesterone (day 21 if cycling), TSH + Free T3/T4, Fasting Insulin + HbA1c, 25-OH Vitamin D, DHEA-S, and a Lipid panel with hs-CRP. Your Patient Advocacy Document will list all of these with context your doctor can act on.",
   "I need help with my intake form.": "The intake takes about 10 minutes. Go step by step — there are no wrong answers. If a question feels unclear, just describe what you've experienced in your own words. Your answers go directly into your Patient Advocacy Document.",

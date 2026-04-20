@@ -49,7 +49,7 @@ export default function Program() {
           variants={fadeInUp}
           className="text-body-md text-slate text-center max-w-[580px] mx-auto mb-16"
         >
-          Live on Zoom. Small cohorts. Two-way every session — no pre-recorded lecture camouflaged as a live class.
+          Live on Google Meet. Small cohorts. Two-way every session — no pre-recorded lecture camouflaged as a live class.
         </motion.p>
 
         {/* Day cards */}
@@ -88,7 +88,7 @@ export default function Program() {
             <div className="grid grid-cols-3 gap-4 md:gap-6">
               <Mechanic n="25" label="min" sub="Shilpa teaching" />
               <Mechanic n="50" label="min" sub="Live Q&A + workshop" />
-              <Mechanic n="Zoom" label="" sub="Live, two-way" isText />
+              <Mechanic n="Meet" label="" sub="Live, two-way" isText />
             </div>
           </div>
         </motion.div>
