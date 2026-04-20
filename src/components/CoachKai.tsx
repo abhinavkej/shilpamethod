@@ -51,8 +51,18 @@ export default function CoachKai() {
   const bottomRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
 
+  const didMount = useRef(false)
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
+    // Skip the initial mount — scrollIntoView on the seeded messages
+    // was scrolling the whole page down to the Coach Kai section.
+    if (!didMount.current) {
+      didMount.current = true
+      return
+    }
+    // Only scroll the messages container, not the page.
+    const el = bottomRef.current
+    const scroller = el?.parentElement
+    if (scroller) scroller.scrollTop = scroller.scrollHeight
   }, [messages, typing])
 
   const send = (text: string) => {
