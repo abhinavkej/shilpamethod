@@ -125,7 +125,7 @@ export default function PreviewIndex() {
     <main className="max-w-5xl mx-auto px-6 py-16">
       <div className="mb-14">
         <p className="font-mono text-[10px] text-coral tracking-widest uppercase mb-4">
-          The Hormone Method · by Forum Health · Member experience prototype
+          The Hormone Method · by Dr. Shilpa Saxena · Member experience prototype
         </p>
         <h1 className="font-display text-display-lg text-forest mb-4">
           Every screen, every phase, every state — clickable.

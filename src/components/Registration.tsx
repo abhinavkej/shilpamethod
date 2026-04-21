@@ -91,7 +91,7 @@ export default function Registration() {
 
   const handleShare = () => {
     navigator.clipboard.writeText(
-      'I just joined The Hormone Method Boot Camp by Forum Health — 3 live sessions with Dr. Shilpa Saxena on perimenopause & menopause. shilpamethod.com'
+      'I just joined The Hormone Method Boot Camp — 3 live sessions with Dr. Shilpa Saxena, MD on perimenopause & menopause. shilpamethod.com'
     )
     setCopied(true)
     setTimeout(() => setCopied(false), 2000)
@@ -130,7 +130,7 @@ export default function Registration() {
           <motion.div variants={fadeInUp}>
             <div className="bg-forest text-cream rounded-2xl p-8 h-full" style={{ boxShadow: '0 24px 60px -15px rgba(31,58,46,0.25)' }}>
               <div className="font-mono text-[10px] text-coral-soft tracking-widest uppercase mb-2">
-                The Hormone Method Boot Camp · by Forum Health
+                The Hormone Method Boot Camp · by Dr. Shilpa Saxena
               </div>
               <div className="font-display text-[32px] text-cream mb-1">
                 {PROGRAM.displayDate}

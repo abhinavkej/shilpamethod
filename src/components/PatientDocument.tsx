@@ -76,7 +76,7 @@ export default function PatientDocument() {
             <div className="bg-forest text-cream px-7 md:px-10 py-6 flex justify-between items-start">
               <div>
                 <div className="font-mono text-[9px] text-coral-soft/70 tracking-[0.2em] uppercase mb-2">
-                  The Hormone Method · Patient Advocacy Document · by Forum Health
+                  The Hormone Method · Patient Advocacy Document · by Dr. Shilpa Saxena
                 </div>
                 <div className="font-display text-[24px] md:text-[30px] leading-tight">
                   {DOCUMENT_NAME_DISPLAY}

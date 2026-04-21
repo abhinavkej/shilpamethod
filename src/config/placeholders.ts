@@ -1,6 +1,6 @@
 /**
  * ═══════════════════════════════════════════════════════════════════
- *   THE HORMONE METHOD · BY FORUM HEALTH — ONE-STOP PLACEHOLDERS
+ *   THE HORMONE METHOD · BY DR. SHILPA SAXENA — ONE-STOP PLACEHOLDERS
  * ═══════════════════════════════════════════════════════════════════
  *
  *   Hi Areef —

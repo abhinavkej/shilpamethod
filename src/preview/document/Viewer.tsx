@@ -159,7 +159,7 @@ export default function DocumentViewer() {
         {/* Print-only header */}
         <div className="hidden print:block mb-8">
           <h1 style={{ fontFamily: 'Georgia, serif', fontSize: '32px', color: '#1F3A2E' }}>Patient Advocacy Document</h1>
-          <p style={{ fontSize: '13px', color: '#6B6358' }}>Prepared for Sarah Chen · The Hormone Method by Forum Health · Cohort 1 · June 2–4, 2026</p>
+          <p style={{ fontSize: '13px', color: '#6B6358' }}>Prepared for Sarah Chen · The Hormone Method by Dr. Shilpa Saxena · Cohort 1 · June 2–4, 2026</p>
           <p style={{ fontSize: '13px', color: '#6B6358' }}>Generated June 5, 2026 · v1 · shilpamethod.com</p>
         </div>
 
@@ -170,7 +170,7 @@ export default function DocumentViewer() {
             <div className="font-mono text-[10px] text-coral-soft tracking-widest uppercase mb-3">Patient Advocacy Document</div>
             <h2 className="font-display text-[36px] text-cream leading-tight mb-2">Your Hormone Story.</h2>
             <p className="text-[14px] text-cream/70">Prepared for Sarah Chen</p>
-            <p className="text-[13px] text-cream/50 mt-1">The Hormone Method by Forum Health · Cohort 1 · June 2–4, 2026 · Generated June 5, 2026</p>
+            <p className="text-[13px] text-cream/50 mt-1">The Hormone Method by Dr. Shilpa Saxena · Cohort 1 · June 2–4, 2026 · Generated June 5, 2026</p>
             <p className="text-[13px] text-cream/50 mt-3 leading-relaxed max-w-[520px]">
               This document summarizes your symptoms, risk profile, and clinical history in language your doctor can act on.
               Bring it to your next appointment.

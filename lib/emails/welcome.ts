@@ -28,7 +28,7 @@ export function renderWelcomeEmail({ firstName, cohortLabel, forumPatient }: Pro
 
     <!-- kicker -->
     <div style="font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,monospace;font-size:11px;letter-spacing:1.8px;color:#D97757;text-transform:uppercase;margin-bottom:16px;">
-      The Hormone Method · by Forum Health
+      The Hormone Method · by Dr. Shilpa Saxena
     </div>
 
     <!-- headline -->

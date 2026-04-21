@@ -23,7 +23,7 @@ export default function MemberHeader({ firstName = 'Sarah', email = 'sarah@examp
         <Link to="/preview/dashboard" className="flex items-baseline gap-2">
           <span className="font-display text-[20px] text-forest tracking-tight">The Hormone Method</span>
           <span className="font-mono text-[10px] text-slate tracking-widest uppercase hidden sm:inline">
-            by Forum Health
+            by Dr. Shilpa Saxena
           </span>
         </Link>
         <div className="flex items-center gap-6">

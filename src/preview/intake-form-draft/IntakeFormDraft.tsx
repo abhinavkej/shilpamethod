@@ -284,7 +284,7 @@ export default function IntakeFormDraft() {
             style={{ backgroundColor: '#1F3A2E', color: '#F8F3E8' }}
           >
             <div className="font-mono text-[10px] tracking-widest uppercase mb-3" style={{ color: '#F4D7C8' }}>
-              The Hormone Method · by Forum Health
+              The Hormone Method · by Dr. Shilpa Saxena
             </div>
             <h2 className="font-display text-[32px] leading-tight mb-2">Member Intake — v1 Draft.</h2>
             <p className="text-[14px] mt-2" style={{ color: 'rgba(248,243,232,0.75)' }}>

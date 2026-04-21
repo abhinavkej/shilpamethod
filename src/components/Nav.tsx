@@ -26,7 +26,7 @@ export default function Nav() {
         >
           <span className="font-display text-[22px] text-forest tracking-tight">The Hormone Method</span>
           <span className="font-mono text-[10px] text-slate tracking-widest uppercase hidden sm:inline">
-            by Forum Health
+            by Dr. Shilpa Saxena
           </span>
         </button>
 

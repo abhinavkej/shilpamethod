@@ -11,7 +11,7 @@ export default function Footer() {
           <div>
             <div className="font-display text-[28px] text-cream mb-1">The Hormone Method</div>
             <div className="font-mono text-[10px] text-coral-soft tracking-widest uppercase mb-4">
-              by Forum Health · shilpamethod.com
+              by Dr. Shilpa Saxena · shilpamethod.com
             </div>
             <p className="text-body-sm text-cream/70 leading-relaxed max-w-[380px]">
               A live, 3-day program with Dr. Shilpa Saxena, MD. In partnership with
